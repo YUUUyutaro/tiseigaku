@@ -1,0 +1,82 @@
+name: Build site
+
+# 定期ビルド + 手動 + 主要ファイル更新時の検証ビルド。
+# ANTHROPIC_API_KEY が secrets に登録されていれば本番モードで、
+# 未登録ならモックモードで実行する。
+on:
+  schedule:
+    # 毎日 22:00 UTC = 07:00 JST に実行
+    - cron: "0 22 * * *"
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "templates/**"
+      - "data/**"
+      - "config.yaml"
+      - "requirements.txt"
+      - ".github/workflows/build-site.yml"
+
+concurrency:
+  group: build-site-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # feedparser は pip 経由の sgmllib3k ビルドが
+      # 環境によって失敗するため、apt の python3-feedparser を venv から参照する。
+      - name: Install system feedparser
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-feedparser
+
+      - name: Create venv with system site-packages
+        run: |
+          python -m venv --system-site-packages .venv
+          .venv/bin/pip install --upgrade pip
+          .venv/bin/pip install anthropic jinja2 pyyaml python-dateutil
+
+      - name: Build site
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "ANTHROPIC_API_KEY 未設定 → モックモードでビルド"
+            .venv/bin/python -m src.main --mock --site
+          else
+            echo "ANTHROPIC_API_KEY 検出 → 本番モードでビルド"
+            .venv/bin/python -m src.main --site
+          fi
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          if git diff --staged --quiet; then
+            echo "No changes to docs/, skipping commit."
+            exit 0
+          fi
+          git commit -m "chore(site): auto-rebuild $(date -u +%Y-%m-%dT%H:%MZ)"
+          # 4回まで指数バックオフで push を再試行(2s, 4s, 8s, 16s)
+          for delay in 0 2 4 8 16; do
+            [ "$delay" -gt 0 ] && sleep "$delay"
+            git push origin HEAD:${GITHUB_REF_NAME} && exit 0
+            echo "push failed; retrying in next backoff"
+          done
+          echo "push failed after retries"
+          exit 1

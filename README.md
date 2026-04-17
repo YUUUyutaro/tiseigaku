@@ -39,6 +39,25 @@ python -m src.main --mock --site
 本番モード(Claude API 利用)でも `--site` を付ければ同じ構造で更新されます。
 `git add docs/ && git commit && git push` すれば GitHub Pages に反映されます。
 
+### GitHub Actions による定期実行
+
+`.github/workflows/build-site.yml` が以下のタイミングでサイトを自動再ビルドします。
+
+- 毎日 **07:00 JST (22:00 UTC)** の定期実行
+- Settings → Actions から **Run workflow** で手動実行
+- `main` ブランチの `src/`, `templates/`, `config.yaml` などが更新された push 時
+
+挙動:
+
+1. `apt` で `python3-feedparser` を導入 → 共有 site-packages つきの venv に
+   その他の Python 依存をインストール
+2. Repository secret に `ANTHROPIC_API_KEY` があれば本番モード、無ければ
+   モックモードで `python -m src.main --site` を実行
+3. `docs/` に差分があれば `github-actions[bot]` で commit & push
+
+**本番モードを有効化するには:** Repository の Settings → Secrets and variables
+→ Actions で `ANTHROPIC_API_KEY` を登録してください。
+
 ## 処理フロー
 
 ```
@@ -111,7 +130,7 @@ python -m src.main --config config.yaml
 - [x] 当事者の関係ネットワーク図
 - [x] 参考リンク
 - [x] 静的サイト化(`docs/` + GitHub Pages)
-- [ ] GitHub Actions での定期実行(日次 build & commit)
+- [x] GitHub Actions での定期実行(日次 build & commit)
 - [ ] メールダイジェスト配信(本文+サイトへのリンク)
 - [ ] 重複記事の統合(クラスタリング)
 - [ ] 地図 (Leaflet) 埋め込み
