@@ -1,7 +1,8 @@
 """Generate Mermaid diagrams from Analysis objects.
 
-We produce four complementary diagrams per article:
-  - actor_map: 当事者と立場の関係図 (flowchart)
+We produce five complementary diagrams per article:
+  - actor_map: 主題を中心とした当事者のスタンス図 (flowchart)
+  - relationship_graph: 当事者同士のアライアンス・対立ネットワーク (graph)
   - impact_tree: 影響ドメインとその重大度 (flowchart)
   - timeline: 出来事の経緯 (timeline)
   - key_points: 要点チェックリスト (mindmap)
@@ -22,6 +23,15 @@ _STANCE_COLOR = {
     "被害": "#ef6c00",
 }
 _SEVERITY_COLOR = {"高": "#c62828", "中": "#ef6c00", "低": "#2e7d32"}
+# 関係種別 → (線の色, 太さ px, 点線パターン or "")
+_RELATION_STYLE = {
+    "同盟": ("#1565c0", 3, ""),
+    "支援": ("#2e7d32", 2, ""),
+    "交渉": ("#6a1b9a", 2, "4 2"),
+    "緊張": ("#ef6c00", 2, "4 2"),
+    "対立": ("#c62828", 3, ""),
+    "依存": ("#00838f", 2, "2 2"),
+}
 
 
 def _safe(label: str) -> str:
@@ -44,6 +54,52 @@ def actor_map(analysis: Analysis) -> str:
         color = _STANCE_COLOR.get(actor.stance, "#1565c0")
         lines.append(f"  style {node} fill:{color},color:#fff,stroke:#333")
     lines.append(f"  style {center} fill:#263238,color:#fff,stroke:#000")
+    return "\n".join(lines)
+
+
+def relationship_graph(analysis: Analysis) -> str:
+    """当事者どうしのネットワーク図を Mermaid `graph LR` で生成する。
+
+    actor_map が「主題 ↔ 当事者」の星型なのに対し、これは actor 同士の
+    同盟・対立・緊張などを網状に描くことで地政学的な力学を可視化する。
+    関係種別ごとに線の色・太さ・点線パターンを変えている。
+    """
+    if not analysis.actors or not analysis.relationships:
+        return "graph LR\n  empty[\"関係情報なし\"]"
+
+    lines: List[str] = ["graph LR"]
+
+    # actor 名から一意なノード ID への対応表を作る(日本語・記号を避ける)
+    id_for: dict = {}
+    for i, actor in enumerate(analysis.actors):
+        node_id = f"N{i}"
+        id_for[actor.name] = node_id
+        lines.append(f'  {node_id}["{_safe(actor.name)}"]')
+
+    edge_styles: List[str] = []
+    edge_index = 0
+    for rel in analysis.relationships:
+        src = id_for.get(rel.source)
+        tgt = id_for.get(rel.target)
+        if not src or not tgt:
+            # actors に載っていない名前はノードとして足す
+            if rel.source not in id_for:
+                src = f"N{len(id_for)}"
+                id_for[rel.source] = src
+                lines.append(f'  {src}["{_safe(rel.source)}"]')
+            if rel.target not in id_for:
+                tgt = f"N{len(id_for)}"
+                id_for[rel.target] = tgt
+                lines.append(f'  {tgt}["{_safe(rel.target)}"]')
+        lines.append(f"  {src} -->|{_safe(rel.kind)}| {tgt}")
+        color, width, dash = _RELATION_STYLE.get(rel.kind, ("#1565c0", 2, ""))
+        style = f"stroke:{color},stroke-width:{width}px"
+        if dash:
+            style += f",stroke-dasharray:{dash}"
+        edge_styles.append(f"  linkStyle {edge_index} {style};")
+        edge_index += 1
+
+    lines.extend(edge_styles)
     return "\n".join(lines)
 
 
@@ -97,6 +153,7 @@ def key_points_mindmap(analysis: Analysis) -> str:
 def diagrams_for(analysis: Analysis) -> dict:
     return {
         "actor_map": actor_map(analysis),
+        "relationship_graph": relationship_graph(analysis),
         "impact_tree": impact_tree(analysis),
         "timeline": timeline_diagram(analysis),
         "key_points": key_points_mindmap(analysis),

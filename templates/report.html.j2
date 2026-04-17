@@ -21,6 +21,8 @@
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
     ul.key { padding-left: 20px; }
+    ul.refs { padding-left: 20px; font-size: 14px; }
+    ul.refs .note { color: var(--muted); }
     .diagram { border: 1px solid var(--line); border-radius: 6px; padding: 12px; background: #fafafa; }
     .diagram h4 { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
     footer { color: var(--muted); font-size: 12px; margin-top: 32px; text-align: center; }
@@ -79,9 +81,28 @@
     </div>
 
     <div class="diagram" style="margin-top:16px;">
+      <h4>当事者の関係ネットワーク</h4>
+      <pre class="mermaid">{{ diagrams[loop.index0].relationship_graph }}</pre>
+    </div>
+
+    <div class="diagram" style="margin-top:16px;">
       <h4>押さえるべき論点</h4>
       <pre class="mermaid">{{ diagrams[loop.index0].key_points }}</pre>
     </div>
+
+    {% if a.references %}
+    <div class="section">
+      <h3>参考リンク</h3>
+      <ul class="refs">
+        {% for r in a.references %}
+        <li>
+          <a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.title }}</a>
+          {% if r.note %}<span class="note"> — {{ r.note }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
   </article>
   {% endfor %}
 

@@ -36,11 +36,25 @@
 {{ diagrams[loop.index0].impact_tree }}
 ```
 
+### 当事者の関係ネットワーク
+
+```mermaid
+{{ diagrams[loop.index0].relationship_graph }}
+```
+
 ### 押さえるべき論点
 
 ```mermaid
 {{ diagrams[loop.index0].key_points }}
 ```
+
+{% if a.references %}
+### 参考リンク
+
+{% for r in a.references %}- [{{ r.title }}]({{ r.url }}){% if r.note %} — {{ r.note }}{% endif %}
+
+{% endfor %}
+{% endif %}
 
 ---
 {% endfor %}

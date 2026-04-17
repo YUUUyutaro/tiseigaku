@@ -44,6 +44,22 @@ class TimelineEvent:
 
 
 @dataclass
+class Relationship:
+    """当事者同士の関係。source → target に kind 種類の関係があるとみなす。"""
+
+    source: str  # actor name
+    target: str  # actor name
+    kind: str  # "同盟" | "対立" | "緊張" | "支援" | "交渉" | "依存"
+
+
+@dataclass
+class Reference:
+    title: str
+    url: str
+    note: str = ""  # 1行補足(任意)
+
+
+@dataclass
 class Analysis:
     article: Article
     headline_ja: str
@@ -53,4 +69,6 @@ class Analysis:
     issues: List[Issue] = field(default_factory=list)
     impacts: List[Impact] = field(default_factory=list)
     timeline: List[TimelineEvent] = field(default_factory=list)
+    relationships: List[Relationship] = field(default_factory=list)
+    references: List[Reference] = field(default_factory=list)
     key_points: List[str] = field(default_factory=list)

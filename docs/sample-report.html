@@ -21,6 +21,8 @@
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
     ul.key { padding-left: 20px; }
+    ul.refs { padding-left: 20px; font-size: 14px; }
+    ul.refs .note { color: var(--muted); }
     .diagram { border: 1px solid var(--line); border-radius: 6px; padding: 12px; background: #fafafa; }
     .diagram h4 { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
     footer { color: var(--muted); font-size: 12px; margin-top: 32px; text-align: center; }
@@ -33,7 +35,7 @@
 <body>
   <header>
     <h1>地政学ニュース図解レポート</h1>
-    <div class="meta">生成日時: 2026-04-17 02:57 / 記事数: 3</div>
+    <div class="meta">生成日時: 2026-04-17 03:09 / 記事数: 3</div>
   </header>
 
   <article>
@@ -105,12 +107,41 @@
     </div>
 
     <div class="diagram" style="margin-top:16px;">
+      <h4>当事者の関係ネットワーク</h4>
+      <pre class="mermaid">graph LR
+  N0["当事国A"]
+  N1["当事国B"]
+  N2["国際機関"]
+  N0 -->|対立| N1
+  N0 -->|交渉| N2
+  N1 -->|緊張| N2
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 2 stroke:#ef6c00,stroke-width:2px,stroke-dasharray:4 2;</pre>
+    </div>
+
+    <div class="diagram" style="margin-top:16px;">
       <h4>押さえるべき論点</h4>
       <pre class="mermaid">mindmap
   root((NATO、東欧諸国への追加配備を協議 ロシアの動向を警戒))
     当事者と立場を押さえる
     直近のトリガーとなった出来事を確認する
     安全保障・経済・外交への波及を分けて理解する</pre>
+    </div>
+
+    <div class="section">
+      <h3>参考リンク</h3>
+      <ul class="refs">
+        <li>
+          <a href="https://example.com/news/nato-east-europe" target="_blank" rel="noopener">原記事: NATO、東欧諸国への追加配備を協議 ロシアの動向を警戒</a>
+<span class="note"> — Mock News Wire</span>        </li>
+        <li>
+          <a href="https://example.gov/statement" target="_blank" rel="noopener">関係国の公式声明(例)</a>
+<span class="note"> — 当事国政府が発表した関連声明(モック)</span>        </li>
+        <li>
+          <a href="https://example.int/report" target="_blank" rel="noopener">国際機関の関連レポート(例)</a>
+<span class="note"> — 国際機関が公表した背景資料(モック)</span>        </li>
+      </ul>
     </div>
   </article>
   <article>
@@ -182,12 +213,41 @@
     </div>
 
     <div class="diagram" style="margin-top:16px;">
+      <h4>当事者の関係ネットワーク</h4>
+      <pre class="mermaid">graph LR
+  N0["当事国A"]
+  N1["当事国B"]
+  N2["国際機関"]
+  N0 -->|対立| N1
+  N0 -->|交渉| N2
+  N1 -->|緊張| N2
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 2 stroke:#ef6c00,stroke-width:2px,stroke-dasharray:4 2;</pre>
+    </div>
+
+    <div class="diagram" style="margin-top:16px;">
       <h4>押さえるべき論点</h4>
       <pre class="mermaid">mindmap
   root((中国、台湾海峡での軍事演習を拡大 日米が即応体制を強化))
     当事者と立場を押さえる
     直近のトリガーとなった出来事を確認する
     安全保障・経済・外交への波及を分けて理解する</pre>
+    </div>
+
+    <div class="section">
+      <h3>参考リンク</h3>
+      <ul class="refs">
+        <li>
+          <a href="https://example.com/news/taiwan-strait-drills" target="_blank" rel="noopener">原記事: 中国、台湾海峡での軍事演習を拡大 日米が即応体制を強化</a>
+<span class="note"> — Mock News Wire</span>        </li>
+        <li>
+          <a href="https://example.gov/statement" target="_blank" rel="noopener">関係国の公式声明(例)</a>
+<span class="note"> — 当事国政府が発表した関連声明(モック)</span>        </li>
+        <li>
+          <a href="https://example.int/report" target="_blank" rel="noopener">国際機関の関連レポート(例)</a>
+<span class="note"> — 国際機関が公表した背景資料(モック)</span>        </li>
+      </ul>
     </div>
   </article>
   <article>
@@ -259,12 +319,41 @@
     </div>
 
     <div class="diagram" style="margin-top:16px;">
+      <h4>当事者の関係ネットワーク</h4>
+      <pre class="mermaid">graph LR
+  N0["当事国A"]
+  N1["当事国B"]
+  N2["国際機関"]
+  N0 -->|対立| N1
+  N0 -->|交渉| N2
+  N1 -->|緊張| N2
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 2 stroke:#ef6c00,stroke-width:2px,stroke-dasharray:4 2;</pre>
+    </div>
+
+    <div class="diagram" style="margin-top:16px;">
       <h4>押さえるべき論点</h4>
       <pre class="mermaid">mindmap
   root((中東原油輸送路で海運会社が一部航路を回避 保険料が急騰))
     当事者と立場を押さえる
     直近のトリガーとなった出来事を確認する
     安全保障・経済・外交への波及を分けて理解する</pre>
+    </div>
+
+    <div class="section">
+      <h3>参考リンク</h3>
+      <ul class="refs">
+        <li>
+          <a href="https://example.com/news/strait-of-hormuz-shipping" target="_blank" rel="noopener">原記事: 中東原油輸送路で海運会社が一部航路を回避 保険料が急騰</a>
+<span class="note"> — Mock News Wire</span>        </li>
+        <li>
+          <a href="https://example.gov/statement" target="_blank" rel="noopener">関係国の公式声明(例)</a>
+<span class="note"> — 当事国政府が発表した関連声明(モック)</span>        </li>
+        <li>
+          <a href="https://example.int/report" target="_blank" rel="noopener">国際機関の関連レポート(例)</a>
+<span class="note"> — 国際機関が公表した背景資料(モック)</span>        </li>
+      </ul>
     </div>
   </article>
 

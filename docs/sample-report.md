@@ -1,6 +1,6 @@
 # 地政学ニュース図解レポート
 
-生成日時: 2026-04-17 02:57 / 記事数: 3
+生成日時: 2026-04-17 03:09 / 記事数: 3
 
 ## NATO、東欧諸国への追加配備を協議 ロシアの動向を警戒
 
@@ -65,6 +65,21 @@ flowchart TB
   style R fill:#263238,color:#fff,stroke:#000
 ```
 
+### 当事者の関係ネットワーク
+
+```mermaid
+graph LR
+  N0["当事国A"]
+  N1["当事国B"]
+  N2["国際機関"]
+  N0 -->|対立| N1
+  N0 -->|交渉| N2
+  N1 -->|緊張| N2
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 2 stroke:#ef6c00,stroke-width:2px,stroke-dasharray:4 2;
+```
+
 ### 押さえるべき論点
 
 ```mermaid
@@ -74,6 +89,12 @@ mindmap
     直近のトリガーとなった出来事を確認する
     安全保障・経済・外交への波及を分けて理解する
 ```
+
+### 参考リンク
+
+- [原記事: NATO、東欧諸国への追加配備を協議 ロシアの動向を警戒](https://example.com/news/nato-east-europe) — Mock News Wire
+- [関係国の公式声明(例)](https://example.gov/statement) — 当事国政府が発表した関連声明(モック)
+- [国際機関の関連レポート(例)](https://example.int/report) — 国際機関が公表した背景資料(モック)
 
 ---
 ## 中国、台湾海峡での軍事演習を拡大 日米が即応体制を強化
@@ -139,6 +160,21 @@ flowchart TB
   style R fill:#263238,color:#fff,stroke:#000
 ```
 
+### 当事者の関係ネットワーク
+
+```mermaid
+graph LR
+  N0["当事国A"]
+  N1["当事国B"]
+  N2["国際機関"]
+  N0 -->|対立| N1
+  N0 -->|交渉| N2
+  N1 -->|緊張| N2
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 2 stroke:#ef6c00,stroke-width:2px,stroke-dasharray:4 2;
+```
+
 ### 押さえるべき論点
 
 ```mermaid
@@ -148,6 +184,12 @@ mindmap
     直近のトリガーとなった出来事を確認する
     安全保障・経済・外交への波及を分けて理解する
 ```
+
+### 参考リンク
+
+- [原記事: 中国、台湾海峡での軍事演習を拡大 日米が即応体制を強化](https://example.com/news/taiwan-strait-drills) — Mock News Wire
+- [関係国の公式声明(例)](https://example.gov/statement) — 当事国政府が発表した関連声明(モック)
+- [国際機関の関連レポート(例)](https://example.int/report) — 国際機関が公表した背景資料(モック)
 
 ---
 ## 中東原油輸送路で海運会社が一部航路を回避 保険料が急騰
@@ -213,6 +255,21 @@ flowchart TB
   style R fill:#263238,color:#fff,stroke:#000
 ```
 
+### 当事者の関係ネットワーク
+
+```mermaid
+graph LR
+  N0["当事国A"]
+  N1["当事国B"]
+  N2["国際機関"]
+  N0 -->|対立| N1
+  N0 -->|交渉| N2
+  N1 -->|緊張| N2
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 2 stroke:#ef6c00,stroke-width:2px,stroke-dasharray:4 2;
+```
+
 ### 押さえるべき論点
 
 ```mermaid
@@ -222,5 +279,11 @@ mindmap
     直近のトリガーとなった出来事を確認する
     安全保障・経済・外交への波及を分けて理解する
 ```
+
+### 参考リンク
+
+- [原記事: 中東原油輸送路で海運会社が一部航路を回避 保険料が急騰](https://example.com/news/strait-of-hormuz-shipping) — Mock News Wire
+- [関係国の公式声明(例)](https://example.gov/statement) — 当事国政府が発表した関連声明(モック)
+- [国際機関の関連レポート(例)](https://example.int/report) — 国際機関が公表した背景資料(モック)
 
 ---
