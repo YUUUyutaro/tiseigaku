@@ -31,6 +31,8 @@ jobs:
     env:
       TZ: Asia/Tokyo
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      MAIL_TO: ${{ secrets.MAIL_TO }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -84,7 +86,7 @@ jobs:
 
       # --- メールダイジェスト配信 (SMTP_HOST と MAIL_TO が secrets にあれば起動) ---
       - name: Send email digest
-        if: ${{ secrets.SMTP_HOST != '' && secrets.MAIL_TO != '' }}
+        if: ${{ env.SMTP_HOST != '' && env.MAIL_TO != '' }}
         env:
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
