@@ -1,0 +1,26 @@
+feeds:
+  - name: Reuters World
+    url: https://www.reutersagency.com/feed/?best-topics=political-general&post_type=best
+  - name: BBC World
+    url: https://feeds.bbci.co.uk/news/world/rss.xml
+  - name: NHK 国際
+    url: https://www3.nhk.or.jp/rss/news/cat6.xml
+
+keywords:
+  - 安全保障
+  - 地政学
+  - NATO
+  - 制裁
+  - 防衛
+  - ウクライナ
+  - 台湾
+  - 中東
+
+analysis:
+  model: claude-sonnet-4-6
+  max_articles: 5
+  language: ja
+
+output:
+  dir: output
+  formats: [html, md]

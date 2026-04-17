@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root { --fg:#111; --muted:#666; --line:#e5e5e5; --accent:#1e3a8a; }
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+           color: var(--fg); max-width: 960px; margin: 0 auto; padding: 24px; line-height: 1.7; }
+    header { border-bottom: 2px solid var(--accent); margin-bottom: 24px; padding-bottom: 12px; }
+    h1 { margin: 0 0 4px; font-size: 24px; }
+    .meta { color: var(--muted); font-size: 13px; }
+    article { border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin: 24px 0; }
+    article h2 { margin-top: 0; color: var(--accent); }
+    .src { font-size: 12px; color: var(--muted); }
+    .src a { color: var(--muted); }
+    .section { margin: 16px 0; }
+    .section h3 { font-size: 15px; margin: 16px 0 8px; border-left: 4px solid var(--accent); padding-left: 8px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+    ul.key { padding-left: 20px; }
+    .diagram { border: 1px solid var(--line); border-radius: 6px; padding: 12px; background: #fafafa; }
+    .diagram h4 { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
+    footer { color: var(--muted); font-size: 12px; margin-top: 32px; text-align: center; }
+  </style>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({ startOnLoad: true, theme: "default" });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>{{ title }}</h1>
+    <div class="meta">生成日時: {{ generated_at }} / 記事数: {{ analyses|length }}</div>
+  </header>
+
+  {% for a in analyses %}
+  <article>
+    <h2>{{ a.headline_ja }}</h2>
+    <div class="src">
+      出典: {{ a.article.source }}
+      {% if a.article.url %}(<a href="{{ a.article.url }}" target="_blank" rel="noopener">原文</a>){% endif %}
+      {% if a.article.published %} / {{ a.article.published.strftime('%Y-%m-%d %H:%M') }}{% endif %}
+    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>{{ a.summary_ja }}</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>{{ a.background }}</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+      {% for p in a.key_points %}<li>{{ p }}</li>{% endfor %}
+      </ul>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <h4>当事者マップ</h4>
+        <pre class="mermaid">{{ diagrams[loop.index0].actor_map }}</pre>
+      </div>
+      <div class="diagram">
+        <h4>影響の広がり</h4>
+        <pre class="mermaid">{{ diagrams[loop.index0].impact_tree }}</pre>
+      </div>
+    </div>
+
+    <div class="diagram" style="margin-top:16px;">
+      <h4>押さえるべき論点</h4>
+      <pre class="mermaid">{{ diagrams[loop.index0].key_points }}</pre>
+    </div>
+  </article>
+  {% endfor %}
+
+  <footer>地政学ニュース図解ジェネレータ (mock) &mdash; Powered by Claude</footer>
+</body>
+</html>

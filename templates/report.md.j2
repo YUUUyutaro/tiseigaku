@@ -1,0 +1,40 @@
+# {{ title }}
+
+生成日時: {{ generated_at }} / 記事数: {{ analyses|length }}
+
+{% for a in analyses %}
+## {{ a.headline_ja }}
+
+- **出典:** {{ a.article.source }}{% if a.article.url %} ([原文]({{ a.article.url }})){% endif %}{% if a.article.published %} / **公開:** {{ a.article.published.strftime('%Y-%m-%d %H:%M') }}{% endif %}
+
+
+**要約**
+{{ a.summary_ja }}
+
+**背景**
+{{ a.background }}
+
+**要点**
+{% for p in a.key_points %}- {{ p }}
+{% endfor %}
+
+### 当事者マップ
+
+```mermaid
+{{ diagrams[loop.index0].actor_map }}
+```
+
+### 影響の広がり
+
+```mermaid
+{{ diagrams[loop.index0].impact_tree }}
+```
+
+### 押さえるべき論点
+
+```mermaid
+{{ diagrams[loop.index0].key_points }}
+```
+
+---
+{% endfor %}
