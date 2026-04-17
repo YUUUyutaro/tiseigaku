@@ -2,6 +2,14 @@
 
 安全保障・地政学ニュースを自動取得し、Claude API で要点と関係性を抽出、Mermaid 図を埋め込んだ解説レポート(HTML / Markdown)を生成するツールのモックです。
 
+## サンプル出力
+
+GitHub は Markdown 内の Mermaid ブロックを直接描画するので、生成物は
+ブラウザで直接読めます。
+
+- [docs/sample-report.md](docs/sample-report.md) — モック実行で出力された Markdown レポート (図が描画されます)
+- [docs/sample-report.html](docs/sample-report.html) — HTML 版 (raw ダウンロード → ローカルで開く)
+
 ## 処理フロー
 
 ```
