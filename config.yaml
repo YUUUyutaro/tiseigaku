@@ -17,7 +17,7 @@ keywords:
   - 中東
 
 analysis:
-  model: claude-sonnet-4-6
+  model: claude-opus-4-7
   max_articles: 5
   language: ja
 

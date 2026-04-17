@@ -90,13 +90,13 @@ def _to_analysis(article: Article, payload: dict) -> Analysis:
 
 def analyze_with_claude(
     article: Article,
-    model: str = "claude-sonnet-4-6",
+    model: str = "claude-opus-4-7",
     api_key: Optional[str] = None,
 ) -> Analysis:
     """Call the Claude API to produce a structured analysis for a single article."""
-    from anthropic import Anthropic
+    import anthropic
 
-    client = Anthropic(api_key=api_key or os.environ.get("ANTHROPIC_API_KEY"))
+    client = anthropic.Anthropic(api_key=api_key or os.environ.get("ANTHROPIC_API_KEY"))
 
     user_prompt = (
         f"タイトル: {article.title}\n"
@@ -105,12 +105,26 @@ def analyze_with_claude(
         f"本文(要約): {article.summary}\n"
     )
 
-    response = client.messages.create(
-        model=model,
-        max_tokens=2000,
-        system=SYSTEM_PROMPT,
-        messages=[{"role": "user", "content": user_prompt}],
-    )
+    try:
+        response = client.messages.create(
+            model=model,
+            max_tokens=4096,
+            system=[
+                {
+                    "type": "text",
+                    "text": SYSTEM_PROMPT,
+                    "cache_control": {"type": "ephemeral"},
+                }
+            ],
+            messages=[{"role": "user", "content": user_prompt}],
+        )
+    except anthropic.RateLimitError as exc:
+        raise RuntimeError(f"レートリミット: {exc}") from exc
+    except anthropic.AuthenticationError as exc:
+        raise RuntimeError("API キーが無効です。ANTHROPIC_API_KEY を確認してください。") from exc
+    except anthropic.APIStatusError as exc:
+        raise RuntimeError(f"API エラー ({exc.status_code}): {exc.message}") from exc
+
     raw = "".join(
         block.text for block in response.content if getattr(block, "type", "") == "text"
     )
@@ -205,7 +219,7 @@ def analyze_batch(
     articles: List[Article],
     *,
     use_mock: bool,
-    model: str = "claude-sonnet-4-6",
+    model: str = "claude-opus-4-7",
     api_key: Optional[str] = None,
 ) -> List[Analysis]:
     results: List[Analysis] = []
