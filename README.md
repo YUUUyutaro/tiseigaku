@@ -58,6 +58,36 @@ python -m src.main --mock --site
 **本番モードを有効化するには:** Repository の Settings → Secrets and variables
 → Actions で `ANTHROPIC_API_KEY` を登録してください。
 
+### メールダイジェスト配信
+
+Actions ワークフローの末尾で `src.digest` が走り、当日号の見出しと
+「全文を読む」ボタンを添えたダイジェストメールを SMTP で送信します。
+**`SMTP_HOST` と `MAIL_TO` が secrets に設定されている時だけ** 配信が発動する
+ので、未設定ならサイトビルドのみ行われます。
+
+必要な Repository Secret:
+
+| Key | 内容 | 例 |
+| --- | --- | --- |
+| `SMTP_HOST` | SMTP サーバ | `smtp.gmail.com` |
+| `SMTP_PORT` | ポート(465 は SSL、587 は STARTTLS) | `587` |
+| `SMTP_USER` | 送信アカウント | `you@gmail.com` |
+| `SMTP_PASSWORD` | アプリパスワード等 | `xxxx xxxx xxxx xxxx` |
+| `MAIL_TO` | 宛先(カンマ区切り可) | `a@example.com, b@example.com` |
+| `MAIL_FROM` | 任意。未指定なら `SMTP_USER` を流用 | `"図解便 <you@gmail.com>"` |
+
+Gmail で送る場合は 2段階認証を有効化した上で
+[アプリパスワード](https://myaccount.google.com/apppasswords) を発行し、
+そのパスワードを `SMTP_PASSWORD` に入れてください。
+
+手元でドライランして見た目を確認:
+
+```bash
+python -m src.digest --manifest docs/reports/2026-04-17.json \
+                     --site-url https://example.github.io/tiseigaku/ \
+                     --dry-run
+```
+
 ## 処理フロー
 
 ```
@@ -131,6 +161,6 @@ python -m src.main --config config.yaml
 - [x] 参考リンク
 - [x] 静的サイト化(`docs/` + GitHub Pages)
 - [x] GitHub Actions での定期実行(日次 build & commit)
-- [ ] メールダイジェスト配信(本文+サイトへのリンク)
+- [x] メールダイジェスト配信(本文+サイトへのリンク)
 - [ ] 重複記事の統合(クラスタリング)
 - [ ] 地図 (Leaflet) 埋め込み

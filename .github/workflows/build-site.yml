@@ -29,6 +29,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      TZ: Asia/Tokyo
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
     steps:
       - name: Checkout
@@ -71,7 +72,7 @@ jobs:
             echo "No changes to docs/, skipping commit."
             exit 0
           fi
-          git commit -m "chore(site): auto-rebuild $(date -u +%Y-%m-%dT%H:%MZ)"
+          git commit -m "chore(site): auto-rebuild $(date +%Y-%m-%dT%H:%M%z)"
           # 4回まで指数バックオフで push を再試行(2s, 4s, 8s, 16s)
           for delay in 0 2 4 8 16; do
             [ "$delay" -gt 0 ] && sleep "$delay"
@@ -80,3 +81,23 @@ jobs:
           done
           echo "push failed after retries"
           exit 1
+
+      # --- メールダイジェスト配信 (SMTP_HOST と MAIL_TO が secrets にあれば起動) ---
+      - name: Send email digest
+        if: ${{ secrets.SMTP_HOST != '' && secrets.MAIL_TO != '' }}
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+        run: |
+          TODAY=$(date +%F)
+          MANIFEST=docs/reports/${TODAY}.json
+          if [ ! -f "$MANIFEST" ]; then
+            echo "Manifest $MANIFEST が見つかりません。ダイジェスト送信をスキップします。"
+            exit 0
+          fi
+          .venv/bin/python -m src.digest --manifest "$MANIFEST" --site-url "$SITE_URL"

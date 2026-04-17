@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>{{ subject }}</title>
+</head>
+<body style="margin:0;padding:0;background:#f5f5f7;font-family:-apple-system,'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;color:#111;line-height:1.7;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f5f5f7;padding:24px 0;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="max-width:600px;background:#ffffff;border-radius:10px;overflow:hidden;">
+          <tr>
+            <td style="background:#1e3a8a;color:#fff;padding:22px 28px;">
+              <div style="font-size:13px;opacity:.85;">地政学ニュース図解ダイジェスト</div>
+              <div style="font-size:22px;font-weight:700;margin-top:4px;">{{ date_label }} 号</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:24px 28px 8px 28px;">
+              <p style="margin:0 0 12px 0;font-size:15px;">本日のピックアップ <strong>{{ headlines|length }}</strong> 本:</p>
+              <ol style="padding-left:20px;margin:0 0 20px 0;">
+                {% for h in headlines %}
+                <li style="margin:6px 0;font-size:15px;">{{ h }}</li>
+                {% endfor %}
+              </ol>
+              <div style="text-align:center;margin:24px 0 8px 0;">
+                <a href="{{ report_url }}" style="display:inline-block;background:#1e3a8a;color:#fff;text-decoration:none;padding:12px 24px;border-radius:6px;font-weight:600;">
+                  図解付きで全文を読む
+                </a>
+              </div>
+              <p style="text-align:center;margin:6px 0 0 0;font-size:13px;color:#666;">
+                または <a href="{{ site_url }}" style="color:#1e3a8a;">アーカイブ一覧</a>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:16px 28px 24px 28px;color:#666;font-size:12px;border-top:1px solid #eee;">
+              このメールは自動生成されています。<br>
+              配信停止や不具合のご連絡はリポジトリの issue までお願いします。
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,15 @@
+地政学ニュース図解ダイジェスト / {{ date_label }} 号
+
+本日のピックアップ {{ headlines|length }} 本:
+
+{% for h in headlines %}  {{ loop.index }}. {{ h }}
+{% endfor %}
+
+図解付きで全文を読む:
+  {{ report_url }}
+
+アーカイブ一覧:
+  {{ site_url }}
+
+---
+このメールは自動生成されています。
