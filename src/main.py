@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import logging
 import sys
+from datetime import datetime
 from pathlib import Path
 from typing import List
 
@@ -12,7 +13,7 @@ import yaml
 from .geopolitics.analyzer import analyze_batch
 from .geopolitics.fetcher import fetch_from_mock, fetch_from_rss
 from .geopolitics.models import Analysis, Article
-from .geopolitics.reporter import render
+from .geopolitics.reporter import render, render_index
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -27,6 +28,17 @@ def _parse_args(argv: List[str]) -> argparse.Namespace:
     p.add_argument("--mock", action="store_true", help="サンプルデータ + モック解析で動作")
     p.add_argument(
         "--mock-data", type=Path, default=ROOT / "data" / "mock_news.json"
+    )
+    p.add_argument(
+        "--site",
+        action="store_true",
+        help="docs/ 配下に静的サイト形式で出力し index.html を更新",
+    )
+    p.add_argument(
+        "--site-dir",
+        type=Path,
+        default=ROOT / "docs",
+        help="--site 時の公開ディレクトリ(既定 docs/)",
     )
     p.add_argument("--output", type=Path, default=None, help="出力ディレクトリを上書き")
     p.add_argument("-v", "--verbose", action="store_true")
@@ -45,7 +57,6 @@ def run(argv: List[str]) -> int:
     analysis_cfg = config.get("analysis", {})
     output_cfg = config.get("output", {})
     formats = tuple(output_cfg.get("formats", ["html", "md"]))
-    output_dir = args.output or ROOT / output_cfg.get("dir", "output")
     max_articles = int(analysis_cfg.get("max_articles", 5))
 
     # 1. Fetch
@@ -75,13 +86,32 @@ def run(argv: List[str]) -> int:
         log.warning("All analyses failed; aborting.")
         return 1
 
-    # 3. Render report
-    written = render(
-        analyses,
-        templates_dir=ROOT / "templates",
-        output_dir=output_dir,
-        formats=formats,
-    )
+    # 3. Render
+    if args.site:
+        today = datetime.now().strftime("%Y-%m-%d")
+        reports_dir = args.site_dir / "reports"
+        written = render(
+            analyses,
+            templates_dir=ROOT / "templates",
+            output_dir=reports_dir,
+            formats=formats,
+            title=f"地政学ニュース図解レポート {today} 号",
+            report_name=today,
+            write_manifest=True,
+        )
+        index_path = render_index(
+            args.site_dir, templates_dir=ROOT / "templates"
+        )
+        written.append(index_path)
+    else:
+        output_dir = args.output or ROOT / output_cfg.get("dir", "output")
+        written = render(
+            analyses,
+            templates_dir=ROOT / "templates",
+            output_dir=output_dir,
+            formats=formats,
+        )
+
     for path in written:
         log.info("Wrote %s", path)
     return 0

@@ -2,13 +2,42 @@
 
 安全保障・地政学ニュースを自動取得し、Claude API で要点と関係性を抽出、Mermaid 図を埋め込んだ解説レポート(HTML / Markdown)を生成するツールのモックです。
 
-## サンプル出力
+## サンプル出力 / 公開サイト
 
-GitHub は Markdown 内の Mermaid ブロックを直接描画するので、生成物は
-ブラウザで直接読めます。
+GitHub Pages で `docs/` を公開サイトとして配信する前提の構成です。
 
-- [docs/sample-report.md](docs/sample-report.md) — モック実行で出力された Markdown レポート (図が描画されます)
-- [docs/sample-report.html](docs/sample-report.html) — HTML 版 (raw ダウンロード → ローカルで開く)
+- 入口: `docs/index.html` (一覧ページ / レポートカード表示)
+- 各号: `docs/reports/YYYY-MM-DD.{html, md, json}`
+  - `.html` … Mermaid を CDN で描画するフルレポート
+  - `.md` … GitHub 上でもネイティブに Mermaid が描画される
+  - `.json` … `index.html` 再生成時に読み込むメタデータ
+
+GitHub 上でそのまま読むならこのあたり:
+
+- [docs/reports/ の一覧](docs/reports)
+- 最新号(例): [docs/reports/2026-04-17.md](docs/reports/2026-04-17.md)
+
+### GitHub Pages の有効化
+
+リポジトリの **Settings → Pages** で以下を設定します。
+
+1. **Source:** `Deploy from a branch`
+2. **Branch:** `main` / フォルダ: `/docs`
+3. Save すると数十秒〜1分で `https://<user>.github.io/<repo>/` で公開される
+
+(開発用ブランチでそのまま確認したい場合は、そのブランチを Pages のソース
+に一時指定してください。)
+
+### サイトの再ビルド
+
+```bash
+python -m src.main --mock --site
+# => docs/reports/<today>.html / .md / .json を書き出し、
+#    docs/index.html を全レポートから再生成
+```
+
+本番モード(Claude API 利用)でも `--site` を付ければ同じ構造で更新されます。
+`git add docs/ && git commit && git push` すれば GitHub Pages に反映されます。
 
 ## 処理フロー
 
@@ -78,8 +107,11 @@ python -m src.main --config config.yaml
 
 ## 今後の拡張予定
 
-- [ ] 重複記事の統合 (クラスタリング)
-- [ ] 時系列タイムライン図
+- [x] 時系列タイムライン図
+- [x] 当事者の関係ネットワーク図
+- [x] 参考リンク
+- [x] 静的サイト化(`docs/` + GitHub Pages)
+- [ ] GitHub Actions での定期実行(日次 build & commit)
+- [ ] メールダイジェスト配信(本文+サイトへのリンク)
+- [ ] 重複記事の統合(クラスタリング)
 - [ ] 地図 (Leaflet) 埋め込み
-- [ ] 配信(Slack / メール)
-- [ ] スケジュール実行 (cron / GitHub Actions)
