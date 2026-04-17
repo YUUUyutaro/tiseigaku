@@ -18,6 +18,12 @@
 {% for p in a.key_points %}- {{ p }}
 {% endfor %}
 
+### 経緯タイムライン
+
+```mermaid
+{{ diagrams[loop.index0].timeline }}
+```
+
 ### 当事者マップ
 
 ```mermaid

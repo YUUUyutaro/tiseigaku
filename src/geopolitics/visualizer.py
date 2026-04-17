@@ -1,8 +1,9 @@
 """Generate Mermaid diagrams from Analysis objects.
 
-We produce three complementary diagrams per article:
+We produce four complementary diagrams per article:
   - actor_map: 当事者と立場の関係図 (flowchart)
   - impact_tree: 影響ドメインとその重大度 (flowchart)
+  - timeline: 出来事の経緯 (timeline)
   - key_points: 要点チェックリスト (mindmap)
 
 Mermaid source is returned as text and rendered client-side in the HTML report.
@@ -64,6 +65,28 @@ def impact_tree(analysis: Analysis) -> str:
     return "\n".join(lines)
 
 
+def timeline_diagram(analysis: Analysis) -> str:
+    """Mermaid `timeline` 構文で経緯図を出す。
+
+    Mermaid timeline の構文:
+        timeline
+            title <図のタイトル>
+            <section/date> : <出来事ラベル>
+
+    日付に ':' が入ると構文が壊れるので、コロンは中黒に置換する。
+    """
+    lines: List[str] = ["timeline"]
+    lines.append(f"  title {_safe(analysis.headline_ja)} — 経緯")
+    if not analysis.timeline:
+        lines.append("  情報なし : タイムラインが取得できませんでした")
+        return "\n".join(lines)
+    for event in analysis.timeline:
+        date = _safe(event.date).replace(":", "・")
+        label = _safe(event.label).replace(":", "・")
+        lines.append(f"  {date} : {label}")
+    return "\n".join(lines)
+
+
 def key_points_mindmap(analysis: Analysis) -> str:
     lines = ["mindmap", f"  root(({_safe(analysis.headline_ja)}))"]
     for point in analysis.key_points:
@@ -75,5 +98,6 @@ def diagrams_for(analysis: Analysis) -> dict:
     return {
         "actor_map": actor_map(analysis),
         "impact_tree": impact_tree(analysis),
+        "timeline": timeline_diagram(analysis),
         "key_points": key_points_mindmap(analysis),
     }

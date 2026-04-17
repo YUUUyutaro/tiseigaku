@@ -38,6 +38,12 @@ class Impact:
 
 
 @dataclass
+class TimelineEvent:
+    date: str  # ISO date (YYYY-MM-DD) or free-form label
+    label: str  # 1行で書ける出来事の要約
+
+
+@dataclass
 class Analysis:
     article: Article
     headline_ja: str
@@ -46,4 +52,5 @@ class Analysis:
     actors: List[Actor] = field(default_factory=list)
     issues: List[Issue] = field(default_factory=list)
     impacts: List[Impact] = field(default_factory=list)
+    timeline: List[TimelineEvent] = field(default_factory=list)
     key_points: List[str] = field(default_factory=list)

@@ -62,7 +62,12 @@
       </ul>
     </div>
 
-    <div class="grid">
+    <div class="diagram" style="margin-top:16px;">
+      <h4>経緯タイムライン</h4>
+      <pre class="mermaid">{{ diagrams[loop.index0].timeline }}</pre>
+    </div>
+
+    <div class="grid" style="margin-top:16px;">
       <div class="diagram">
         <h4>当事者マップ</h4>
         <pre class="mermaid">{{ diagrams[loop.index0].actor_map }}</pre>
