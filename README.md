@@ -30,6 +30,27 @@ python -m src.main --mock
 # => output/report.html, output/report.md が生成されます
 ```
 
+### Debian / Ubuntu での注意
+
+`feedparser` の旧依存 `sgmllib3k` が `setuptools` のバージョン不整合で pip
+ビルドに失敗することがあります。その場合は apt 版を使ってください。
+
+```bash
+sudo apt install -y python3-feedparser
+pip install anthropic jinja2 pyyaml python-dateutil
+```
+
+### ブラウザでレポートを開く
+
+`output/report.html` は Mermaid の CDN を読み込むため、`file://` では
+CORS で図が描画されない場合があります。ローカルに簡易 HTTP サーバを立てて
+開いてください。
+
+```bash
+python -m http.server 8000 --directory output
+# ブラウザで http://localhost:8000/report.html を開く
+```
+
 ## 本番モード
 
 ```bash
