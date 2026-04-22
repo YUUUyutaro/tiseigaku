@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>地政学ニュース図解レポート 2026-04-23 号</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root {
+      --fg: #111;
+      --muted: #666;
+      --line: #e5e5e5;
+      --accent: #1e3a8a;
+      --bg-subtle: #fafafa;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      color: var(--fg);
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    header {
+      border-bottom: 3px solid var(--accent);
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.4;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    article {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      margin: 40px 0;
+      background: #fff;
+    }
+    article h2 {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 24px;
+      line-height: 1.4;
+    }
+    article h3 {
+      font-size: 18px;
+      margin: 32px 0 12px;
+      border-left: 4px solid var(--accent);
+      padding-left: 12px;
+      line-height: 1.5;
+    }
+    article p {
+      margin: 12px 0;
+      font-size: 16px;
+    }
+    .src {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .src a { color: var(--muted); }
+    .section { margin: 32px 0; }
+    ul.key {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+    ul.key li {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+    ul.refs {
+      padding-left: 24px;
+      font-size: 15px;
+      margin: 12px 0;
+    }
+    ul.refs li { margin: 8px 0; }
+    ul.refs .note { color: var(--muted); }
+
+    .diagram {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      background: var(--bg-subtle);
+      margin: 32px 0;
+    }
+    .diagram .head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 16px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+    .diagram h4 {
+      margin: 0;
+      font-size: 15px;
+      color: var(--accent);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .diagram .expand-btn {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: var(--accent);
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .diagram .expand-btn:hover { background: var(--accent); color: #fff; }
+    .diagram .mermaid {
+      min-height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .diagram .mermaid svg {
+      max-width: 100%;
+      height: auto !important;
+    }
+
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      padding: 20px;
+      overflow: auto;
+    }
+    .modal-backdrop.open { display: flex; align-items: center; justify-content: center; }
+    .modal-body {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 24px;
+      max-width: 95vw;
+      max-height: 95vh;
+      overflow: auto;
+      position: relative;
+    }
+    .modal-body .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      border: none;
+      background: transparent;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    .modal-body svg {
+      width: 100%;
+      height: auto;
+      min-width: 800px;
+      min-height: 400px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 32px 0;
+    }
+    .grid .diagram { margin: 0; }
+    @media (max-width: 820px) {
+      body { padding: 20px 16px 48px; font-size: 15px; }
+      h1 { font-size: 24px; }
+      article { padding: 20px 16px; margin: 28px 0; }
+      article h2 { font-size: 20px; }
+      article h3 { font-size: 16px; }
+      .grid { grid-template-columns: 1fr; gap: 20px; }
+      .diagram { padding: 16px 12px; margin: 24px 0; }
+      .diagram .mermaid { min-height: 300px; }
+      .modal-body svg { min-width: 0; }
+    }
+    .importance-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .importance-high { background: #c62828; color: #fff; }
+    .importance-mid  { background: #f9a825; color: #fff; }
+    .importance-low  { background: #9e9e9e; color: #fff; }
+
+    article.importance-high { border-left: 6px solid #c62828; background: #fff9f9; }
+    article.importance-mid  { border-left: 6px solid #f9a825; }
+    article.importance-low  { border-left: 6px solid #bdbdbd; }
+
+    .today-summary {
+      background: #fff9e6;
+      border: 2px solid #f9a825;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .today-summary h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #b7791f;
+    }
+    .today-summary ul { margin: 0; padding-left: 20px; }
+    .today-summary li { margin: 6px 0; font-size: 16px; }
+
+    .region-tag {
+      display: inline-block;
+      font-size: 12px;
+      background: #e3f2fd;
+      color: #1565c0;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-right: 4px;
+    }
+
+    .weekly-context {
+      background: #f0f7ff;
+      border: 2px solid #1565c0;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .weekly-context h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #1565c0;
+    }
+    .weekly-context ul { margin: 0; padding-left: 20px; }
+    .weekly-context li { margin: 4px 0; font-size: 15px; color: var(--fg); }
+
+    .region-nav {
+      background: #fafafa;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+    .region-nav strong { color: var(--accent); }
+    .region-nav a {
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 14px;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      padding: 2px 10px;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .region-nav a:hover { background: var(--accent); color: #fff; }
+
+    .related-past {
+      background: #fafafa;
+      border-left: 3px solid var(--muted);
+      padding: 12px 16px;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+    .related-past h4 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .related-past ul { margin: 0; padding-left: 20px; }
+    .related-past li { margin: 4px 0; }
+
+    details.low-importance-group {
+      margin: 40px 0;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #fafafa;
+    }
+    details.low-importance-group summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    details.low-importance-group ul { margin: 12px 0 0; padding-left: 20px; }
+    details.low-importance-group li { margin: 4px 0; font-size: 14px; color: var(--fg); }
+
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 48px;
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+  </style>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "default",
+      fontFamily: '-apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif',
+      fontSize: 16,
+      flowchart: { useMaxWidth: true, htmlLabels: true, curve: "basis" },
+      timeline: { useMaxWidth: true },
+      mindmap: { useMaxWidth: true }
+    });
+    await mermaid.run();
+
+    const backdrop = document.getElementById("diagram-modal");
+    const modalBody = backdrop.querySelector(".modal-body");
+    const modalSlot = backdrop.querySelector(".modal-slot");
+    const closeBtn = backdrop.querySelector(".close-btn");
+
+    document.querySelectorAll(".expand-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const diagram = btn.closest(".diagram");
+        const svg = diagram.querySelector("svg");
+        if (!svg) return;
+        modalSlot.innerHTML = "";
+        modalSlot.appendChild(svg.cloneNode(true));
+        backdrop.classList.add("open");
+      });
+    });
+
+    const close = () => backdrop.classList.remove("open");
+    closeBtn.addEventListener("click", close);
+    backdrop.addEventListener("click", e => { if (e.target === backdrop) close(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>地政学ニュース図解レポート 2026-04-23 号</h1>
+    <div class="meta">生成日時: 2026-04-23 01:35 / 記事数: 5</div>
+  </header>
+
+
+  <section class="today-summary">
+    <h2>📌 本日の要点</h2>
+    <ul>
+      <li><strong>ウクライナ戦況続く 4月22日の動き</strong> — ロシアによるウクライナ侵攻は4月22日も続き、各地で戦闘が続いている。</li>
+    </ul>
+  </section>
+
+  <section class="weekly-context">
+    <h2>🗓 今週の文脈</h2>
+    <ul>
+      <li>[2026-04-22] 中国、台湾海峡での軍事演習を拡大 日米が即応体制を強化 <em style="color:#666;">(east_asia, southeast_asia)</em></li>
+      <li>[2026-04-22] NATO、東欧諸国への追加配備を協議 ロシアの動向を警戒 <em style="color:#666;">(europe)</em></li>
+      <li>[2026-04-21] 日韓首脳会談、サイバー防衛で初の定例協議枠組みに合意 <em style="color:#666;">(east_asia, cyber)</em></li>
+      <li>[2026-04-21] フィリピン、米軍艦寄港拠点を3カ所追加 <em style="color:#666;">(southeast_asia, east_asia)</em></li>
+      <li>[2026-04-20] 中国海警船、尖閣諸島周辺で接続水域航行が今月最多日数に <em style="color:#666;">(east_asia)</em></li>
+      <li>[2026-04-20] イラン、ホルムズ海峡で英タンカー一時拿捕 <em style="color:#666;">(middle_east)</em></li>
+    </ul>
+    <p style="margin:12px 0 0;font-size:14px;color:#666;">過去1週間で追跡した主要な動きです。本日のニュースが連続的な流れの中でどう位置づくかを参照してください。</p>
+  </section>
+
+  <nav class="region-nav">
+    <strong>地域別ジャンプ:</strong>
+    <a href="#region-europe">europe (4)</a>
+    <a href="#region-global">global (3)</a>
+    <a href="#region-east_asia">east_asia (1)</a>
+    <a href="#region-africa">africa (1)</a>
+  </nav>
+
+  <article class="importance-high" id="region-europe">
+    <h2>
+      ウクライナ戦況続く 4月22日の動き
+      <span class="importance-badge importance-high">重要度: 高</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">europe</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260422/k10015082691000.html" target="_blank" rel="noopener">原文</a>) / 2026-04-22 16:44    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>ロシアによるウクライナ侵攻は4月22日も続き、各地で戦闘が続いている。市民の国外避難も継続しており、人道状況は依然として深刻である。NHKは同日の戦況および関係各国の外交動向を随時更新で伝えている。停戦の見通しは立っておらず、長期化の様相を強めている。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>侵攻開始から長期化するなか、直近ではロシア・ウクライナ双方によるドローン相互攻撃が過去最多を記録し(4月17日)、NATOはウクライナへのF-16追加供与で調整を進めている(4月19日)。同時にNATOは東欧諸国への追加配備も協議中で(4月22日)、ロシアはシベリア極東でロ朝合同軍事演習を発表するなど(4月21日)、欧州と東アジアの安全保障環境が連動する構図が鮮明になっている。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>ウクライナ侵攻は決着の糸口が見えず長期化が続いている</li><li>NATOはF-16供与や東欧への追加配備で対ロ抑止を強化中</li><li>ロ朝合同演習など欧州と東アジアの安全保障が連動しつつある</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title ウクライナ戦況続く 4月22日の動き — 経緯
+  2026-04-17 : ロ・ウ双方のドローン相互攻撃が過去最多を記録
+  2026-04-19 : NATO、ウクライナへのF-16追加供与で調整
+  2026-04-21 : ロシア、シベリア極東でロ朝合同軍事演習を発表
+  2026-04-22 : NATO、東欧諸国への追加配備を協議
+  2026-04-22 : ウクライナ各地で戦闘継続、市民避難続く</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["ウクライナ戦況続く 4月22日の動き"]
+  A0["ロシア\n(国家)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["ウクライナ\n(国家)"]
+  A1 -- 被害 --> T
+  style A1 fill:#ef6c00,color:#fff,stroke:#333
+  A2["NATO\n(国際機関)"]
+  A2 -- 反対 --> T
+  style A2 fill:#c62828,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["安全保障"]
+  I0["欧州における緊張は高止まりし、NATOの東欧配備強化を促している。\n(重大度: 高)"]
+  R --> D0 --> I0
+  style I0 fill:#c62828,color:#fff,stroke:#333
+  D1["外交"]
+  I1["ロ朝合同軍事演習など、欧州と東アジアの戦略的連動が進む。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["経済"]
+  I2["戦争長期化によりエネルギー・穀物市場の不安定要因が継続する。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  D3["エネルギー"]
+  I3["欧州のエネルギー調達構造の再編圧力が続く。\n(重大度: 中)"]
+  R --> D3 --> I3
+  style I3 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["ロシア"]
+  N1["ウクライナ"]
+  N2["NATO"]
+  N0 -->|対立| N1
+  N2 -->|支援| N1
+  N2 -->|対立| N0
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#2e7d32,stroke-width:2px;
+  linkStyle 2 stroke:#c62828,stroke-width:3px;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((ウクライナ戦況続く 4月22日の動き))
+    ウクライナ侵攻は決着の糸口が見えず長期化が続いている
+    NATOはF-16供与や東欧への追加配備で対ロ抑止を強化中
+    ロ朝合同演習など欧州と東アジアの安全保障が連動しつつある</pre>
+    </div>
+
+
+    <div class="related-past">
+      <h4>🔗 関連する過去の動き(直近1週間)</h4>
+      <ul>
+        <li>
+          [2026-04-22] NATO、東欧諸国への追加配備を協議 ロシアの動向を警戒
+(<a href="https://example.com/news/nato-east-europe" target="_blank" rel="noopener">原文</a>)        </li>
+        <li>
+          [2026-04-21] ロシア、シベリア極東でロ朝合同軍事演習を発表
+        </li>
+        <li>
+          [2026-04-19] NATO、ウクライナへの F-16 追加供与で調整
+        </li>
+        <li>
+          [2026-04-18] 中国、米半導体輸出管理に対抗しレアアース追加規制
+        </li>
+        <li>
+          [2026-04-17] ロシア・ウクライナ、ドローン相互攻撃が過去最多に
+        </li>
+      </ul>
+    </div>
+  </article>
+  <article class="importance-mid" id="region-europe">
+    <h2>
+      EU、ウクライナ巨額融資の承認手続きを開始
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">europe</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260422/k10015105981000.html" target="_blank" rel="noopener">原文</a>) / 2026-04-22 23:02    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>EUは4月22日、ハンガリーの反対で停滞していたウクライナ向け巨額融資について、承認に向けた手続きを開始することを決定した。ハンガリーが反対理由としていたウクライナ経由のロシア産原油輸送の再開にめどが立ったことが背景にある。融資は23日に承認される見通しで、ウクライナの戦時下の財政を下支えする重要な措置となる。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>ウクライナ支援を巡りEU内ではハンガリーが長く反対姿勢を取り、融資承認が停滞してきた。過去1週間ではNATOがF-16追加供与の調整や東欧への追加配備協議を進め、ロシア・ウクライナ間のドローン相互攻撃が過去最多となるなど戦況も激化しており、EUとしての対ウクライナ財政支援の加速が急務となっていた。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>EUがハンガリーの反対で停滞していたウクライナ向け巨額融資の承認手続きを開始</li><li>ウクライナ経由のロシア産原油輸送の再開見通しがハンガリー軟化の鍵</li><li>融資は4月23日に承認される見通しで、EUの対ウクライナ支援が加速</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title EU、ウクライナ巨額融資の承認手続きを開始 — 経緯
+  2026-04-19 : NATO、ウクライナへのF-16追加供与で調整
+  2026-04-17 : ロシア・ウクライナのドローン相互攻撃が過去最多に
+  2026-04-22 : EU、ウクライナ向け融資の承認手続き開始を決定
+  2026-04-23 : EUによる融資承認の見通し</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["EU、ウクライナ巨額融資の承認手続きを開始"]
+  A0["EU\n(国際機関)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["ハンガリー\n(国家)"]
+  A1 -- 中立 --> T
+  style A1 fill:#616161,color:#fff,stroke:#333
+  A2["ウクライナ\n(国家)"]
+  A2 -- 被害 --> T
+  style A2 fill:#ef6c00,color:#fff,stroke:#333
+  A3["ロシア\n(国家)"]
+  A3 -- その他 --> T
+  style A3 fill:#1565c0,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["経済"]
+  I0["ウクライナの戦時下財政を下支えし、EUの一体的支援姿勢を示す。\n(重大度: 中)"]
+  R --> D0 --> I0
+  style I0 fill:#ef6c00,color:#fff,stroke:#333
+  D1["外交"]
+  I1["EU内の意思決定の膠着が打開され、対ロ結束を強化する。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["エネルギー"]
+  I2["ウクライナ経由のロシア産原油輸送が再開される見通しで、中東欧のエネルギー供給が安定化する。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  D3["安全保障"]
+  I3["NATOのF-16追加供与と併せ、ウクライナの戦争継続能力を支援する。\n(重大度: 中)"]
+  R --> D3 --> I3
+  style I3 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["EU"]
+  N1["ハンガリー"]
+  N2["ウクライナ"]
+  N3["ロシア"]
+  N0 -->|支援| N2
+  N0 -->|交渉| N1
+  N1 -->|依存| N3
+  N2 -->|対立| N3
+  linkStyle 0 stroke:#2e7d32,stroke-width:2px;
+  linkStyle 1 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 2 stroke:#00838f,stroke-width:2px,stroke-dasharray:2 2;
+  linkStyle 3 stroke:#c62828,stroke-width:3px;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((EU、ウクライナ巨額融資の承認手続きを開始))
+    EUがハンガリーの反対で停滞していたウクライナ向け巨額融資の承認手続きを開始
+    ウクライナ経由のロシア産原油輸送の再開見通しがハンガリー軟化の鍵
+    融資は4月23日に承認される見通しで、EUの対ウクライナ支援が加速</pre>
+    </div>
+
+
+    <div class="related-past">
+      <h4>🔗 関連する過去の動き(直近1週間)</h4>
+      <ul>
+        <li>
+          [2026-04-22] NATO、東欧諸国への追加配備を協議 ロシアの動向を警戒
+(<a href="https://example.com/news/nato-east-europe" target="_blank" rel="noopener">原文</a>)        </li>
+        <li>
+          [2026-04-21] ロシア、シベリア極東でロ朝合同軍事演習を発表
+        </li>
+        <li>
+          [2026-04-19] NATO、ウクライナへの F-16 追加供与で調整
+        </li>
+        <li>
+          [2026-04-17] ロシア・ウクライナ、ドローン相互攻撃が過去最多に
+        </li>
+      </ul>
+    </div>
+  </article>
+  <article class="importance-mid" id="region-east_asia">
+    <h2>
+      中国、台湾総統のアフリカ訪問中止で関係国を評価
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">east_asia</span><span class="region-tag">africa</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260422/k10015105701000.html" target="_blank" rel="noopener">原文</a>) / 2026-04-22 20:37    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>台湾の頼清徳総統が予定していたアフリカ訪問を見合わせた問題について、中国政府は通過国の飛行許可取り消しなど関係国の対応を「評価する」と表明した。同時に中国は台湾側を「独立を画策している」として改めて批判した。台湾側は中国の外交圧力によって飛行許可が撤回されたと主張している。台湾の外交空間を締め付ける中国の国際的圧力の一端が表面化した形となった。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>中国は頼清徳総統就任以降、外交・軍事両面で台湾への圧力を強めており、直近では台湾海峡周辺での軍事演習拡大(4月22日)や日米2+2での統合軍司令部運用開始(4月18日)など、台湾海峡情勢は緊迫度を増している。アフリカ諸国の多くは中国と国交を持ち台湾と断交しており、中国は一帯一路や経済援助を通じてアフリカでの影響力を拡大、台湾の外交活動を封じ込める手段として活用している。今回の訪問見合わせは軍事圧力と並行する「外交封じ込め」の典型例と位置づけられる。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>中国は軍事演習だけでなく第三国経由の外交圧力で台湾を封じ込めている</li><li>アフリカは中国の経済的影響力が強く、台湾外交の脆弱な戦線となっている</li><li>台湾海峡での演習拡大や日米統合軍司令部の始動と同時期に起きており、複合的圧力の一環と読み解ける</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title 中国、台湾総統のアフリカ訪問中止で関係国を評価 — 経緯
+  2024-05 : 頼清徳総統就任、中国は合同演習で牽制
+  2026-04-18 : 日米2+2で在日米軍統合軍司令部の運用開始を発表
+  2026-04-22 : 中国が台湾海峡での軍事演習を拡大
+  2026-04-22 : 頼総統のアフリカ訪問見合わせが表面化、中国が関係国を「評価」</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["中国、台湾総統のアフリカ訪問中止で関係国を評価"]
+  A0["中国\n(国家)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["台湾\n(国家)"]
+  A1 -- 被害 --> T
+  style A1 fill:#ef6c00,color:#fff,stroke:#333
+  A2["頼清徳総統\n(国家)"]
+  A2 -- 被害 --> T
+  style A2 fill:#ef6c00,color:#fff,stroke:#333
+  A3["アフリカ通過国\n(国家)"]
+  A3 -- 中立 --> T
+  style A3 fill:#616161,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["外交"]
+  I0["台湾の元首外交が一層困難となり、国際社会での可視性が低下する可能性がある。\n(重大度: 中)"]
+  R --> D0 --> I0
+  style I0 fill:#ef6c00,color:#fff,stroke:#333
+  D1["安全保障"]
+  I1["軍事演習の拡大と並ぶ非軍事的圧力として、台湾封じ込めの総合戦略を構成する。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["経済"]
+  I2["中国がアフリカ諸国への経済的影響力を外交カードとして使える構図が再確認された。\n(重大度: 低)"]
+  R --> D2 --> I2
+  style I2 fill:#2e7d32,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["中国"]
+  N1["台湾"]
+  N2["頼清徳総統"]
+  N3["アフリカ通過国"]
+  N0 -->|対立| N1
+  N0 -->|支援| N3
+  N3 -->|緊張| N1
+  N1 -->|同盟| N2
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#2e7d32,stroke-width:2px;
+  linkStyle 2 stroke:#ef6c00,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 3 stroke:#1565c0,stroke-width:3px;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((中国、台湾総統のアフリカ訪問中止で関係国を評価))
+    中国は軍事演習だけでなく第三国経由の外交圧力で台湾を封じ込めている
+    アフリカは中国の経済的影響力が強く、台湾外交の脆弱な戦線となっている
+    台湾海峡での演習拡大や日米統合軍司令部の始動と同時期に起きており、複合的圧力の一環と読み解ける</pre>
+    </div>
+
+
+    <div class="related-past">
+      <h4>🔗 関連する過去の動き(直近1週間)</h4>
+      <ul>
+        <li>
+          [2026-04-22] 中国、台湾海峡での軍事演習を拡大 日米が即応体制を強化
+(<a href="https://example.com/news/taiwan-strait-drills" target="_blank" rel="noopener">原文</a>)        </li>
+        <li>
+          [2026-04-21] 日韓首脳会談、サイバー防衛で初の定例協議枠組みに合意
+        </li>
+        <li>
+          [2026-04-21] フィリピン、米軍艦寄港拠点を3カ所追加
+        </li>
+        <li>
+          [2026-04-21] ロシア、シベリア極東でロ朝合同軍事演習を発表
+        </li>
+        <li>
+          [2026-04-20] 中国海警船、尖閣諸島周辺で接続水域航行が今月最多日数に
+        </li>
+      </ul>
+    </div>
+  </article>
+  <article class="importance-mid" id="region-europe">
+    <h2>
+      ウクライナ経由の原油輸送再開へ、EU融資に期待
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">europe</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260422/k10015105691000.html" target="_blank" rel="noopener">原文</a>) / 2026-04-22 19:37    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>ウクライナのゼレンスキー大統領は、自国を経由したロシア産原油のハンガリーなどへの輸送が再開される見通しを示した。ハンガリーはウクライナが意図的に輸送を停止しているとして、EUからウクライナへの巨額融資に反対してきた。輸送再開によってハンガリーの反対姿勢が軟化し、融資が早期に実現するとの期待が高まっている。EU内の結束を揺るがしてきた懸案の一つが解消に向かう可能性がある。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>過去1週間、ロシア・ウクライナ間のドローン相互攻撃は過去最多を記録し、NATOは東欧への追加配備協議やウクライナへのF-16追加供与で調整を進めるなど、戦況は依然として緊迫している。こうした中でウクライナは西側からの財政・軍事支援の継続が不可欠であり、EU融資を阻んできたハンガリーとの原油輸送問題の解決は、支援体制維持の観点で重要な動きとなる。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>ウクライナ経由のロシア産原油輸送が再開される見通し</li><li>ハンガリーが反対してきたEUのウクライナ融資が前進する可能性</li><li>戦況が激化する中、西側による対ウクライナ財政支援の継続性が焦点</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title ウクライナ経由の原油輸送再開へ、EU融資に期待 — 経緯
+  数週間前 : ウクライナ経由のロシア産原油輸送が停止
+  数週間前 : ハンガリーがEUのウクライナ向け融資に反対表明
+  2026-04-22 : ゼレンスキー大統領が原油輸送再開の見通しを表明
+  今後 : EUによるウクライナ融資の早期実現が期待される</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["ウクライナ経由の原油輸送再開へ、EU融資に期待"]
+  A0["ウクライナ\n(国家)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["ハンガリー\n(国家)"]
+  A1 -- その他 --> T
+  style A1 fill:#1565c0,color:#fff,stroke:#333
+  A2["ロシア\n(国家)"]
+  A2 -- その他 --> T
+  style A2 fill:#1565c0,color:#fff,stroke:#333
+  A3["EU\n(国際機関)"]
+  A3 -- 推進 --> T
+  style A3 fill:#2e7d32,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["エネルギー"]
+  I0["ハンガリーなど中東欧諸国への原油供給が安定化する。\n(重大度: 中)"]
+  R --> D0 --> I0
+  style I0 fill:#ef6c00,color:#fff,stroke:#333
+  D1["外交"]
+  I1["EU内のハンガリーの孤立が緩和され、対ウクライナ支援で結束が回復する可能性がある。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["経済"]
+  I2["EU融資が実現すればウクライナの財政運営・戦時経済の持続性が強化される。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["ウクライナ"]
+  N1["ハンガリー"]
+  N2["ロシア"]
+  N3["EU"]
+  N0 -->|対立| N2
+  N0 -->|支援| N3
+  N1 -->|緊張| N0
+  N1 -->|依存| N2
+  N3 -->|交渉| N1
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#2e7d32,stroke-width:2px;
+  linkStyle 2 stroke:#ef6c00,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 3 stroke:#00838f,stroke-width:2px,stroke-dasharray:2 2;
+  linkStyle 4 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((ウクライナ経由の原油輸送再開へ、EU融資に期待))
+    ウクライナ経由のロシア産原油輸送が再開される見通し
+    ハンガリーが反対してきたEUのウクライナ融資が前進する可能性
+    戦況が激化する中、西側による対ウクライナ財政支援の継続性が焦点</pre>
+    </div>
+
+
+    <div class="related-past">
+      <h4>🔗 関連する過去の動き(直近1週間)</h4>
+      <ul>
+        <li>
+          [2026-04-22] NATO、東欧諸国への追加配備を協議 ロシアの動向を警戒
+(<a href="https://example.com/news/nato-east-europe" target="_blank" rel="noopener">原文</a>)        </li>
+        <li>
+          [2026-04-21] ロシア、シベリア極東でロ朝合同軍事演習を発表
+        </li>
+        <li>
+          [2026-04-19] NATO、ウクライナへの F-16 追加供与で調整
+        </li>
+        <li>
+          [2026-04-17] ロシア・ウクライナ、ドローン相互攻撃が過去最多に
+        </li>
+      </ul>
+    </div>
+  </article>
+
+  <details class="low-importance-group">
+    <summary>重要度「低」の記事(1本) — 見出しのみ</summary>
+    <ul>
+      <li>
+        <strong>日・モンテネグロ首脳会談 ウクライナ等で連携</strong>
+(<a href="http://www3.nhk.or.jp/news/html/20260422/k10015105761000.html" target="_blank" rel="noopener">原文</a>)        — NHK 国際
+      </li>
+    </ul>
+  </details>
+
+  <footer>地政学ニュース図解ジェネレータ &mdash; Powered by Claude</footer>
+
+  <div class="modal-backdrop" id="diagram-modal" role="dialog" aria-modal="true">
+    <div class="modal-body">
+      <button type="button" class="close-btn" aria-label="閉じる">×</button>
+      <div class="modal-slot"></div>
+    </div>
+  </div>
+</body>
+</html>
