@@ -42,18 +42,11 @@ jobs:
         with:
           python-version: "3.11"
 
-      # feedparser は pip 経由の sgmllib3k ビルドが
-      # 環境によって失敗するため、apt の python3-feedparser を venv から参照する。
-      - name: Install system feedparser
+      - name: Create venv and install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y python3-feedparser
-
-      - name: Create venv with system site-packages
-        run: |
-          python -m venv --system-site-packages .venv
+          python -m venv .venv
           .venv/bin/pip install --upgrade pip
-          .venv/bin/pip install anthropic jinja2 pyyaml python-dateutil
+          .venv/bin/pip install anthropic jinja2 pyyaml python-dateutil feedparser
 
       - name: Build site
         run: |
