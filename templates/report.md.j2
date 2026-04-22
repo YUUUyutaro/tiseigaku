@@ -2,8 +2,20 @@
 
 生成日時: {{ generated_at }} / 記事数: {{ analyses|length }}
 
-{% for a in analyses %}
-## {{ a.headline_ja }}
+{% set high_items = analyses|selectattr('importance', 'equalto', '高')|list %}
+{% set low_items  = analyses|selectattr('importance', 'equalto', '低')|list %}
+{% set main_items = analyses|rejectattr('importance', 'equalto', '低')|list %}
+{% if high_items %}
+
+## 📌 本日の要点
+
+{% for a in high_items[:3] %}- **{{ a.headline_ja }}** — {{ a.summary_ja.split('。')[0] }}。
+
+{% endfor %}
+{% endif %}
+{% for a in main_items %}
+
+## {{ a.headline_ja }} `重要度: {{ a.importance }}`{% if a.region_tags %} `{{ a.region_tags|join(' / ') }}`{% endif %}
 
 - **出典:** {{ a.article.source }}{% if a.article.url %} ([原文]({{ a.article.url }})){% endif %}{% if a.article.published %} / **公開:** {{ a.article.published.strftime('%Y-%m-%d %H:%M') }}{% endif %}
 
@@ -16,6 +28,7 @@
 
 **要点**
 {% for p in a.key_points %}- {{ p }}
+
 {% endfor %}
 
 ### 経緯タイムライン
@@ -58,3 +71,13 @@
 
 ---
 {% endfor %}
+{% if low_items %}
+
+<details>
+<summary>重要度「低」の記事({{ low_items|length }}本) — 見出しのみ</summary>
+
+{% for a in low_items %}- **{{ a.headline_ja }}**{% if a.article.url %} ([原文]({{ a.article.url }})){% endif %} — {{ a.article.source }}
+
+{% endfor %}
+</details>
+{% endif %}

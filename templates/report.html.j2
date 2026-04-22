@@ -5,31 +5,338 @@
   <title>{{ title }}</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-    :root { --fg:#111; --muted:#666; --line:#e5e5e5; --accent:#1e3a8a; }
+    :root {
+      --fg: #111;
+      --muted: #666;
+      --line: #e5e5e5;
+      --accent: #1e3a8a;
+      --bg-subtle: #fafafa;
+      --radius: 8px;
+    }
     * { box-sizing: border-box; }
-    body { font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
-           color: var(--fg); max-width: 960px; margin: 0 auto; padding: 24px; line-height: 1.7; }
-    header { border-bottom: 2px solid var(--accent); margin-bottom: 24px; padding-bottom: 12px; }
-    h1 { margin: 0 0 4px; font-size: 24px; }
-    .meta { color: var(--muted); font-size: 13px; }
-    article { border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin: 24px 0; }
-    article h2 { margin-top: 0; color: var(--accent); }
-    .src { font-size: 12px; color: var(--muted); }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      color: var(--fg);
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    header {
+      border-bottom: 3px solid var(--accent);
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.4;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    article {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      margin: 40px 0;
+      background: #fff;
+    }
+    article h2 {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 24px;
+      line-height: 1.4;
+    }
+    article h3 {
+      font-size: 18px;
+      margin: 32px 0 12px;
+      border-left: 4px solid var(--accent);
+      padding-left: 12px;
+      line-height: 1.5;
+    }
+    article p {
+      margin: 12px 0;
+      font-size: 16px;
+    }
+    .src {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
     .src a { color: var(--muted); }
-    .section { margin: 16px 0; }
-    .section h3 { font-size: 15px; margin: 16px 0 8px; border-left: 4px solid var(--accent); padding-left: 8px; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
-    ul.key { padding-left: 20px; }
-    ul.refs { padding-left: 20px; font-size: 14px; }
+    .section { margin: 32px 0; }
+    ul.key {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+    ul.key li {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+    ul.refs {
+      padding-left: 24px;
+      font-size: 15px;
+      margin: 12px 0;
+    }
+    ul.refs li { margin: 8px 0; }
     ul.refs .note { color: var(--muted); }
-    .diagram { border: 1px solid var(--line); border-radius: 6px; padding: 12px; background: #fafafa; }
-    .diagram h4 { margin: 0 0 8px; font-size: 13px; color: var(--muted); }
-    footer { color: var(--muted); font-size: 12px; margin-top: 32px; text-align: center; }
+
+    .diagram {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      background: var(--bg-subtle);
+      margin: 32px 0;
+    }
+    .diagram .head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 16px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+    .diagram h4 {
+      margin: 0;
+      font-size: 15px;
+      color: var(--accent);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .diagram .expand-btn {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: var(--accent);
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .diagram .expand-btn:hover { background: var(--accent); color: #fff; }
+    .diagram .mermaid {
+      min-height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .diagram .mermaid svg {
+      max-width: 100%;
+      height: auto !important;
+    }
+
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      padding: 20px;
+      overflow: auto;
+    }
+    .modal-backdrop.open { display: flex; align-items: center; justify-content: center; }
+    .modal-body {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 24px;
+      max-width: 95vw;
+      max-height: 95vh;
+      overflow: auto;
+      position: relative;
+    }
+    .modal-body .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      border: none;
+      background: transparent;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    .modal-body svg {
+      width: 100%;
+      height: auto;
+      min-width: 800px;
+      min-height: 400px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 32px 0;
+    }
+    .grid .diagram { margin: 0; }
+    @media (max-width: 820px) {
+      body { padding: 20px 16px 48px; font-size: 15px; }
+      h1 { font-size: 24px; }
+      article { padding: 20px 16px; margin: 28px 0; }
+      article h2 { font-size: 20px; }
+      article h3 { font-size: 16px; }
+      .grid { grid-template-columns: 1fr; gap: 20px; }
+      .diagram { padding: 16px 12px; margin: 24px 0; }
+      .diagram .mermaid { min-height: 300px; }
+      .modal-body svg { min-width: 0; }
+    }
+    .importance-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .importance-high { background: #c62828; color: #fff; }
+    .importance-mid  { background: #f9a825; color: #fff; }
+    .importance-low  { background: #9e9e9e; color: #fff; }
+
+    article.importance-high { border-left: 6px solid #c62828; background: #fff9f9; }
+    article.importance-mid  { border-left: 6px solid #f9a825; }
+    article.importance-low  { border-left: 6px solid #bdbdbd; }
+
+    .today-summary {
+      background: #fff9e6;
+      border: 2px solid #f9a825;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .today-summary h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #b7791f;
+    }
+    .today-summary ul { margin: 0; padding-left: 20px; }
+    .today-summary li { margin: 6px 0; font-size: 16px; }
+
+    .region-tag {
+      display: inline-block;
+      font-size: 12px;
+      background: #e3f2fd;
+      color: #1565c0;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-right: 4px;
+    }
+
+    .weekly-context {
+      background: #f0f7ff;
+      border: 2px solid #1565c0;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .weekly-context h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #1565c0;
+    }
+    .weekly-context ul { margin: 0; padding-left: 20px; }
+    .weekly-context li { margin: 4px 0; font-size: 15px; color: var(--fg); }
+
+    .region-nav {
+      background: #fafafa;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+    .region-nav strong { color: var(--accent); }
+    .region-nav a {
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 14px;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      padding: 2px 10px;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .region-nav a:hover { background: var(--accent); color: #fff; }
+
+    .related-past {
+      background: #fafafa;
+      border-left: 3px solid var(--muted);
+      padding: 12px 16px;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+    .related-past h4 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .related-past ul { margin: 0; padding-left: 20px; }
+    .related-past li { margin: 4px 0; }
+
+    details.low-importance-group {
+      margin: 40px 0;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #fafafa;
+    }
+    details.low-importance-group summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    details.low-importance-group ul { margin: 12px 0 0; padding-left: 20px; }
+    details.low-importance-group li { margin: 4px 0; font-size: 14px; color: var(--fg); }
+
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 48px;
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
   </style>
   <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
-    mermaid.initialize({ startOnLoad: true, theme: "default" });
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "default",
+      fontFamily: '-apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif',
+      fontSize: 16,
+      flowchart: { useMaxWidth: true, htmlLabels: true, curve: "basis" },
+      timeline: { useMaxWidth: true },
+      mindmap: { useMaxWidth: true }
+    });
+    await mermaid.run();
+
+    const backdrop = document.getElementById("diagram-modal");
+    const modalBody = backdrop.querySelector(".modal-body");
+    const modalSlot = backdrop.querySelector(".modal-slot");
+    const closeBtn = backdrop.querySelector(".close-btn");
+
+    document.querySelectorAll(".expand-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const diagram = btn.closest(".diagram");
+        const svg = diagram.querySelector("svg");
+        if (!svg) return;
+        modalSlot.innerHTML = "";
+        modalSlot.appendChild(svg.cloneNode(true));
+        backdrop.classList.add("open");
+      });
+    });
+
+    const close = () => backdrop.classList.remove("open");
+    closeBtn.addEventListener("click", close);
+    backdrop.addEventListener("click", e => { if (e.target === backdrop) close(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
   </script>
 </head>
 <body>
@@ -38,9 +345,57 @@
     <div class="meta">生成日時: {{ generated_at }} / 記事数: {{ analyses|length }}</div>
   </header>
 
-  {% for a in analyses %}
-  <article>
-    <h2>{{ a.headline_ja }}</h2>
+  {% set high_items = analyses|selectattr('importance', 'equalto', '高')|list %}
+  {% set low_items  = analyses|selectattr('importance', 'equalto', '低')|list %}
+  {% set main_items = analyses|rejectattr('importance', 'equalto', '低')|list %}
+
+  {% if high_items %}
+  <section class="today-summary">
+    <h2>📌 本日の要点</h2>
+    <ul>
+      {% for a in high_items[:3] %}
+      <li><strong>{{ a.headline_ja }}</strong> — {{ a.summary_ja.split('。')[0] }}。</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if recent_archives %}
+  <section class="weekly-context">
+    <h2>🗓 今週の文脈</h2>
+    <ul>
+      {% for arch in recent_archives[:3] %}
+        {% for e in arch.entries[:2] %}
+      <li>[{{ arch.date }}] {{ e.title }}{% if e.region_tags %} <em style="color:#666;">({{ e.region_tags|join(', ') }})</em>{% endif %}</li>
+        {% endfor %}
+      {% endfor %}
+    </ul>
+    <p style="margin:12px 0 0;font-size:14px;color:#666;">過去1週間で追跡した主要な動きです。本日のニュースが連続的な流れの中でどう位置づくかを参照してください。</p>
+  </section>
+  {% endif %}
+
+  {% if region_groups %}
+  <nav class="region-nav">
+    <strong>地域別ジャンプ:</strong>
+    {% for region, items in region_groups.items() %}
+    <a href="#region-{{ region }}">{{ region }} ({{ items|length }})</a>
+    {% endfor %}
+  </nav>
+  {% endif %}
+
+  {% for a in main_items %}
+  {% set imp_class = 'importance-high' if a.importance == '高' else ('importance-mid' if a.importance == '中' else 'importance-low') %}
+  {% set first_tag = (a.region_tags[0] if a.region_tags else 'global') %}
+  <article class="{{ imp_class }}" id="region-{{ first_tag }}">
+    <h2>
+      {{ a.headline_ja }}
+      <span class="importance-badge {{ imp_class }}">重要度: {{ a.importance }}</span>
+    </h2>
+    {% if a.region_tags %}
+    <div style="margin: 4px 0 12px;">
+      {% for tag in a.region_tags %}<span class="region-tag">{{ tag }}</span>{% endfor %}
+    </div>
+    {% endif %}
     <div class="src">
       出典: {{ a.article.source }}
       {% if a.article.url %}(<a href="{{ a.article.url }}" target="_blank" rel="noopener">原文</a>){% endif %}
@@ -64,29 +419,44 @@
       </ul>
     </div>
 
-    <div class="diagram" style="margin-top:16px;">
-      <h4>経緯タイムライン</h4>
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
       <pre class="mermaid">{{ diagrams[loop.index0].timeline }}</pre>
     </div>
 
-    <div class="grid" style="margin-top:16px;">
+    <div class="grid">
       <div class="diagram">
-        <h4>当事者マップ</h4>
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
         <pre class="mermaid">{{ diagrams[loop.index0].actor_map }}</pre>
       </div>
       <div class="diagram">
-        <h4>影響の広がり</h4>
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
         <pre class="mermaid">{{ diagrams[loop.index0].impact_tree }}</pre>
       </div>
     </div>
 
-    <div class="diagram" style="margin-top:16px;">
-      <h4>当事者の関係ネットワーク</h4>
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
       <pre class="mermaid">{{ diagrams[loop.index0].relationship_graph }}</pre>
     </div>
 
-    <div class="diagram" style="margin-top:16px;">
-      <h4>押さえるべき論点</h4>
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
       <pre class="mermaid">{{ diagrams[loop.index0].key_points }}</pre>
     </div>
 
@@ -103,9 +473,47 @@
       </ul>
     </div>
     {% endif %}
+
+    {% set main_idx = loop.index0 %}
+    {% set abs_idx = analyses.index(a) if a in analyses else main_idx %}
+    {% if related_entries is defined and related_entries|length > abs_idx and related_entries[abs_idx] %}
+    <div class="related-past">
+      <h4>🔗 関連する過去の動き(直近1週間)</h4>
+      <ul>
+        {% for e in related_entries[abs_idx] %}
+        <li>
+          [{{ e.date }}] {{ e.title }}
+          {% if e.url %}(<a href="{{ e.url }}" target="_blank" rel="noopener">原文</a>){% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
   </article>
   {% endfor %}
 
-  <footer>地政学ニュース図解ジェネレータ (mock) &mdash; Powered by Claude</footer>
+  {% if low_items %}
+  <details class="low-importance-group">
+    <summary>重要度「低」の記事({{ low_items|length }}本) — 見出しのみ</summary>
+    <ul>
+      {% for a in low_items %}
+      <li>
+        <strong>{{ a.headline_ja }}</strong>
+        {% if a.article.url %}(<a href="{{ a.article.url }}" target="_blank" rel="noopener">原文</a>){% endif %}
+        — {{ a.article.source }}
+      </li>
+      {% endfor %}
+    </ul>
+  </details>
+  {% endif %}
+
+  <footer>地政学ニュース図解ジェネレータ &mdash; Powered by Claude</footer>
+
+  <div class="modal-backdrop" id="diagram-modal" role="dialog" aria-modal="true">
+    <div class="modal-body">
+      <button type="button" class="close-btn" aria-label="閉じる">×</button>
+      <div class="modal-slot"></div>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,0 +1,33 @@
+{
+  "date": "2026-04-21",
+  "note": "初期シード",
+  "entries": [
+    {
+      "title": "日韓首脳会談、サイバー防衛で初の定例協議枠組みに合意",
+      "summary": "日韓首脳がサイバー防衛の定例局長級協議を新設することで合意。北朝鮮のサイバー攻撃と中国系脅威に共同対応。",
+      "actors": ["日本", "韓国", "北朝鮮", "中国"],
+      "region_tags": ["east_asia", "cyber"],
+      "importance": "中",
+      "source": "seed",
+      "url": ""
+    },
+    {
+      "title": "フィリピン、米軍艦寄港拠点を3カ所追加",
+      "summary": "EDCA に基づく米軍運用拠点をフィリピン北部に追加する覚書を署名。台湾有事を想定した前方展開強化。",
+      "actors": ["フィリピン", "米国", "中国"],
+      "region_tags": ["southeast_asia", "east_asia"],
+      "importance": "高",
+      "source": "seed",
+      "url": ""
+    },
+    {
+      "title": "ロシア、シベリア極東でロ朝合同軍事演習を発表",
+      "summary": "ロシア国防省が北朝鮮軍と合同での極東演習を公表。ウクライナ派遣北朝鮮兵との運用連携が進む。",
+      "actors": ["ロシア", "北朝鮮", "韓国"],
+      "region_tags": ["east_asia", "europe"],
+      "importance": "中",
+      "source": "seed",
+      "url": ""
+    }
+  ]
+}

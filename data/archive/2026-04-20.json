@@ -1,0 +1,33 @@
+{
+  "date": "2026-04-20",
+  "note": "初期シード",
+  "entries": [
+    {
+      "title": "中国海警船、尖閣諸島周辺で接続水域航行が今月最多日数に",
+      "summary": "海上保安庁の集計で、中国海警船の尖閣諸島周辺接続水域航行日数が今月に入り22日目に達し過去最多ペース。",
+      "actors": ["中国", "日本"],
+      "region_tags": ["east_asia"],
+      "importance": "中",
+      "source": "seed",
+      "url": ""
+    },
+    {
+      "title": "イラン、ホルムズ海峡で英タンカー一時拿捕",
+      "summary": "イラン革命防衛隊海軍が英船籍タンカーを一時拿捕。外交交渉で数時間後に解放。ホルムズ海峡の緊張高まる。",
+      "actors": ["イラン", "英国", "米国"],
+      "region_tags": ["middle_east"],
+      "importance": "高",
+      "source": "seed",
+      "url": ""
+    },
+    {
+      "title": "ASEAN外相会議、南シナ海行動規範の進展を要求",
+      "summary": "ASEAN 外相会議でフィリピン・ベトナムが COC 本文案の早期妥結を中国に強く要求。カンボジアは中立。",
+      "actors": ["ASEAN", "中国", "フィリピン", "ベトナム"],
+      "region_tags": ["southeast_asia"],
+      "importance": "中",
+      "source": "seed",
+      "url": ""
+    }
+  ]
+}

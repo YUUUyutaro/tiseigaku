@@ -1,0 +1,33 @@
+{
+  "date": "2026-04-19",
+  "note": "初期シード",
+  "entries": [
+    {
+      "title": "イスラエル軍、ガザ南部ラファで再進攻",
+      "summary": "イスラエル軍がハマス残存勢力掃討のためラファへ再進攻。停戦合意の維持が崩壊し人道状況が再び悪化。",
+      "actors": ["イスラエル", "ハマス", "エジプト", "米国"],
+      "region_tags": ["middle_east"],
+      "importance": "高",
+      "source": "seed",
+      "url": ""
+    },
+    {
+      "title": "韓国大統領、戦術核共有に言及",
+      "summary": "韓国大統領が記者会見で『米国との拡大抑止だけでは不十分』と発言。戦術核共有の可能性を示唆。",
+      "actors": ["韓国", "米国", "北朝鮮"],
+      "region_tags": ["east_asia"],
+      "importance": "中",
+      "source": "seed",
+      "url": ""
+    },
+    {
+      "title": "NATO、ウクライナへの F-16 追加供与で調整",
+      "summary": "NATO 国防相会議でオランダ・デンマークに続き、新たに3カ国が F-16 供与を検討。",
+      "actors": ["NATO", "ウクライナ", "ロシア"],
+      "region_tags": ["europe"],
+      "importance": "中",
+      "source": "seed",
+      "url": ""
+    }
+  ]
+}

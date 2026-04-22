@@ -29,11 +29,14 @@ def render(
     title: str = "地政学ニュース図解レポート",
     report_name: str = "report",
     write_manifest: bool = False,
+    extra: dict | None = None,
 ) -> List[Path]:
     """1件ぶんのレポートを書き出す。
 
     `write_manifest=True` の場合、index.html 再生成用のメタ情報 JSON も
     同じディレクトリに `<report_name>.json` として書き出す。
+    `extra` は recent_archives / related_entries / region_groups など、
+    テンプレート側で使う補助コンテキスト。
     """
     output_dir.mkdir(parents=True, exist_ok=True)
     env = _env(templates_dir)
@@ -45,6 +48,8 @@ def render(
         "analyses": analyses,
         "diagrams": diagrams,
     }
+    if extra:
+        context.update(extra)
     written: List[Path] = []
     if "html" in formats:
         html = env.get_template("report.html.j2").render(**context)

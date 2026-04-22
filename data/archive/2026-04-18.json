@@ -1,0 +1,33 @@
+{
+  "date": "2026-04-18",
+  "note": "初期シード",
+  "entries": [
+    {
+      "title": "日米2+2、在日米軍統合軍司令部の運用開始を正式発表",
+      "summary": "日米2+2閣僚協議で、在日米軍を『統合軍司令部』に格上げする運用を2026年夏から正式開始することで合意。",
+      "actors": ["日本", "米国"],
+      "region_tags": ["east_asia"],
+      "importance": "高",
+      "source": "seed",
+      "url": ""
+    },
+    {
+      "title": "中国、米半導体輸出管理に対抗しレアアース追加規制",
+      "summary": "中国商務部がガリウム・ゲルマニウムの輸出許可制の厳格化を発表。米国の半導体装置輸出規制への対抗措置とみられる。",
+      "actors": ["中国", "米国", "日本"],
+      "region_tags": ["east_asia", "global"],
+      "importance": "中",
+      "source": "seed",
+      "url": ""
+    },
+    {
+      "title": "Volt Typhoon 関連の不審通信を日本の重要インフラで検出",
+      "summary": "NISC は、中国系とされる Volt Typhoon に類似した侵入試行を複数の電力・通信事業者で検出したと発表。",
+      "actors": ["中国", "日本"],
+      "region_tags": ["cyber", "east_asia"],
+      "importance": "高",
+      "source": "seed",
+      "url": ""
+    }
+  ]
+}

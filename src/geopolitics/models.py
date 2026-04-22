@@ -65,6 +65,8 @@ class Analysis:
     headline_ja: str
     summary_ja: str
     background: str
+    importance: str = "中"  # "高" | "中" | "低"
+    region_tags: List[str] = field(default_factory=list)
     actors: List[Actor] = field(default_factory=list)
     issues: List[Issue] = field(default_factory=list)
     impacts: List[Impact] = field(default_factory=list)

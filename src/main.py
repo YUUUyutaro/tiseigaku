@@ -10,7 +10,12 @@ from typing import List
 
 import yaml
 
-from .geopolitics.analyzer import analyze_batch
+from .geopolitics.analyzer import analyze_batch, keyword_filter
+from .geopolitics.archive import (
+    load_recent_archives,
+    related_archive_entries,
+    save_daily_archive,
+)
 from .geopolitics.fetcher import fetch_from_mock, fetch_from_rss
 from .geopolitics.models import Analysis, Article
 from .geopolitics.reporter import render, render_index
@@ -59,7 +64,7 @@ def run(argv: List[str]) -> int:
     formats = tuple(output_cfg.get("formats", ["html", "md"]))
     max_articles = int(analysis_cfg.get("max_articles", 5))
 
-    # 1. Fetch
+    # 1. Fetch (多めに取得しておき、段階的に絞り込む)
     articles: List[Article]
     if args.mock:
         articles = fetch_from_mock(args.mock_data)
@@ -67,28 +72,61 @@ def run(argv: List[str]) -> int:
         articles = fetch_from_rss(
             config.get("feeds", []),
             keywords=config.get("keywords", []),
-            limit=max_articles * 3,
+            limit=max_articles * 10,  # Step 1 の事前選別に回すため多めに
         )
-    articles = articles[:max_articles]
     log.info("Fetched %d article(s)", len(articles))
     if not articles:
         log.warning("No articles fetched; aborting.")
         return 1
 
-    # 2. Analyze
+    # Step 1: APIを使わないキーワード事前選別
+    articles = keyword_filter(articles, max_articles=max_articles)
+    log.info("After pre-filter: %d article(s)", len(articles))
+    if not articles:
+        log.warning("No articles passed the pre-filter; aborting.")
+        return 1
+
+    # Step 2: Claude API で構造化分析
     analyses: List[Analysis] = analyze_batch(
         articles,
         use_mock=args.mock,
-        model=analysis_cfg.get("model", "claude-sonnet-4-6"),
+        model=analysis_cfg.get("model", "claude-opus-4-7"),
     )
+
+    # Step 2-b: 重要度でソート(高→中→低)
+    importance_order = {"高": 0, "中": 1, "低": 2}
+    analyses.sort(key=lambda a: importance_order.get(a.importance, 99))
     log.info("Produced %d analysis/analyses", len(analyses))
     if not analyses:
         log.warning("All analyses failed; aborting.")
         return 1
 
-    # 3. Render
+    today = datetime.now().strftime("%Y-%m-%d")
+
+    # Step 3: 当日分をアーカイブ保存(モック/本番問わず)
+    archive_path = save_daily_archive(analyses, today)
+    log.info("Saved archive: %s", archive_path)
+
+    # Step 3-b: 過去1週間のアーカイブと、各記事の関連エントリを収集
+    recent_archives = load_recent_archives(days=7, exclude_date=today)
+    related_by_index: List[List[dict]] = [
+        related_archive_entries(recent_archives, a.region_tags, limit=5) for a in analyses
+    ]
+
+    # 地域別グルーピング
+    region_groups: dict = {}
+    for a in analyses:
+        for tag in a.region_tags or ["global"]:
+            region_groups.setdefault(tag, []).append(a)
+
+    extra_ctx = {
+        "recent_archives": recent_archives,
+        "related_entries": related_by_index,
+        "region_groups": region_groups,
+    }
+
+    # 4. Render
     if args.site:
-        today = datetime.now().strftime("%Y-%m-%d")
         reports_dir = args.site_dir / "reports"
         written = render(
             analyses,
@@ -98,6 +136,7 @@ def run(argv: List[str]) -> int:
             title=f"地政学ニュース図解レポート {today} 号",
             report_name=today,
             write_manifest=True,
+            extra=extra_ctx,
         )
         index_path = render_index(
             args.site_dir, templates_dir=ROOT / "templates"
@@ -110,6 +149,7 @@ def run(argv: List[str]) -> int:
             templates_dir=ROOT / "templates",
             output_dir=output_dir,
             formats=formats,
+            extra=extra_ctx,
         )
 
     for path in written:

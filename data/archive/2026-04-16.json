@@ -1,0 +1,33 @@
+{
+  "date": "2026-04-16",
+  "note": "初期シード",
+  "entries": [
+    {
+      "title": "フィリピン、南シナ海で日米と三カ国合同海上訓練",
+      "summary": "フィリピン、日本、米国の三カ国がパラワン島沖で合同海上訓練。海保・沿岸警備隊の連携強化が目的。",
+      "actors": ["フィリピン", "日本", "米国", "中国"],
+      "region_tags": ["southeast_asia", "east_asia"],
+      "importance": "高",
+      "source": "seed",
+      "url": ""
+    },
+    {
+      "title": "イラン、ウラン濃縮度84%検出をIAEAが報告",
+      "summary": "IAEA は最新報告書でイランのナタンツ施設から濃縮度84%のウラン粒子を検出したと指摘。兵器級(90%)に接近。",
+      "actors": ["イラン", "IAEA", "米国", "イスラエル"],
+      "region_tags": ["middle_east"],
+      "importance": "高",
+      "source": "seed",
+      "url": ""
+    },
+    {
+      "title": "韓国、在韓米軍駐留経費11.7%増で合意",
+      "summary": "韓米は2026年からの SMA(在韓米軍駐留費負担協定)で韓国側負担を前年比11.7%増とする案で基本合意。",
+      "actors": ["韓国", "米国"],
+      "region_tags": ["east_asia"],
+      "importance": "中",
+      "source": "seed",
+      "url": ""
+    }
+  ]
+}
