@@ -27,7 +27,8 @@ _REGION_TO_FILES = {
     "europe": [],  # 未整備
     "middle_east": ["middle_east.md", "iran_nuclear.md"],
     "cyber": ["cyber_security.md"],
-    "gcap": ["gcap.md"],
+    "gcap": ["gcap.md", "defense_transfer_principles.md"],
+    "defense_export": ["defense_transfer_principles.md"],
     "global": [],
 }
 
