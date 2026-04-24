@@ -1,0 +1,1102 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>地政学ニュース図解レポート 2026-04-25 号</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root {
+      --fg: #111;
+      --muted: #666;
+      --line: #e5e5e5;
+      --accent: #1e3a8a;
+      --bg-subtle: #fafafa;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      color: var(--fg);
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    header {
+      border-bottom: 3px solid var(--accent);
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.4;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    article {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      margin: 40px 0;
+      background: #fff;
+    }
+    article h2 {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 24px;
+      line-height: 1.4;
+    }
+    article h3 {
+      font-size: 18px;
+      margin: 32px 0 12px;
+      border-left: 4px solid var(--accent);
+      padding-left: 12px;
+      line-height: 1.5;
+    }
+    article p {
+      margin: 12px 0;
+      font-size: 16px;
+    }
+    .src {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .src a { color: var(--muted); }
+    .section { margin: 32px 0; }
+    ul.key {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+    ul.key li {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+    ul.refs {
+      padding-left: 24px;
+      font-size: 15px;
+      margin: 12px 0;
+    }
+    ul.refs li { margin: 8px 0; }
+    ul.refs .note { color: var(--muted); }
+
+    .diagram {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      background: var(--bg-subtle);
+      margin: 32px 0;
+    }
+    .diagram .head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 16px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+    .diagram h4 {
+      margin: 0;
+      font-size: 15px;
+      color: var(--accent);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .diagram .expand-btn {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: var(--accent);
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .diagram .expand-btn:hover { background: var(--accent); color: #fff; }
+    .diagram .mermaid {
+      min-height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .diagram .mermaid svg {
+      max-width: 100%;
+      height: auto !important;
+    }
+
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      padding: 20px;
+      overflow: auto;
+    }
+    .modal-backdrop.open { display: flex; align-items: center; justify-content: center; }
+    .modal-body {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 24px;
+      max-width: 95vw;
+      max-height: 95vh;
+      overflow: auto;
+      position: relative;
+    }
+    .modal-body .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      border: none;
+      background: transparent;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    .modal-body svg {
+      width: 100%;
+      height: auto;
+      min-width: 800px;
+      min-height: 400px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 32px 0;
+    }
+    .grid .diagram { margin: 0; }
+    @media (max-width: 820px) {
+      body { padding: 20px 16px 48px; font-size: 15px; }
+      h1 { font-size: 24px; }
+      article { padding: 20px 16px; margin: 28px 0; }
+      article h2 { font-size: 20px; }
+      article h3 { font-size: 16px; }
+      .grid { grid-template-columns: 1fr; gap: 20px; }
+      .diagram { padding: 16px 12px; margin: 24px 0; }
+      .diagram .mermaid { min-height: 300px; }
+      .modal-body svg { min-width: 0; }
+    }
+    .importance-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .importance-high { background: #c62828; color: #fff; }
+    .importance-mid  { background: #f9a825; color: #fff; }
+    .importance-low  { background: #9e9e9e; color: #fff; }
+
+    article.importance-high { border-left: 6px solid #c62828; background: #fff9f9; }
+    article.importance-mid  { border-left: 6px solid #f9a825; }
+    article.importance-low  { border-left: 6px solid #bdbdbd; }
+
+    .today-summary {
+      background: #fff9e6;
+      border: 2px solid #f9a825;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .today-summary h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #b7791f;
+    }
+    .today-summary ul { margin: 0; padding-left: 20px; }
+    .today-summary li { margin: 6px 0; font-size: 16px; }
+
+    .region-tag {
+      display: inline-block;
+      font-size: 12px;
+      background: #e3f2fd;
+      color: #1565c0;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-right: 4px;
+    }
+
+    .weekly-context {
+      background: #f0f7ff;
+      border: 2px solid #1565c0;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .weekly-context h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #1565c0;
+    }
+    .weekly-context ul { margin: 0; padding-left: 20px; }
+    .weekly-context li { margin: 4px 0; font-size: 15px; color: var(--fg); }
+
+    .region-nav {
+      background: #fafafa;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+    .region-nav strong { color: var(--accent); }
+    .region-nav a {
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 14px;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      padding: 2px 10px;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .region-nav a:hover { background: var(--accent); color: #fff; }
+
+    .related-past {
+      background: #fafafa;
+      border-left: 3px solid var(--muted);
+      padding: 12px 16px;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+    .related-past h4 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .related-past ul { margin: 0; padding-left: 20px; }
+    .related-past li { margin: 4px 0; }
+
+    details.low-importance-group {
+      margin: 40px 0;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #fafafa;
+    }
+    details.low-importance-group summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    details.low-importance-group ul { margin: 12px 0 0; padding-left: 20px; }
+    details.low-importance-group li { margin: 4px 0; font-size: 14px; color: var(--fg); }
+
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 48px;
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+  </style>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "default",
+      fontFamily: '-apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif',
+      fontSize: 16,
+      flowchart: { useMaxWidth: true, htmlLabels: true, curve: "basis" },
+      timeline: { useMaxWidth: true },
+      mindmap: { useMaxWidth: true }
+    });
+    await mermaid.run();
+
+    const backdrop = document.getElementById("diagram-modal");
+    const modalBody = backdrop.querySelector(".modal-body");
+    const modalSlot = backdrop.querySelector(".modal-slot");
+    const closeBtn = backdrop.querySelector(".close-btn");
+
+    document.querySelectorAll(".expand-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const diagram = btn.closest(".diagram");
+        const svg = diagram.querySelector("svg");
+        if (!svg) return;
+        modalSlot.innerHTML = "";
+        modalSlot.appendChild(svg.cloneNode(true));
+        backdrop.classList.add("open");
+      });
+    });
+
+    const close = () => backdrop.classList.remove("open");
+    closeBtn.addEventListener("click", close);
+    backdrop.addEventListener("click", e => { if (e.target === backdrop) close(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>地政学ニュース図解レポート 2026-04-25 号</h1>
+    <div class="meta">生成日時: 2026-04-25 07:38 / 記事数: 5</div>
+  </header>
+
+
+  <section class="today-summary">
+    <h2>📌 本日の要点</h2>
+    <ul>
+      <li><strong>米、イラン戦争支持巡りスペイン処分検討か</strong> — BBCの報道によれば、米国防総省内部メールで、イラン戦争への支援不足を理由に同盟国を処罰する選択肢が検討されていることが明らかになった。</li>
+      <li><strong>高市首相、代替原油6割確保 さらに上積み指示</strong> — 高市総理大臣は関係閣僚会議で、ホルムズ海峡を経由しない原油の代替調達について、来月(5月)分はおよそ6割の確保にめどがついたと表明した。</li>
+    </ul>
+  </section>
+
+  <section class="weekly-context">
+    <h2>🗓 今週の文脈</h2>
+    <ul>
+      <li>[2026-04-22] 中国、台湾海峡での軍事演習を拡大 日米が即応体制を強化 <em style="color:#666;">(east_asia, southeast_asia)</em></li>
+      <li>[2026-04-22] NATO、東欧諸国への追加配備を協議 ロシアの動向を警戒 <em style="color:#666;">(europe)</em></li>
+      <li>[2026-04-21] 日韓首脳会談、サイバー防衛で初の定例協議枠組みに合意 <em style="color:#666;">(east_asia, cyber)</em></li>
+      <li>[2026-04-21] フィリピン、米軍艦寄港拠点を3カ所追加 <em style="color:#666;">(southeast_asia, east_asia)</em></li>
+      <li>[2026-04-20] 中国海警船、尖閣諸島周辺で接続水域航行が今月最多日数に <em style="color:#666;">(east_asia)</em></li>
+      <li>[2026-04-20] イラン、ホルムズ海峡で英タンカー一時拿捕 <em style="color:#666;">(middle_east)</em></li>
+    </ul>
+    <p style="margin:12px 0 0;font-size:14px;color:#666;">過去1週間で追跡した主要な動きです。本日のニュースが連続的な流れの中でどう位置づくかを参照してください。</p>
+  </section>
+
+  <nav class="region-nav">
+    <strong>地域別ジャンプ:</strong>
+    <a href="#region-europe">europe (2)</a>
+    <a href="#region-middle_east">middle_east (3)</a>
+    <a href="#region-global">global (3)</a>
+    <a href="#region-east_asia">east_asia (3)</a>
+    <a href="#region-americas">americas (1)</a>
+  </nav>
+
+  <article class="importance-high" id="region-europe">
+    <h2>
+      米、イラン戦争支持巡りスペイン処分検討か
+      <span class="importance-badge importance-high">重要度: 高</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">europe</span><span class="region-tag">middle_east</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: BBC World
+(<a href="https://www.bbc.com/news/articles/cz78x703lrvo?at_medium=RSS&at_campaign=rss" target="_blank" rel="noopener">原文</a>) / 2026-04-24 16:04    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>BBCの報道によれば、米国防総省内部メールで、イラン戦争への支援不足を理由に同盟国を処罰する選択肢が検討されていることが明らかになった。中でもスペインのNATO資格停止が選択肢として浮上したとされる。これに対しNATOは「加盟国を除名する規定は存在しない」と表明し、米国の動きを牽制した。同盟内の足並みの乱れが顕在化し、集団防衛体制の信頼性が問われる事態となっている。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>対イラン軍事行動を巡り、欧州諸国の一部が米国の強硬路線への参加に消極的な姿勢を示してきた。直近では4月20日にイランが英タンカーをホルムズ海峡で一時拿捕し緊張が再燃、中東情勢が悪化する中で米国が同盟国の足並みを問題視している。NATO東欧追加配備協議など欧州側の安全保障課題も並行する中、米欧間の亀裂が表面化した。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>米国防総省が対イラン戦争支援に消極的な同盟国への懲罰策を内部検討、スペインのNATO資格停止が選択肢に浮上</li><li>NATOは「加盟国除名の規定は存在しない」と明確に否定、米国の構想は法的根拠を欠く</li><li>対イラン政策を巡る米欧の亀裂が表面化し、集団防衛同盟の結束と信頼性に重大な影響</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title 米、イラン戦争支持巡りスペイン処分検討か — 経緯
+  2026-04-19 : イスラエル軍がガザ南部ラファで再進攻、中東緊張再燃
+  2026-04-20 : イランがホルムズ海峡で英タンカーを一時拿捕
+  2026-04-23 : ペンタゴン内部メールで同盟国処罰の選択肢が検討されたと報道
+  2026-04-24 : NATO「加盟国を除名する規定はない」と公式表明</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["米、イラン戦争支持巡りスペイン処分検討か"]
+  A0["米国\n(国家)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["国防総省(ペンタゴン)\n(国家)"]
+  A1 -- 推進 --> T
+  style A1 fill:#2e7d32,color:#fff,stroke:#333
+  A2["NATO\n(国際機関)"]
+  A2 -- 中立 --> T
+  style A2 fill:#616161,color:#fff,stroke:#333
+  A3["スペイン\n(国家)"]
+  A3 -- 被害 --> T
+  style A3 fill:#ef6c00,color:#fff,stroke:#333
+  A4["イラン\n(国家)"]
+  A4 -- 対立 --> T
+  style A4 fill:#1565c0,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["外交"]
+  I0["NATO内の信頼関係が損なわれ、集団防衛の結束が弱まる可能性\n(重大度: 高)"]
+  R --> D0 --> I0
+  style I0 fill:#c62828,color:#fff,stroke:#333
+  D1["安全保障"]
+  I1["対イラン作戦における連合形成が困難となり、中東での軍事行動の正当性・有効性が低下\n(重大度: 高)"]
+  R --> D1 --> I1
+  style I1 fill:#c62828,color:#fff,stroke:#333
+  D2["経済"]
+  I2["ホルムズ海峡情勢の不透明感に米欧分裂が加わり、原油・海運市場の不安定化を助長\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  D3["外交"]
+  I3["日本を含む他のNATOパートナー諸国にも同様の踏み絵が迫られる懸念\n(重大度: 中)"]
+  R --> D3 --> I3
+  style I3 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["米国"]
+  N1["国防総省(ペンタゴン)"]
+  N2["NATO"]
+  N3["スペイン"]
+  N4["イラン"]
+  N0 -->|緊張| N3
+  N0 -->|緊張| N2
+  N0 -->|対立| N4
+  N2 -->|支援| N3
+  linkStyle 0 stroke:#ef6c00,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 1 stroke:#ef6c00,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 2 stroke:#c62828,stroke-width:3px;
+  linkStyle 3 stroke:#2e7d32,stroke-width:2px;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((米、イラン戦争支持巡りスペイン処分検討か))
+    米国防総省が対イラン戦争支援に消極的な同盟国への懲罰策を内部検討、スペインのNATO資格停止が選択肢に浮上
+    NATOは「加盟国除名の規定は存在しない」と明確に否定、米国の構想は法的根拠を欠く
+    対イラン政策を巡る米欧の亀裂が表面化し、集団防衛同盟の結束と信頼性に重大な影響</pre>
+    </div>
+
+
+    <div class="related-past">
+      <h4>🔗 関連する過去の動き(直近1週間)</h4>
+      <ul>
+        <li>
+          [2026-04-22] NATO、東欧諸国への追加配備を協議 ロシアの動向を警戒
+(<a href="https://example.com/news/nato-east-europe" target="_blank" rel="noopener">原文</a>)        </li>
+        <li>
+          [2026-04-22] 中東原油輸送路で海運会社が一部航路を回避 保険料が急騰
+(<a href="https://example.com/news/strait-of-hormuz-shipping" target="_blank" rel="noopener">原文</a>)        </li>
+        <li>
+          [2026-04-21] ロシア、シベリア極東でロ朝合同軍事演習を発表
+        </li>
+        <li>
+          [2026-04-20] イラン、ホルムズ海峡で英タンカー一時拿捕
+        </li>
+        <li>
+          [2026-04-19] イスラエル軍、ガザ南部ラファで再進攻
+        </li>
+      </ul>
+    </div>
+  </article>
+  <article class="importance-high" id="region-middle_east">
+    <h2>
+      高市首相、代替原油6割確保 さらに上積み指示
+      <span class="importance-badge importance-high">重要度: 高</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">middle_east</span><span class="region-tag">east_asia</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260424/k10015107721000.html" target="_blank" rel="noopener">原文</a>) / 2026-04-24 19:10    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>高市総理大臣は関係閣僚会議で、ホルムズ海峡を経由しない原油の代替調達について、来月(5月)分はおよそ6割の確保にめどがついたと表明した。その上で、6月分の代替調達の水準をさらに高めるよう関係閣僚に指示した。中東情勢の緊迫化を背景に、日本政府はエネルギー供給の多元化を急いでいる。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>4月20日にイランがホルミズ海峡で英タンカーを一時拿捕し、海運会社は一部航路を回避、保険料も急騰している。日本は原油の約9割を中東に依存し、ホルムズ海峡は世界の石油輸送量の約2割が通過する要衝であるため、同海峡のリスク顕在化は日本のエネルギー安全保障に直撃する。このため政府は非ホルムズ経由の代替ソース確保を急いでいる。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>5月の非ホルムズ経由の原油代替調達はおよそ6割のめどが立った</li><li>高市首相は6月分の代替調達水準をさらに引き上げるよう指示</li><li>イランによる英タンカー拿捕など中東リスクが急速に高まり、日本のエネルギー安全保障が試されている</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title 高市首相、代替原油6割確保 さらに上積み指示 — 経緯
+  2026-04-19 : イスラエル軍がガザ南部ラファで再進攻、中東緊張が再燃
+  2026-04-20 : イランがホルムズ海峡で英タンカーを一時拿捕
+  2026-04-22 : 中東原油輸送路で海運各社が航路回避、保険料が急騰
+  2026-04-24 : 高市首相が関係閣僚会議で5月の代替調達6割確保を表明、6月のさらなる上積みを指示</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["高市首相、代替原油6割確保 さらに上積み指示"]
+  A0["日本政府(高市首相)\n(国家)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["関係閣僚会議\n(国家)"]
+  A1 -- 推進 --> T
+  style A1 fill:#2e7d32,color:#fff,stroke:#333
+  A2["イラン\n(国家)"]
+  A2 -- その他 --> T
+  style A2 fill:#1565c0,color:#fff,stroke:#333
+  A3["ホルムズ海峡沿岸諸国(湾岸産油国)\n(国家)"]
+  A3 -- 中立 --> T
+  style A3 fill:#616161,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["エネルギー"]
+  I0["ホルムズ海峡経由以外の原油調達比率を高めることで、海峡封鎖リスクへの耐性が向上する。\n(重大度: 高)"]
+  R --> D0 --> I0
+  style I0 fill:#c62828,color:#fff,stroke:#333
+  D1["経済"]
+  I1["代替調達は輸送距離増や保険料上昇を伴い、ガソリン・電力価格など国内物価への波及が懸念される。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["外交"]
+  I2["非ホルムズ産油国(米国、西アフリカ、ロシア以外の選択肢)との調達外交が活発化する可能性。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  D3["安全保障"]
+  I3["自衛隊の中東情報収集任務や有事の邦人・船舶保護の重要性が一段と高まる。\n(重大度: 中)"]
+  R --> D3 --> I3
+  style I3 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["日本政府(高市首相)"]
+  N1["関係閣僚会議"]
+  N2["イラン"]
+  N3["ホルムズ海峡沿岸諸国(湾岸産油国)"]
+  N0 -->|交渉| N1
+  N0 -->|依存| N3
+  N0 -->|緊張| N2
+  linkStyle 0 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 1 stroke:#00838f,stroke-width:2px,stroke-dasharray:2 2;
+  linkStyle 2 stroke:#ef6c00,stroke-width:2px,stroke-dasharray:4 2;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((高市首相、代替原油6割確保 さらに上積み指示))
+    5月の非ホルムズ経由の原油代替調達はおよそ6割のめどが立った
+    高市首相は6月分の代替調達水準をさらに引き上げるよう指示
+    イランによる英タンカー拿捕など中東リスクが急速に高まり、日本のエネルギー安全保障が試されている</pre>
+    </div>
+
+
+    <div class="related-past">
+      <h4>🔗 関連する過去の動き(直近1週間)</h4>
+      <ul>
+        <li>
+          [2026-04-22] 中国、台湾海峡での軍事演習を拡大 日米が即応体制を強化
+(<a href="https://example.com/news/taiwan-strait-drills" target="_blank" rel="noopener">原文</a>)        </li>
+        <li>
+          [2026-04-22] 中東原油輸送路で海運会社が一部航路を回避 保険料が急騰
+(<a href="https://example.com/news/strait-of-hormuz-shipping" target="_blank" rel="noopener">原文</a>)        </li>
+        <li>
+          [2026-04-21] 日韓首脳会談、サイバー防衛で初の定例協議枠組みに合意
+        </li>
+        <li>
+          [2026-04-21] フィリピン、米軍艦寄港拠点を3カ所追加
+        </li>
+        <li>
+          [2026-04-21] ロシア、シベリア極東でロ朝合同軍事演習を発表
+        </li>
+      </ul>
+    </div>
+  </article>
+  <article class="importance-mid" id="region-east_asia">
+    <h2>
+      三菱電機、ホンハイと車部品で提携検討
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">east_asia</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260424/k10015107921000.html" target="_blank" rel="noopener">原文</a>) / 2026-04-24 23:28    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>三菱電機は、見直し対象としている自動車部品事業について、台湾の鴻海(ホンハイ)精密工業との提携を検討すると発表した。ホンハイからの出資受け入れも視野に入れている。ホンハイが持つ取引先ネットワークやEV製造ノウハウを活用し、競争力強化を図る狙い。日本の大手電機メーカーが台湾企業から出資を受け入れる可能性は、日台間の経済連携を象徴する動きとなる。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>ホンハイはiPhone受託生産で知られる世界最大級のEMSで、近年はEV事業への本格参入を進めている。台湾海峡では4月22日に中国軍演習の拡大が報じられ日米が即応体制を強化するなど地政学リスクが高まる中、日台の産業連携は経済安全保障とサプライチェーン再編の文脈でも注目される。日本の自動車部品産業はEVシフトで競争力低下が課題となっており、外部資本との提携が選択肢に上がっている。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>三菱電機が見直し対象の自動車部品事業でホンハイとの提携・出資受け入れを検討</li><li>ホンハイのEV製造ノウハウと取引先ネットワークの活用が狙い</li><li>台湾海峡の緊張が高まる中、日台の産業連携は経済安全保障の観点でも注目される</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title 三菱電機、ホンハイと車部品で提携検討 — 経緯
+  2026-04-22 : 中国が台湾海峡で軍事演習を拡大、日米が即応強化
+  2026-04-24 : 三菱電機がホンハイとの自動車部品事業での提携検討を発表</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["三菱電機、ホンハイと車部品で提携検討"]
+  A0["三菱電機\n(企業)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["ホンハイ精密工業\n(企業)"]
+  A1 -- 推進 --> T
+  style A1 fill:#2e7d32,color:#fff,stroke:#333
+  A2["日本\n(国家)"]
+  A2 -- 中立 --> T
+  style A2 fill:#616161,color:#fff,stroke:#333
+  A3["台湾\n(国家)"]
+  A3 -- 中立 --> T
+  style A3 fill:#616161,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["経済"]
+  I0["日台のEV関連サプライチェーン連携が進展し、日本の自動車部品業界の再編が加速する可能性。\n(重大度: 中)"]
+  R --> D0 --> I0
+  style I0 fill:#ef6c00,color:#fff,stroke:#333
+  D1["技術"]
+  I1["ホンハイのEMS・EV製造ノウハウと三菱電機の電装技術の融合により、新たな競争軸が生まれる。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["安全保障"]
+  I2["台湾海峡情勢が悪化した場合、サプライチェーン上のリスクが顕在化する懸念。\n(重大度: 低)"]
+  R --> D2 --> I2
+  style I2 fill:#2e7d32,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["三菱電機"]
+  N1["ホンハイ精密工業"]
+  N2["日本"]
+  N3["台湾"]
+  N0 -->|交渉| N1
+  linkStyle 0 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((三菱電機、ホンハイと車部品で提携検討))
+    三菱電機が見直し対象の自動車部品事業でホンハイとの提携・出資受け入れを検討
+    ホンハイのEV製造ノウハウと取引先ネットワークの活用が狙い
+    台湾海峡の緊張が高まる中、日台の産業連携は経済安全保障の観点でも注目される</pre>
+    </div>
+
+
+    <div class="related-past">
+      <h4>🔗 関連する過去の動き(直近1週間)</h4>
+      <ul>
+        <li>
+          [2026-04-22] 中国、台湾海峡での軍事演習を拡大 日米が即応体制を強化
+(<a href="https://example.com/news/taiwan-strait-drills" target="_blank" rel="noopener">原文</a>)        </li>
+        <li>
+          [2026-04-21] 日韓首脳会談、サイバー防衛で初の定例協議枠組みに合意
+        </li>
+        <li>
+          [2026-04-21] フィリピン、米軍艦寄港拠点を3カ所追加
+        </li>
+        <li>
+          [2026-04-21] ロシア、シベリア極東でロ朝合同軍事演習を発表
+        </li>
+        <li>
+          [2026-04-20] 中国海警船、尖閣諸島周辺で接続水域航行が今月最多日数に
+        </li>
+      </ul>
+    </div>
+  </article>
+  <article class="importance-mid" id="region-east_asia">
+    <h2>
+      中国、欧州7社を輸出規制 台湾武器売却関与で
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">east_asia</span><span class="region-tag">europe</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260424/k10015107901000.html" target="_blank" rel="noopener">原文</a>) / 2026-04-24 21:51    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>中国政府は4月24日、台湾への武器売却に関与したなどとして、欧州の7つの企業などを輸出規制リストに追加したと発表した。これらの企業に対しては、軍民両用(デュアルユース)品目の中国からの輸出が禁止される。台湾への武器供給網を直接標的にした経済的圧力であり、中国は「一つの中国」原則を改めて強調する形となった。欧州諸国の対中政策にも影響を及ぼす可能性がある。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>中国は4月22日に台湾海峡での軍事演習を拡大し、日米が即応体制を強化するなど、台湾を巡る緊張が連日高まっている。また4月18日には米半導体輸出管理への対抗策としてレアアース追加規制を発動するなど、経済安全保障分野での対抗措置を相次いで打ち出している。今回の欧州企業を狙った輸出規制は、軍事的圧力と経済的圧力を組み合わせた台湾威圧戦略の一環と位置づけられる。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>中国は台湾への武器売却関与を理由に欧州7社を輸出規制リストに追加し、軍民両用品目の輸出を禁止</li><li>軍事演習拡大やレアアース規制と並ぶ、台湾威圧の経済的圧力ツールの一つ</li><li>欧州企業を直接標的にしたことで、EUの対中・対台湾政策に揺さぶりがかかる</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title 中国、欧州7社を輸出規制 台湾武器売却関与で — 経緯
+  2026-04-18 : 中国、米半導体輸出管理への対抗でレアアース追加規制
+  2026-04-22 : 中国が台湾海峡で軍事演習を拡大、日米が即応体制強化
+  2026-04-24 : 中国、台湾武器売却関与で欧州7企業を輸出規制リストに追加</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["中国、欧州7社を輸出規制 台湾武器売却関与で"]
+  A0["中国\n(国家)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["台湾\n(国家(事実上))"]
+  A1 -- 被害 --> T
+  style A1 fill:#ef6c00,color:#fff,stroke:#333
+  A2["欧州7企業\n(企業)"]
+  A2 -- 被害 --> T
+  style A2 fill:#ef6c00,color:#fff,stroke:#333
+  A3["EU\n(国際機関)"]
+  A3 -- 中立 --> T
+  style A3 fill:#616161,color:#fff,stroke:#333
+  A4["米国\n(国家)"]
+  A4 -- その他 --> T
+  style A4 fill:#1565c0,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["経済"]
+  I0["対象企業はレアアースなど中国産戦略物資の調達が困難になり、サプライチェーンの再編を迫られる。\n(重大度: 中)"]
+  R --> D0 --> I0
+  style I0 fill:#ef6c00,color:#fff,stroke:#333
+  D1["外交"]
+  I1["中国による欧州企業制裁はEU・中国関係を冷却させ、欧州の対台湾接近を牽制する。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["安全保障"]
+  I2["台湾の防衛装備調達網への圧力が強まり、抑止力維持に影響する可能性がある。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  D3["技術"]
+  I3["軍民両用技術の国際取引で中国が制裁ツールを多用する流れが強まる。\n(重大度: 中)"]
+  R --> D3 --> I3
+  style I3 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["中国"]
+  N1["台湾"]
+  N2["欧州7企業"]
+  N3["EU"]
+  N4["米国"]
+  N0 -->|対立| N1
+  N0 -->|対立| N2
+  N0 -->|緊張| N3
+  N4 -->|支援| N1
+  N0 -->|対立| N4
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#c62828,stroke-width:3px;
+  linkStyle 2 stroke:#ef6c00,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 3 stroke:#2e7d32,stroke-width:2px;
+  linkStyle 4 stroke:#c62828,stroke-width:3px;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((中国、欧州7社を輸出規制 台湾武器売却関与で))
+    中国は台湾への武器売却関与を理由に欧州7社を輸出規制リストに追加し、軍民両用品目の輸出を禁止
+    軍事演習拡大やレアアース規制と並ぶ、台湾威圧の経済的圧力ツールの一つ
+    欧州企業を直接標的にしたことで、EUの対中・対台湾政策に揺さぶりがかかる</pre>
+    </div>
+
+
+    <div class="related-past">
+      <h4>🔗 関連する過去の動き(直近1週間)</h4>
+      <ul>
+        <li>
+          [2026-04-22] 中国、台湾海峡での軍事演習を拡大 日米が即応体制を強化
+(<a href="https://example.com/news/taiwan-strait-drills" target="_blank" rel="noopener">原文</a>)        </li>
+        <li>
+          [2026-04-22] NATO、東欧諸国への追加配備を協議 ロシアの動向を警戒
+(<a href="https://example.com/news/nato-east-europe" target="_blank" rel="noopener">原文</a>)        </li>
+        <li>
+          [2026-04-21] 日韓首脳会談、サイバー防衛で初の定例協議枠組みに合意
+        </li>
+        <li>
+          [2026-04-21] フィリピン、米軍艦寄港拠点を3カ所追加
+        </li>
+        <li>
+          [2026-04-21] ロシア、シベリア極東でロ朝合同軍事演習を発表
+        </li>
+      </ul>
+    </div>
+  </article>
+  <article class="importance-mid" id="region-middle_east">
+    <h2>
+      パナマ運河の通航権落札額が約3倍に急騰
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">middle_east</span><span class="region-tag">americas</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260424/k10015107851000.html" target="_blank" rel="noopener">原文</a>) / 2026-04-24 21:29    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>ホルムズ海峡の事実上の封鎖が続く中、中米の海上輸送の要衝であるパナマ運河の優先通航権の平均落札価格が、米国・イスラエルによるイラン攻撃前と比べて約3倍に跳ね上がりました。アジアの石油精製業者が中東産原油の代替として米国産原油の輸入を拡大しており、パナマ運河を通航する船舶が急増していることが背景にあります。エネルギー供給網の重心が中東から米州へシフトしつつある動きを象徴する事象です。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>4月20日にはイランが英タンカーをホルムズ海峡で一時拿捕、海運会社は中東原油輸送路の一部を回避し保険料も急騰していました。米・イスラエルによるイラン攻撃を契機にホルムズ海峡が事実上封鎖され、アジアの精製業者は原油調達先を米国に切り替え、その輸送ルートとしてパナマ運河の需要が急騰しています。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>ホルムズ海峡封鎖の影響がパナマ運河の通航権価格を約3倍に押し上げた</li><li>アジアの精製業者は中東産原油から米国産原油へシフトしている</li><li>日本のエネルギー安全保障にも波及する世界的な供給網再編の兆し</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title パナマ運河の通航権落札額が約3倍に急騰 — 経緯
+  攻撃開始前 : パナマ運河の優先通航権の平均落札価格は通常水準
+  直近 : 米・イスラエルによるイラン攻撃でホルムズ海峡が事実上封鎖
+  2026-04-20 : イランがホルムズ海峡で英タンカーを一時拿捕
+  2026-04-22 : 海運会社が中東原油輸送路の一部を回避、保険料が急騰
+  2026-04-24 : パナマ運河の優先通航権の平均落札価格が攻撃前の約3倍に</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["パナマ運河の通航権落札額が約3倍に急騰"]
+  A0["パナマ運河庁\n(国家機関)"]
+  A0 -- 中立 --> T
+  style A0 fill:#616161,color:#fff,stroke:#333
+  A1["イラン\n(国家)"]
+  A1 -- その他 --> T
+  style A1 fill:#1565c0,color:#fff,stroke:#333
+  A2["米国\n(国家)"]
+  A2 -- 推進 --> T
+  style A2 fill:#2e7d32,color:#fff,stroke:#333
+  A3["イスラエル\n(国家)"]
+  A3 -- 推進 --> T
+  style A3 fill:#2e7d32,color:#fff,stroke:#333
+  A4["アジアの石油精製業者\n(企業)"]
+  A4 -- 被害 --> T
+  style A4 fill:#ef6c00,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["エネルギー"]
+  I0["原油の調達ルートが中東から米州へシフトし、供給構造の再編が進行。\n(重大度: 高)"]
+  R --> D0 --> I0
+  style I0 fill:#c62828,color:#fff,stroke:#333
+  D1["経済"]
+  I1["通航権価格の高騰と輸送距離の延長により、輸送コスト・原油価格が押し上げられる。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["安全保障"]
+  I2["日本を含むアジア諸国のエネルギー安全保障に直接的影響。中東依存度の見直しが迫られる。\n(重大度: 高)"]
+  R --> D2 --> I2
+  style I2 fill:#c62828,color:#fff,stroke:#333
+  D3["外交"]
+  I3["パナマ運河の戦略的重要性が再認識され、運河を巡る大国間の関心が高まる。\n(重大度: 中)"]
+  R --> D3 --> I3
+  style I3 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["パナマ運河庁"]
+  N1["イラン"]
+  N2["米国"]
+  N3["イスラエル"]
+  N4["アジアの石油精製業者"]
+  N2 -->|対立| N1
+  N3 -->|対立| N1
+  N2 -->|同盟| N3
+  N4 -->|依存| N2
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#c62828,stroke-width:3px;
+  linkStyle 2 stroke:#1565c0,stroke-width:3px;
+  linkStyle 3 stroke:#00838f,stroke-width:2px,stroke-dasharray:2 2;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((パナマ運河の通航権落札額が約3倍に急騰))
+    ホルムズ海峡封鎖の影響がパナマ運河の通航権価格を約3倍に押し上げた
+    アジアの精製業者は中東産原油から米国産原油へシフトしている
+    日本のエネルギー安全保障にも波及する世界的な供給網再編の兆し</pre>
+    </div>
+
+
+    <div class="related-past">
+      <h4>🔗 関連する過去の動き(直近1週間)</h4>
+      <ul>
+        <li>
+          [2026-04-22] 中東原油輸送路で海運会社が一部航路を回避 保険料が急騰
+(<a href="https://example.com/news/strait-of-hormuz-shipping" target="_blank" rel="noopener">原文</a>)        </li>
+        <li>
+          [2026-04-20] イラン、ホルムズ海峡で英タンカー一時拿捕
+        </li>
+        <li>
+          [2026-04-19] イスラエル軍、ガザ南部ラファで再進攻
+        </li>
+        <li>
+          [2026-04-18] 中国、米半導体輸出管理に対抗しレアアース追加規制
+        </li>
+      </ul>
+    </div>
+  </article>
+
+
+  <footer>地政学ニュース図解ジェネレータ &mdash; Powered by Claude</footer>
+
+  <div class="modal-backdrop" id="diagram-modal" role="dialog" aria-modal="true">
+    <div class="modal-body">
+      <button type="button" class="close-btn" aria-label="閉じる">×</button>
+      <div class="modal-slot"></div>
+    </div>
+  </div>
+</body>
+</html>
