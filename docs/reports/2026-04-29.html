@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>地政学ニュース図解レポート 2026-04-29 号</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root {
+      --fg: #111;
+      --muted: #666;
+      --line: #e5e5e5;
+      --accent: #1e3a8a;
+      --bg-subtle: #fafafa;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      color: var(--fg);
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    header {
+      border-bottom: 3px solid var(--accent);
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.4;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    article {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      margin: 40px 0;
+      background: #fff;
+    }
+    article h2 {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 24px;
+      line-height: 1.4;
+    }
+    article h3 {
+      font-size: 18px;
+      margin: 32px 0 12px;
+      border-left: 4px solid var(--accent);
+      padding-left: 12px;
+      line-height: 1.5;
+    }
+    article p {
+      margin: 12px 0;
+      font-size: 16px;
+    }
+    .src {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .src a { color: var(--muted); }
+    .section { margin: 32px 0; }
+    ul.key {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+    ul.key li {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+    ul.refs {
+      padding-left: 24px;
+      font-size: 15px;
+      margin: 12px 0;
+    }
+    ul.refs li { margin: 8px 0; }
+    ul.refs .note { color: var(--muted); }
+
+    .diagram {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      background: var(--bg-subtle);
+      margin: 32px 0;
+    }
+    .diagram .head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 16px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+    .diagram h4 {
+      margin: 0;
+      font-size: 15px;
+      color: var(--accent);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .diagram .expand-btn {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: var(--accent);
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .diagram .expand-btn:hover { background: var(--accent); color: #fff; }
+    .diagram .mermaid {
+      min-height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .diagram .mermaid svg {
+      max-width: 100%;
+      height: auto !important;
+    }
+
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      padding: 20px;
+      overflow: auto;
+    }
+    .modal-backdrop.open { display: flex; align-items: center; justify-content: center; }
+    .modal-body {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 24px;
+      max-width: 95vw;
+      max-height: 95vh;
+      overflow: auto;
+      position: relative;
+    }
+    .modal-body .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      border: none;
+      background: transparent;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    .modal-body svg {
+      width: 100%;
+      height: auto;
+      min-width: 800px;
+      min-height: 400px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 32px 0;
+    }
+    .grid .diagram { margin: 0; }
+    @media (max-width: 820px) {
+      body { padding: 20px 16px 48px; font-size: 15px; }
+      h1 { font-size: 24px; }
+      article { padding: 20px 16px; margin: 28px 0; }
+      article h2 { font-size: 20px; }
+      article h3 { font-size: 16px; }
+      .grid { grid-template-columns: 1fr; gap: 20px; }
+      .diagram { padding: 16px 12px; margin: 24px 0; }
+      .diagram .mermaid { min-height: 300px; }
+      .modal-body svg { min-width: 0; }
+    }
+    .importance-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .importance-high { background: #c62828; color: #fff; }
+    .importance-mid  { background: #f9a825; color: #fff; }
+    .importance-low  { background: #9e9e9e; color: #fff; }
+
+    article.importance-high { border-left: 6px solid #c62828; background: #fff9f9; }
+    article.importance-mid  { border-left: 6px solid #f9a825; }
+    article.importance-low  { border-left: 6px solid #bdbdbd; }
+
+    .today-summary {
+      background: #fff9e6;
+      border: 2px solid #f9a825;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .today-summary h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #b7791f;
+    }
+    .today-summary ul { margin: 0; padding-left: 20px; }
+    .today-summary li { margin: 6px 0; font-size: 16px; }
+
+    .region-tag {
+      display: inline-block;
+      font-size: 12px;
+      background: #e3f2fd;
+      color: #1565c0;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-right: 4px;
+    }
+
+    .weekly-context {
+      background: #f0f7ff;
+      border: 2px solid #1565c0;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .weekly-context h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #1565c0;
+    }
+    .weekly-context ul { margin: 0; padding-left: 20px; }
+    .weekly-context li { margin: 4px 0; font-size: 15px; color: var(--fg); }
+
+    .region-nav {
+      background: #fafafa;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+    .region-nav strong { color: var(--accent); }
+    .region-nav a {
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 14px;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      padding: 2px 10px;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .region-nav a:hover { background: var(--accent); color: #fff; }
+
+    .related-past {
+      background: #fafafa;
+      border-left: 3px solid var(--muted);
+      padding: 12px 16px;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+    .related-past h4 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .related-past ul { margin: 0; padding-left: 20px; }
+    .related-past li { margin: 4px 0; }
+
+    details.low-importance-group {
+      margin: 40px 0;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #fafafa;
+    }
+    details.low-importance-group summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    details.low-importance-group ul { margin: 12px 0 0; padding-left: 20px; }
+    details.low-importance-group li { margin: 4px 0; font-size: 14px; color: var(--fg); }
+
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 48px;
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+  </style>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "default",
+      fontFamily: '-apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif',
+      fontSize: 16,
+      flowchart: { useMaxWidth: true, htmlLabels: true, curve: "basis" },
+      timeline: { useMaxWidth: true },
+      mindmap: { useMaxWidth: true }
+    });
+    await mermaid.run();
+
+    const backdrop = document.getElementById("diagram-modal");
+    const modalBody = backdrop.querySelector(".modal-body");
+    const modalSlot = backdrop.querySelector(".modal-slot");
+    const closeBtn = backdrop.querySelector(".close-btn");
+
+    document.querySelectorAll(".expand-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const diagram = btn.closest(".diagram");
+        const svg = diagram.querySelector("svg");
+        if (!svg) return;
+        modalSlot.innerHTML = "";
+        modalSlot.appendChild(svg.cloneNode(true));
+        backdrop.classList.add("open");
+      });
+    });
+
+    const close = () => backdrop.classList.remove("open");
+    closeBtn.addEventListener("click", close);
+    backdrop.addEventListener("click", e => { if (e.target === backdrop) close(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>地政学ニュース図解レポート 2026-04-29 号</h1>
+    <div class="meta">生成日時: 2026-04-29 07:55 / 記事数: 5</div>
+  </header>
+
+
+  <section class="today-summary">
+    <h2>📌 本日の要点</h2>
+    <ul>
+      <li><strong>世銀、エネルギー価格24%上昇予測</strong> — 世界銀行は、2026年のエネルギー価格が前年比でおよそ24%上昇するとの見通しを示した。</li>
+    </ul>
+  </section>
+
+  <section class="weekly-context">
+    <h2>🗓 今週の文脈</h2>
+    <ul>
+      <li>[2026-04-22] 中国、台湾海峡での軍事演習を拡大 日米が即応体制を強化 <em style="color:#666;">(east_asia, southeast_asia)</em></li>
+      <li>[2026-04-22] NATO、東欧諸国への追加配備を協議 ロシアの動向を警戒 <em style="color:#666;">(europe)</em></li>
+    </ul>
+    <p style="margin:12px 0 0;font-size:14px;color:#666;">過去1週間で追跡した主要な動きです。本日のニュースが連続的な流れの中でどう位置づくかを参照してください。</p>
+  </section>
+
+  <nav class="region-nav">
+    <strong>地域別ジャンプ:</strong>
+    <a href="#region-middle_east">middle_east (4)</a>
+    <a href="#region-global">global (2)</a>
+    <a href="#region-europe">europe (2)</a>
+  </nav>
+
+  <article class="importance-high" id="region-middle_east">
+    <h2>
+      世銀、エネルギー価格24%上昇予測
+      <span class="importance-badge importance-high">重要度: 高</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">middle_east</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260429/k10015110721000.html" target="_blank" rel="noopener">原文</a>) / 2026-04-29 06:37    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>世界銀行は、2026年のエネルギー価格が前年比でおよそ24%上昇するとの見通しを示した。これはロシアによるウクライナ侵攻以降で最も高い水準となる。価格高騰の主因はイラン情勢の緊迫化であり、中東産原油・ガスへの依存度が高い世界経済に大きな影響を与える可能性がある。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>イラン核問題を巡る米欧との対立に加え、イランが支援する「抵抗の枢軸」とイスラエルの衝突が続き、中東のエネルギー供給網への懸念が高まっている。過去1週間にも中東原油輸送路で海運会社が一部航路を回避し保険料が急騰しており、今回の世銀見通しは市場の不安を裏付ける形となった。ホルムズ海峡や紅海の航行安全が揺らげば、世界のエネルギー価格はさらに上振れするリスクがある。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>世銀は2026年のエネルギー価格が前年比約24%上昇、ウクライナ侵攻後で最高水準に達すると予測</li><li>主因はイラン情勢の緊迫化と、ホルムズ海峡・紅海など輸送路リスクの増大</li><li>中東依存度が高い日本は燃料・電気料金などインフレ圧力に直撃される恐れ</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title 世銀、エネルギー価格24%上昇予測 — 経緯
+  2022-02-24 : ロシアのウクライナ侵攻でエネルギー価格が高騰
+  2024 : イスラエル・イラン間で直接攻撃の応酬、地域緊張が拡大
+  2026-04-22 : 中東原油輸送路で海運会社が一部航路を回避、保険料急騰
+  2026-04-29 : 世銀、2026年のエネルギー価格は前年比約24%上昇との見通し公表</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["世銀、エネルギー価格24%上昇予測"]
+  A0["世界銀行\n(国際機関)"]
+  A0 -- 中立 --> T
+  style A0 fill:#616161,color:#fff,stroke:#333
+  A1["イラン\n(国家)"]
+  A1 -- その他 --> T
+  style A1 fill:#1565c0,color:#fff,stroke:#333
+  A2["日本\n(国家)"]
+  A2 -- 被害 --> T
+  style A2 fill:#ef6c00,color:#fff,stroke:#333
+  A3["産油国(OPEC+)\n(国家グループ)"]
+  A3 -- その他 --> T
+  style A3 fill:#1565c0,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["経済"]
+  I0["世界的なインフレ再燃と各国中央銀行の金融政策運営の難化。\n(重大度: 高)"]
+  R --> D0 --> I0
+  style I0 fill:#c62828,color:#fff,stroke:#333
+  D1["エネルギー"]
+  I1["原油の約9割を中東に依存する日本にとって調達コストが直撃し、電気・ガス料金や物価に波及。\n(重大度: 高)"]
+  R --> D1 --> I1
+  style I1 fill:#c62828,color:#fff,stroke:#333
+  D2["外交"]
+  I2["産油国・消費国間の調整圧力が高まり、対イラン外交の比重が増す。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["世界銀行"]
+  N1["イラン"]
+  N2["日本"]
+  N3["産油国(OPEC+)"]
+  N1 -->|交渉| N3
+  N2 -->|依存| N1
+  N0 -->|中立| N1
+  linkStyle 0 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 1 stroke:#00838f,stroke-width:2px,stroke-dasharray:2 2;
+  linkStyle 2 stroke:#1565c0,stroke-width:2px;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((世銀、エネルギー価格24%上昇予測))
+    世銀は2026年のエネルギー価格が前年比約24%上昇、ウクライナ侵攻後で最高水準に達すると予測
+    主因はイラン情勢の緊迫化と、ホルムズ海峡・紅海など輸送路リスクの増大
+    中東依存度が高い日本は燃料・電気料金などインフレ圧力に直撃される恐れ</pre>
+    </div>
+
+
+    <div class="related-past">
+      <h4>🔗 関連する過去の動き(直近1週間)</h4>
+      <ul>
+        <li>
+          [2026-04-22] 中東原油輸送路で海運会社が一部航路を回避 保険料が急騰
+(<a href="https://example.com/news/strait-of-hormuz-shipping" target="_blank" rel="noopener">原文</a>)        </li>
+      </ul>
+    </div>
+  </article>
+  <article class="importance-mid" id="region-europe">
+    <h2>
+      ゼレンスキー氏、占領地穀物巡りイスラエル批判
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">europe</span><span class="region-tag">middle_east</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260429/k10015110711000.html" target="_blank" rel="noopener">原文</a>) / 2026-04-29 06:36    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>ウクライナのゼレンスキー大統領は28日、ロシアの占領下にあるウクライナ領で収穫された穀物を積んだ船がイスラエルの港に到着したと指摘した。同氏はイスラエル政府がこの取引を容認する姿勢を示しているとして強く批判した。これに対しイスラエル政府は事実関係を調査するとしている。占領地からの収奪資源の流通は、ロシアの戦時資金源となる懸念があり、国際的な制裁網の実効性が問われる事態となっている。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>ロシアによるウクライナ侵攻以降、占領地で収穫された穀物が第三国に輸出されることへの批判が続いている。過去1週間にはNATOが東欧諸国への追加配備を協議するなど対露警戒が高まっており、本件は欧州正面の緊張に加え、中東を巻き込む形で支援国・中立国の足並みの乱れを浮き彫りにする。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>占領地で収穫された穀物の第三国流通が再び国際問題化</li><li>ウクライナがイスラエルを名指しで批判し、両国関係に緊張</li><li>イスラエルは調査を表明、対応次第で対露制裁網の実効性に影響</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title ゼレンスキー氏、占領地穀物巡りイスラエル批判 — 経緯
+  2022年以降 : ロシア占領地での穀物収奪・第三国輸出が国際問題化
+  2026-04-22 : NATOが東欧追加配備を協議、対露警戒強まる
+  2026-04-28 : 占領地産穀物積載船がイスラエル港に到着
+  2026-04-28 : ゼレンスキー大統領がイスラエルを公に批判
+  2026-04-28 : イスラエル政府が事実関係の調査を表明</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["ゼレンスキー氏、占領地穀物巡りイスラエル批判"]
+  A0["ウクライナ\n(国家)"]
+  A0 -- 被害 --> T
+  style A0 fill:#ef6c00,color:#fff,stroke:#333
+  A1["ゼレンスキー大統領\n(国家指導者)"]
+  A1 -- 反対 --> T
+  style A1 fill:#c62828,color:#fff,stroke:#333
+  A2["イスラエル\n(国家)"]
+  A2 -- 中立 --> T
+  style A2 fill:#616161,color:#fff,stroke:#333
+  A3["ロシア\n(国家)"]
+  A3 -- 推進 --> T
+  style A3 fill:#2e7d32,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["外交"]
+  I0["ウクライナ・イスラエル関係の悪化と、対露制裁網への影響\n(重大度: 中)"]
+  R --> D0 --> I0
+  style I0 fill:#ef6c00,color:#fff,stroke:#333
+  D1["経済"]
+  I1["占領地産農産物の流通が黙認されればロシアの戦費調達に寄与する可能性\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["安全保障"]
+  I2["支援国の足並みの乱れが、ウクライナの戦況維持に間接的な影響を与える\n(重大度: 低)"]
+  R --> D2 --> I2
+  style I2 fill:#2e7d32,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["ウクライナ"]
+  N1["ゼレンスキー大統領"]
+  N2["イスラエル"]
+  N3["ロシア"]
+  N0 -->|対立| N3
+  N0 -->|緊張| N2
+  N2 -->|中立| N3
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#ef6c00,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 2 stroke:#1565c0,stroke-width:2px;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((ゼレンスキー氏、占領地穀物巡りイスラエル批判))
+    占領地で収穫された穀物の第三国流通が再び国際問題化
+    ウクライナがイスラエルを名指しで批判し、両国関係に緊張
+    イスラエルは調査を表明、対応次第で対露制裁網の実効性に影響</pre>
+    </div>
+
+
+    <div class="related-past">
+      <h4>🔗 関連する過去の動き(直近1週間)</h4>
+      <ul>
+        <li>
+          [2026-04-22] NATO、東欧諸国への追加配備を協議 ロシアの動向を警戒
+(<a href="https://example.com/news/nato-east-europe" target="_blank" rel="noopener">原文</a>)        </li>
+        <li>
+          [2026-04-22] 中東原油輸送路で海運会社が一部航路を回避 保険料が急騰
+(<a href="https://example.com/news/strait-of-hormuz-shipping" target="_blank" rel="noopener">原文</a>)        </li>
+      </ul>
+    </div>
+  </article>
+  <article class="importance-mid" id="region-middle_east">
+    <h2>
+      米軍、イラン向け疑い商船を臨検後解放
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">middle_east</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260429/k10015110751000.html" target="_blank" rel="noopener">原文</a>) / 2026-04-29 06:31    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>アメリカ中央軍は4月28日、アラビア海でイランの港に向かう疑いのある商船に海兵隊員が乗り込み臨検を実施したと発表しました。捜索の結果、イランの港への寄港予定がないことが確認されたため、船は解放されました。中央軍はSNS上で経緯を公表し、対イラン制裁措置の執行強化を誇示する姿勢を示しています。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>第2次トランプ政権はイランへの「最大限の圧力」路線を再強化し、海上での制裁執行を活発化させています。中東では紅海・ホルムズ海峡の安全が懸念され、過去1週間でも海運会社が一部航路を回避し保険料が急騰するなど、海上輸送の不安定化が進む中での今回の臨検です。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>米中央軍がアラビア海でイラン向け疑いの商船を臨検、寄港予定なしと判明し解放</li><li>対イラン「最大限の圧力」路線下で、海上制裁執行が積極化していることを示す事例</li><li>ホルムズ海峡・アラビア海の緊張は日本のエネルギー安全保障に直結するため注視が必要</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title 米軍、イラン向け疑い商船を臨検後解放 — 経緯
+  2018-05 : 米トランプ政権がJCPOAを離脱、対イラン制裁を復活
+  2024 : 紅海・アラビア海でフーシ等による商船攻撃が頻発、海上安全悪化
+  2026-04-22 : 中東原油輸送路で海運会社が航路回避、保険料急騰
+  2026-04-28 : 米中央軍がアラビア海で商船に臨検、寄港予定なしと確認し解放</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["米軍、イラン向け疑い商船を臨検後解放"]
+  A0["アメリカ中央軍(CENTCOM)\n(国家(軍))"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["アメリカ海兵隊\n(国家(軍))"]
+  A1 -- 推進 --> T
+  style A1 fill:#2e7d32,color:#fff,stroke:#333
+  A2["イラン\n(国家)"]
+  A2 -- 被害 --> T
+  style A2 fill:#ef6c00,color:#fff,stroke:#333
+  A3["対象商船\n(民間(商船))"]
+  A3 -- 中立 --> T
+  style A3 fill:#616161,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["安全保障"]
+  I0["米軍の対イラン海上封鎖的措置が常態化し、地域の軍事的緊張が高まる可能性。\n(重大度: 中)"]
+  R --> D0 --> I0
+  style I0 fill:#ef6c00,color:#fff,stroke:#333
+  D1["経済"]
+  I1["アラビア海経由の海運に追加リスクが加わり、保険料や運航コストへ波及する可能性。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["エネルギー"]
+  I2["ホルムズ海峡周辺で米イラン緊張が高まれば、日本の原油・LNG輸送に影響。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  D3["外交"]
+  I3["米国による単独的な海上臨検はイランの強い反発を招き、核問題交渉の停滞要因となる。\n(重大度: 中)"]
+  R --> D3 --> I3
+  style I3 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["アメリカ中央軍(CENTCOM)"]
+  N1["アメリカ海兵隊"]
+  N2["イラン"]
+  N3["対象商船"]
+  N0 -->|対立| N2
+  N0 -->|支援| N1
+  N0 -->|緊張| N3
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#2e7d32,stroke-width:2px;
+  linkStyle 2 stroke:#ef6c00,stroke-width:2px,stroke-dasharray:4 2;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((米軍、イラン向け疑い商船を臨検後解放))
+    米中央軍がアラビア海でイラン向け疑いの商船を臨検、寄港予定なしと判明し解放
+    対イラン「最大限の圧力」路線下で、海上制裁執行が積極化していることを示す事例
+    ホルムズ海峡・アラビア海の緊張は日本のエネルギー安全保障に直結するため注視が必要</pre>
+    </div>
+
+
+    <div class="related-past">
+      <h4>🔗 関連する過去の動き(直近1週間)</h4>
+      <ul>
+        <li>
+          [2026-04-22] 中東原油輸送路で海運会社が一部航路を回避 保険料が急騰
+(<a href="https://example.com/news/strait-of-hormuz-shipping" target="_blank" rel="noopener">原文</a>)        </li>
+      </ul>
+    </div>
+  </article>
+  <article class="importance-mid" id="region-middle_east">
+    <h2>
+      高市首相、エジプト大統領と中東沈静化で連携
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">middle_east</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260428/k10015110611000.html" target="_blank" rel="noopener">原文</a>) / 2026-04-28 21:30    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>高市総理大臣はエジプトのシシ大統領と電話会談を行い、中東情勢の早期沈静化に向けた外交努力を続ける考えを伝えた。両首脳はホルムズ海峡の航行安全確保を含め、連携を強化することで一致した。日本のエネルギー安全保障に直結するホルムズ海峡の安定が焦点となっている。地域の調停役を担うエジプトとの協調を通じ、日本は外交面での関与を強める姿勢を示した。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>過去1週間で中東原油輸送路の不安定化を受け海運会社が航路回避や保険料急騰に見舞われており、ホルムズ海峡を含む中東の航行安全への懸念が高まっている。日本は原油の約9割、LNGの約4割を中東に依存しており、ホルムズ海峡の安定は死活的な利益。エジプトはガザ停戦交渉の主要仲介国であり、日本は調停力を持つ同国との連携で外交的影響力を確保しようとしている。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>高市首相がシシ大統領と電話会談し、中東情勢の早期沈静化で連携強化</li><li>ホルムズ海峡の航行安全確保が日本のエネルギー安保上の最重要課題</li><li>ガザ停戦の主要仲介国エジプトとの協調で日本の外交関与を強める</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title 高市首相、エジプト大統領と中東沈静化で連携 — 経緯
+  2026-04-22 : 中東原油輸送路で海運会社が航路回避、保険料急騰
+  2026-04-28 : 高市首相とシシ大統領が電話会談、連携強化で一致</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["高市首相、エジプト大統領と中東沈静化で連携"]
+  A0["高市首相(日本)\n(国家)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["シシ大統領(エジプト)\n(国家)"]
+  A1 -- 推進 --> T
+  style A1 fill:#2e7d32,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["エネルギー"]
+  I0["ホルムズ海峡の安定確保は日本の原油・LNG供給に直結する。\n(重大度: 高)"]
+  R --> D0 --> I0
+  style I0 fill:#c62828,color:#fff,stroke:#333
+  D1["外交"]
+  I1["中東調停力を持つエジプトとの連携で日本の外交的関与が強化される。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["経済"]
+  I2["海運リスク低減により保険料高騰やサプライチェーン混乱の緩和が期待される。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["高市首相(日本)"]
+  N1["シシ大統領(エジプト)"]
+  N0 -->|交渉| N1
+  linkStyle 0 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((高市首相、エジプト大統領と中東沈静化で連携))
+    高市首相がシシ大統領と電話会談し、中東情勢の早期沈静化で連携強化
+    ホルムズ海峡の航行安全確保が日本のエネルギー安保上の最重要課題
+    ガザ停戦の主要仲介国エジプトとの協調で日本の外交関与を強める</pre>
+    </div>
+
+
+    <div class="related-past">
+      <h4>🔗 関連する過去の動き(直近1週間)</h4>
+      <ul>
+        <li>
+          [2026-04-22] 中東原油輸送路で海運会社が一部航路を回避 保険料が急騰
+(<a href="https://example.com/news/strait-of-hormuz-shipping" target="_blank" rel="noopener">原文</a>)        </li>
+      </ul>
+    </div>
+  </article>
+
+  <details class="low-importance-group">
+    <summary>重要度「低」の記事(1本) — 見出しのみ</summary>
+    <ul>
+      <li>
+        <strong>キーウで「サクラ列車」運行開始</strong>
+(<a href="http://www3.nhk.or.jp/news/html/20260429/k10015110741000.html" target="_blank" rel="noopener">原文</a>)        — NHK 国際
+      </li>
+    </ul>
+  </details>
+
+  <footer>地政学ニュース図解ジェネレータ &mdash; Powered by Claude</footer>
+
+  <div class="modal-backdrop" id="diagram-modal" role="dialog" aria-modal="true">
+    <div class="modal-body">
+      <button type="button" class="close-btn" aria-label="閉じる">×</button>
+      <div class="modal-slot"></div>
+    </div>
+  </div>
+</body>
+</html>
