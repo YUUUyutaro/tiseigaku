@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>地政学ニュース図解レポート 2026-05-04 号</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root {
+      --fg: #111;
+      --muted: #666;
+      --line: #e5e5e5;
+      --accent: #1e3a8a;
+      --bg-subtle: #fafafa;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      color: var(--fg);
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    header {
+      border-bottom: 3px solid var(--accent);
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.4;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    article {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      margin: 40px 0;
+      background: #fff;
+    }
+    article h2 {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 24px;
+      line-height: 1.4;
+    }
+    article h3 {
+      font-size: 18px;
+      margin: 32px 0 12px;
+      border-left: 4px solid var(--accent);
+      padding-left: 12px;
+      line-height: 1.5;
+    }
+    article p {
+      margin: 12px 0;
+      font-size: 16px;
+    }
+    .src {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .src a { color: var(--muted); }
+    .section { margin: 32px 0; }
+    ul.key {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+    ul.key li {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+    ul.refs {
+      padding-left: 24px;
+      font-size: 15px;
+      margin: 12px 0;
+    }
+    ul.refs li { margin: 8px 0; }
+    ul.refs .note { color: var(--muted); }
+
+    .diagram {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      background: var(--bg-subtle);
+      margin: 32px 0;
+    }
+    .diagram .head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 16px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+    .diagram h4 {
+      margin: 0;
+      font-size: 15px;
+      color: var(--accent);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .diagram .expand-btn {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: var(--accent);
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .diagram .expand-btn:hover { background: var(--accent); color: #fff; }
+    .diagram .mermaid {
+      min-height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .diagram .mermaid svg {
+      max-width: 100%;
+      height: auto !important;
+    }
+
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      padding: 20px;
+      overflow: auto;
+    }
+    .modal-backdrop.open { display: flex; align-items: center; justify-content: center; }
+    .modal-body {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 24px;
+      max-width: 95vw;
+      max-height: 95vh;
+      overflow: auto;
+      position: relative;
+    }
+    .modal-body .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      border: none;
+      background: transparent;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    .modal-body svg {
+      width: 100%;
+      height: auto;
+      min-width: 800px;
+      min-height: 400px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 32px 0;
+    }
+    .grid .diagram { margin: 0; }
+    @media (max-width: 820px) {
+      body { padding: 20px 16px 48px; font-size: 15px; }
+      h1 { font-size: 24px; }
+      article { padding: 20px 16px; margin: 28px 0; }
+      article h2 { font-size: 20px; }
+      article h3 { font-size: 16px; }
+      .grid { grid-template-columns: 1fr; gap: 20px; }
+      .diagram { padding: 16px 12px; margin: 24px 0; }
+      .diagram .mermaid { min-height: 300px; }
+      .modal-body svg { min-width: 0; }
+    }
+    .importance-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .importance-high { background: #c62828; color: #fff; }
+    .importance-mid  { background: #f9a825; color: #fff; }
+    .importance-low  { background: #9e9e9e; color: #fff; }
+
+    article.importance-high { border-left: 6px solid #c62828; background: #fff9f9; }
+    article.importance-mid  { border-left: 6px solid #f9a825; }
+    article.importance-low  { border-left: 6px solid #bdbdbd; }
+
+    .today-summary {
+      background: #fff9e6;
+      border: 2px solid #f9a825;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .today-summary h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #b7791f;
+    }
+    .today-summary ul { margin: 0; padding-left: 20px; }
+    .today-summary li { margin: 6px 0; font-size: 16px; }
+
+    .region-tag {
+      display: inline-block;
+      font-size: 12px;
+      background: #e3f2fd;
+      color: #1565c0;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-right: 4px;
+    }
+
+    .weekly-context {
+      background: #f0f7ff;
+      border: 2px solid #1565c0;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .weekly-context h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #1565c0;
+    }
+    .weekly-context ul { margin: 0; padding-left: 20px; }
+    .weekly-context li { margin: 4px 0; font-size: 15px; color: var(--fg); }
+
+    .region-nav {
+      background: #fafafa;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+    .region-nav strong { color: var(--accent); }
+    .region-nav a {
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 14px;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      padding: 2px 10px;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .region-nav a:hover { background: var(--accent); color: #fff; }
+
+    .related-past {
+      background: #fafafa;
+      border-left: 3px solid var(--muted);
+      padding: 12px 16px;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+    .related-past h4 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .related-past ul { margin: 0; padding-left: 20px; }
+    .related-past li { margin: 4px 0; }
+
+    details.low-importance-group {
+      margin: 40px 0;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #fafafa;
+    }
+    details.low-importance-group summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    details.low-importance-group ul { margin: 12px 0 0; padding-left: 20px; }
+    details.low-importance-group li { margin: 4px 0; font-size: 14px; color: var(--fg); }
+
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 48px;
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+  </style>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "default",
+      fontFamily: '-apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif',
+      fontSize: 16,
+      flowchart: { useMaxWidth: true, htmlLabels: true, curve: "basis" },
+      timeline: { useMaxWidth: true },
+      mindmap: { useMaxWidth: true }
+    });
+    await mermaid.run();
+
+    const backdrop = document.getElementById("diagram-modal");
+    const modalBody = backdrop.querySelector(".modal-body");
+    const modalSlot = backdrop.querySelector(".modal-slot");
+    const closeBtn = backdrop.querySelector(".close-btn");
+
+    document.querySelectorAll(".expand-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const diagram = btn.closest(".diagram");
+        const svg = diagram.querySelector("svg");
+        if (!svg) return;
+        modalSlot.innerHTML = "";
+        modalSlot.appendChild(svg.cloneNode(true));
+        backdrop.classList.add("open");
+      });
+    });
+
+    const close = () => backdrop.classList.remove("open");
+    closeBtn.addEventListener("click", close);
+    backdrop.addEventListener("click", e => { if (e.target === backdrop) close(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>地政学ニュース図解レポート 2026-05-04 号</h1>
+    <div class="meta">生成日時: 2026-05-04 07:38 / 記事数: 5</div>
+  </header>
+
+
+  <section class="today-summary">
+    <h2>📌 本日の要点</h2>
+    <ul>
+      <li><strong>ロシアのウクライナ侵攻 5月3日の動き</strong> — ロシアによるウクライナ侵攻が継続しており、各地で戦闘が続いている。</li>
+    </ul>
+  </section>
+
+
+  <nav class="region-nav">
+    <strong>地域別ジャンプ:</strong>
+    <a href="#region-europe">europe (2)</a>
+    <a href="#region-global">global (4)</a>
+    <a href="#region-east_asia">east_asia (2)</a>
+    <a href="#region-africa">africa (1)</a>
+    <a href="#region-defense_export">defense_export (1)</a>
+  </nav>
+
+  <article class="importance-high" id="region-europe">
+    <h2>
+      ロシアのウクライナ侵攻 5月3日の動き
+      <span class="importance-badge importance-high">重要度: 高</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">europe</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260504/k10015101761000.html" target="_blank" rel="noopener">原文</a>) / 2026-05-04 05:44    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>ロシアによるウクライナ侵攻が継続しており、各地で戦闘が続いている。多数の市民が国外避難を余儀なくされている。NHKは5月3日(日本時間)のウクライナ情勢に関する戦闘状況や各国の外交動向を随時更新で伝えている。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>2022年2月に開始されたロシアによるウクライナへの軍事侵攻は長期化しており、欧米諸国はウクライナへの軍事・経済支援を続けている。日本もG7の枠組みで対露制裁と対ウクライナ支援に参加している。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>ウクライナ各地でロシア軍との戦闘が継続</li><li>大勢の市民が国外避難を余儀なくされている</li><li>関係各国の外交動向も含めた情勢が進行中</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title ロシアのウクライナ侵攻 5月3日の動き — 経緯
+  2022-02-24 : ロシアがウクライナへの軍事侵攻を開始
+  2026-05-03 : ウクライナ各地で戦闘継続、市民の国外避難続く</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["ロシアのウクライナ侵攻 5月3日の動き"]
+  A0["ロシア\n(国家)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["ウクライナ\n(国家)"]
+  A1 -- 被害 --> T
+  style A1 fill:#ef6c00,color:#fff,stroke:#333
+  A2["ウクライナ市民\n(非国家主体)"]
+  A2 -- 被害 --> T
+  style A2 fill:#ef6c00,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["安全保障"]
+  I0["欧州の安全保障秩序に対する継続的な脅威となっている。\n(重大度: 高)"]
+  R --> D0 --> I0
+  style I0 fill:#c62828,color:#fff,stroke:#333
+  D1["外交"]
+  I1["関係各国の外交交渉が活発化し、国際社会の対応が問われている。\n(重大度: 高)"]
+  R --> D1 --> I1
+  style I1 fill:#c62828,color:#fff,stroke:#333
+  D2["経済"]
+  I2["戦争長期化により世界のエネルギー・食糧市場への影響が継続。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["ロシア"]
+  N1["ウクライナ"]
+  N2["ウクライナ市民"]
+  N0 -->|対立| N1
+  linkStyle 0 stroke:#c62828,stroke-width:3px;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((ロシアのウクライナ侵攻 5月3日の動き))
+    ウクライナ各地でロシア軍との戦闘が継続
+    大勢の市民が国外避難を余儀なくされている
+    関係各国の外交動向も含めた情勢が進行中</pre>
+    </div>
+
+
+  </article>
+  <article class="importance-mid" id="region-east_asia">
+    <h2>
+      日豪首脳会談 経済安保で共同宣言へ
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">east_asia</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260504/k10015114111000.html" target="_blank" rel="noopener">原文</a>) / 2026-05-04 06:01    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>オーストラリアを訪問中の高市総理大臣は5月4日、アルバニージー首相と首脳会談を行う。会談ではエネルギーや食料などのサプライチェーン強化に向けた連携を柱に、経済安全保障協力の指針となる共同宣言をまとめる見通し。日豪両国はインド太平洋地域の安定に向けて関係を深めており、経済安保分野での協力深化を打ち出すことで、対中依存リスクの低減や戦略的自律性の確保を目指す。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>日本とオーストラリアは2022年に新たな安保共同宣言を締結し、準同盟関係と称される協力を進めてきた。資源・エネルギーで豪州に依存する日本にとって、サプライチェーンの安定確保は経済安全保障の中核課題となっている。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>高市総理がアルバニージー豪首相と首脳会談を実施</li><li>エネルギー・食料など経済安保分野の共同宣言が焦点</li><li>サプライチェーン強化を通じた対中依存リスク低減の動き</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title 日豪首脳会談 経済安保で共同宣言へ — 経緯
+  2022-10-22 : 日豪安全保障協力に関する新共同宣言に署名
+  2026-05-03 : 高市総理がオーストラリア訪問を開始
+  2026-05-04 : 日豪首脳会談で経済安保共同宣言をまとめる見通し</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["日豪首脳会談 経済安保で共同宣言へ"]
+  A0["日本(高市政権)\n(国家)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["オーストラリア(アルバニージー政権)\n(国家)"]
+  A1 -- 推進 --> T
+  style A1 fill:#2e7d32,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["経済"]
+  I0["重要鉱物・LNG・食料など対豪サプライチェーンの強靱化が進む。\n(重大度: 中)"]
+  R --> D0 --> I0
+  style I0 fill:#ef6c00,color:#fff,stroke:#333
+  D1["安全保障"]
+  I1["インド太平洋における準同盟国としての日豪連携が経済分野にも拡大。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["エネルギー"]
+  I2["LNGや重要鉱物の安定確保に向けた制度的枠組みが期待される。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  D3["外交"]
+  I3["対中依存低減を志向する有志国連携の強化につながる。\n(重大度: 中)"]
+  R --> D3 --> I3
+  style I3 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["日本(高市政権)"]
+  N1["オーストラリア(アルバニージー政権)"]
+  N0 -->|同盟| N1
+  linkStyle 0 stroke:#1565c0,stroke-width:3px;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((日豪首脳会談 経済安保で共同宣言へ))
+    高市総理がアルバニージー豪首相と首脳会談を実施
+    エネルギー・食料など経済安保分野の共同宣言が焦点
+    サプライチェーン強化を通じた対中依存リスク低減の動き</pre>
+    </div>
+
+
+  </article>
+  <article class="importance-mid" id="region-east_asia">
+    <h2>
+      自民・小林氏、印与党と経済安保協力で一致
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">east_asia</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260504/k10015114131000.html" target="_blank" rel="noopener">原文</a>) / 2026-05-04 05:01    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>自民党の小林政務調査会長は訪問先のインドで、与党インド人民党(BJP)のナビン総裁と会談しました。両党は政党間交流を一層深めることで一致しました。さらに、エネルギーや半導体といった経済安全保障分野での日印協力を、双方の与党として後押ししていく方針を確認しました。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>日本とインドは「特別戦略的グローバル・パートナーシップ」のもと、中国の影響力拡大やサプライチェーン再編を背景に経済安全保障協力を強化してきた。半導体・重要鉱物・エネルギー分野での連携は、QUADの枠組みとも連動して進められている。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>自民党とインド与党BJPが党レベルで経済安保協力を後押しする方針を確認</li><li>協力分野はエネルギーと半導体など戦略物資が中心</li><li>政府間に加え与党間チャンネルを通じた日印関係強化の動き</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title 自民・小林氏、印与党と経済安保協力で一致 — 経緯
+  2026-05-04 : 小林政調会長がインドでBJPナビン総裁と会談、経済安保協力で一致</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["自民・小林氏、印与党と経済安保協力で一致"]
+  A0["小林鷹之(自民党政調会長)\n(国家(与党幹部))"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["自民党\n(政党)"]
+  A1 -- 推進 --> T
+  style A1 fill:#2e7d32,color:#fff,stroke:#333
+  A2["インド人民党(BJP)\n(政党)"]
+  A2 -- 推進 --> T
+  style A2 fill:#2e7d32,color:#fff,stroke:#333
+  A3["ナビン総裁\n(政党幹部)"]
+  A3 -- 推進 --> T
+  style A3 fill:#2e7d32,color:#fff,stroke:#333
+  A4["日本政府\n(国家)"]
+  A4 -- 推進 --> T
+  style A4 fill:#2e7d32,color:#fff,stroke:#333
+  A5["インド政府\n(国家)"]
+  A5 -- 推進 --> T
+  style A5 fill:#2e7d32,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["経済"]
+  I0["半導体・エネルギー分野での日印産業連携が加速する可能性。\n(重大度: 中)"]
+  R --> D0 --> I0
+  style I0 fill:#ef6c00,color:#fff,stroke:#333
+  D1["安全保障"]
+  I1["中国依存リスクの低減と、インド太平洋におけるサプライチェーン強靭化に寄与。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["外交"]
+  I2["与党間チャンネルを通じた日印関係の重層化が進む。\n(重大度: 低)"]
+  R --> D2 --> I2
+  style I2 fill:#2e7d32,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["小林鷹之(自民党政調会長)"]
+  N1["自民党"]
+  N2["インド人民党(BJP)"]
+  N3["ナビン総裁"]
+  N4["日本政府"]
+  N5["インド政府"]
+  N1 -->|交渉| N2
+  N4 -->|支援| N5
+  linkStyle 0 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 1 stroke:#2e7d32,stroke-width:2px;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((自民・小林氏、印与党と経済安保協力で一致))
+    自民党とインド与党BJPが党レベルで経済安保協力を後押しする方針を確認
+    協力分野はエネルギーと半導体など戦略物資が中心
+    政府間に加え与党間チャンネルを通じた日印関係強化の動き</pre>
+    </div>
+
+
+  </article>
+  <article class="importance-mid" id="region-europe">
+    <h2>
+      ウクライナ、ロシアの影の船団を攻撃
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">europe</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260504/k10015114241000.html" target="_blank" rel="noopener">原文</a>) / 2026-05-04 04:59    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>ウクライナのゼレンスキー大統領は、ロシア産石油を運ぶいわゆる「影の船団」とみられるタンカーをロシア南部の港付近で攻撃したと発表した。ウクライナは製油所などエネルギー関連施設への攻撃も増加させている。これらは、ロシアの戦闘継続能力を削ぐための経済・エネルギー打撃作戦の一環と位置付けられる。攻撃の拡大はロシアの石油輸出収入と国際海運に影響を及ぼす可能性がある。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>ロシアは欧米の制裁と価格上限を回避するため、所有・保険関係が不透明な「影の船団」を活用して原油輸出を継続してきた。ウクライナはここ数か月、ドローンや無人艇を用いてロシア領内の製油所や港湾施設への攻撃を強化している。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>ウクライナがロシアの「影の船団」タンカーを直接攻撃したと公表</li><li>製油所などエネルギー施設への攻撃も同時に強化</li><li>ロシアの戦争継続能力を経済・エネルギー面から削ぐ戦略</li><li>国際原油市場や海上保険、海洋環境への波及リスク</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title ウクライナ、ロシアの影の船団を攻撃 — 経緯
+  数か月前 : ウクライナがロシア国内の製油所への攻撃を本格化
+  直近 : エネルギー施設への攻撃頻度がさらに増加
+  2026-05-03頃 : ロシア南部の港付近で影の船団とみられるタンカーを攻撃
+  2026-05-04 : ゼレンスキー大統領がタンカー攻撃を公表</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["ウクライナ、ロシアの影の船団を攻撃"]
+  A0["ウクライナ\n(国家)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["ゼレンスキー大統領\n(国家(指導者))"]
+  A1 -- 推進 --> T
+  style A1 fill:#2e7d32,color:#fff,stroke:#333
+  A2["ロシア\n(国家)"]
+  A2 -- 被害 --> T
+  style A2 fill:#ef6c00,color:#fff,stroke:#333
+  A3["影の船団(運航事業者)\n(非国家主体)"]
+  A3 -- 被害 --> T
+  style A3 fill:#ef6c00,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["エネルギー"]
+  I0["ロシアの石油輸出ルートが圧迫され、輸出量や収入に影響が出る可能性。\n(重大度: 中)"]
+  R --> D0 --> I0
+  style I0 fill:#ef6c00,color:#fff,stroke:#333
+  D1["安全保障"]
+  I1["ウクライナの長距離攻撃能力の向上が示され、戦線が後方インフラへ拡大。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["経済"]
+  I2["国際原油市場や海上保険料に上昇圧力がかかる可能性。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  D3["外交"]
+  I3["影の船団を巡る欧米の規制強化議論を後押しする可能性。\n(重大度: 低)"]
+  R --> D3 --> I3
+  style I3 fill:#2e7d32,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["ウクライナ"]
+  N1["ゼレンスキー大統領"]
+  N2["ロシア"]
+  N3["影の船団(運航事業者)"]
+  N0 -->|対立| N2
+  N1 -->|支援| N0
+  N2 -->|依存| N3
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#2e7d32,stroke-width:2px;
+  linkStyle 2 stroke:#00838f,stroke-width:2px,stroke-dasharray:2 2;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((ウクライナ、ロシアの影の船団を攻撃))
+    ウクライナがロシアの「影の船団」タンカーを直接攻撃したと公表
+    製油所などエネルギー施設への攻撃も同時に強化
+    ロシアの戦争継続能力を経済・エネルギー面から削ぐ戦略
+    国際原油市場や海上保険、海洋環境への波及リスク</pre>
+    </div>
+
+
+  </article>
+  <article class="importance-mid" id="region-africa">
+    <h2>
+      日本・ケニア外相会談 OSA活用で安保協力強化
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">africa</span><span class="region-tag">defense_export</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260503/k10015114121000.html" target="_blank" rel="noopener">原文</a>) / 2026-05-03 22:31    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>茂木外務大臣は訪問先のケニアでムダバディ外相と会談し、安全保障協力の強化で一致しました。日本が同志国に防衛装備品を提供する政府安全保障能力強化支援(OSA)の枠組み活用も含め、両国の連携を深める方針が確認されました。両外相は法の支配に基づく国際秩序の維持・強化に共に取り組むことでも一致しました。アフリカ東岸の要衝に位置するケニアとの関係強化は、インド太平洋戦略の文脈でも重要な意味を持ちます。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>日本は2023年に同志国の安全保障能力向上を支援するOSA(政府安全保障能力強化支援)を創設し、ODAとは別枠で防衛装備品を供与する仕組みを整備しました。ケニアは東アフリカの地域大国であり、紅海・インド洋の海洋安全保障上も重要なパートナーと位置づけられています。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>茂木外相とケニアのムダバディ外相が会談し、安全保障協力の強化で一致</li><li>日本のOSA(政府安全保障能力強化支援)による防衛装備品提供枠組みの活用が焦点</li><li>東アフリカの要衝ケニアとの連携は、インド太平洋戦略とアフリカ外交の双方で重要</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title 日本・ケニア外相会談 OSA活用で安保協力強化 — 経緯
+  2023 : 日本がOSA(政府安全保障能力強化支援)制度を創設
+  2024-03 : 防衛装備移転三原則の運用指針改定でGCAP完成機の第三国輸出を容認
+  2026-05-03 : 茂木外相がケニア訪問、ムダバディ外相と会談しOSA活用で一致</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["日本・ケニア外相会談 OSA活用で安保協力強化"]
+  A0["日本(茂木外務大臣)\n(国家)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["ケニア(ムダバディ外相)\n(国家)"]
+  A1 -- 推進 --> T
+  style A1 fill:#2e7d32,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["安全保障"]
+  I0["東アフリカ・インド洋地域における日本のプレゼンス強化と海洋安全保障協力の進展につながります。\n(重大度: 中)"]
+  R --> D0 --> I0
+  style I0 fill:#ef6c00,color:#fff,stroke:#333
+  D1["外交"]
+  I1["日本のアフリカ外交、特にグローバルサウスへの関与強化を象徴する動きとなります。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["技術"]
+  I2["防衛装備移転三原則の運用拡大の一例として、OSAを通じた装備供与が新たな枠組みとして定着しつつあります。\n(重大度: 低)"]
+  R --> D2 --> I2
+  style I2 fill:#2e7d32,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["日本(茂木外務大臣)"]
+  N1["ケニア(ムダバディ外相)"]
+  N0 -->|支援| N1
+  linkStyle 0 stroke:#2e7d32,stroke-width:2px;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((日本・ケニア外相会談 OSA活用で安保協力強化))
+    茂木外相とケニアのムダバディ外相が会談し、安全保障協力の強化で一致
+    日本のOSA(政府安全保障能力強化支援)による防衛装備品提供枠組みの活用が焦点
+    東アフリカの要衝ケニアとの連携は、インド太平洋戦略とアフリカ外交の双方で重要</pre>
+    </div>
+
+
+  </article>
+
+
+  <footer>地政学ニュース図解ジェネレータ &mdash; Powered by Claude</footer>
+
+  <div class="modal-backdrop" id="diagram-modal" role="dialog" aria-modal="true">
+    <div class="modal-body">
+      <button type="button" class="close-btn" aria-label="閉じる">×</button>
+      <div class="modal-slot"></div>
+    </div>
+  </div>
+</body>
+</html>
