@@ -1,0 +1,938 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>地政学ニュース図解レポート 2026-05-07 号</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root {
+      --fg: #111;
+      --muted: #666;
+      --line: #e5e5e5;
+      --accent: #1e3a8a;
+      --bg-subtle: #fafafa;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      color: var(--fg);
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    header {
+      border-bottom: 3px solid var(--accent);
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.4;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    article {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      margin: 40px 0;
+      background: #fff;
+    }
+    article h2 {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 24px;
+      line-height: 1.4;
+    }
+    article h3 {
+      font-size: 18px;
+      margin: 32px 0 12px;
+      border-left: 4px solid var(--accent);
+      padding-left: 12px;
+      line-height: 1.5;
+    }
+    article p {
+      margin: 12px 0;
+      font-size: 16px;
+    }
+    .src {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .src a { color: var(--muted); }
+    .section { margin: 32px 0; }
+    ul.key {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+    ul.key li {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+    ul.refs {
+      padding-left: 24px;
+      font-size: 15px;
+      margin: 12px 0;
+    }
+    ul.refs li { margin: 8px 0; }
+    ul.refs .note { color: var(--muted); }
+
+    .diagram {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      background: var(--bg-subtle);
+      margin: 32px 0;
+    }
+    .diagram .head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 16px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+    .diagram h4 {
+      margin: 0;
+      font-size: 15px;
+      color: var(--accent);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .diagram .expand-btn {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: var(--accent);
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .diagram .expand-btn:hover { background: var(--accent); color: #fff; }
+    .diagram .mermaid {
+      min-height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .diagram .mermaid svg {
+      max-width: 100%;
+      height: auto !important;
+    }
+
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      padding: 20px;
+      overflow: auto;
+    }
+    .modal-backdrop.open { display: flex; align-items: center; justify-content: center; }
+    .modal-body {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 24px;
+      max-width: 95vw;
+      max-height: 95vh;
+      overflow: auto;
+      position: relative;
+    }
+    .modal-body .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      border: none;
+      background: transparent;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    .modal-body svg {
+      width: 100%;
+      height: auto;
+      min-width: 800px;
+      min-height: 400px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 32px 0;
+    }
+    .grid .diagram { margin: 0; }
+    @media (max-width: 820px) {
+      body { padding: 20px 16px 48px; font-size: 15px; }
+      h1 { font-size: 24px; }
+      article { padding: 20px 16px; margin: 28px 0; }
+      article h2 { font-size: 20px; }
+      article h3 { font-size: 16px; }
+      .grid { grid-template-columns: 1fr; gap: 20px; }
+      .diagram { padding: 16px 12px; margin: 24px 0; }
+      .diagram .mermaid { min-height: 300px; }
+      .modal-body svg { min-width: 0; }
+    }
+    .importance-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .importance-high { background: #c62828; color: #fff; }
+    .importance-mid  { background: #f9a825; color: #fff; }
+    .importance-low  { background: #9e9e9e; color: #fff; }
+
+    article.importance-high { border-left: 6px solid #c62828; background: #fff9f9; }
+    article.importance-mid  { border-left: 6px solid #f9a825; }
+    article.importance-low  { border-left: 6px solid #bdbdbd; }
+
+    .today-summary {
+      background: #fff9e6;
+      border: 2px solid #f9a825;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .today-summary h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #b7791f;
+    }
+    .today-summary ul { margin: 0; padding-left: 20px; }
+    .today-summary li { margin: 6px 0; font-size: 16px; }
+
+    .region-tag {
+      display: inline-block;
+      font-size: 12px;
+      background: #e3f2fd;
+      color: #1565c0;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-right: 4px;
+    }
+
+    .weekly-context {
+      background: #f0f7ff;
+      border: 2px solid #1565c0;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .weekly-context h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #1565c0;
+    }
+    .weekly-context ul { margin: 0; padding-left: 20px; }
+    .weekly-context li { margin: 4px 0; font-size: 15px; color: var(--fg); }
+
+    .region-nav {
+      background: #fafafa;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+    .region-nav strong { color: var(--accent); }
+    .region-nav a {
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 14px;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      padding: 2px 10px;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .region-nav a:hover { background: var(--accent); color: #fff; }
+
+    .related-past {
+      background: #fafafa;
+      border-left: 3px solid var(--muted);
+      padding: 12px 16px;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+    .related-past h4 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .related-past ul { margin: 0; padding-left: 20px; }
+    .related-past li { margin: 4px 0; }
+
+    details.low-importance-group {
+      margin: 40px 0;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #fafafa;
+    }
+    details.low-importance-group summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    details.low-importance-group ul { margin: 12px 0 0; padding-left: 20px; }
+    details.low-importance-group li { margin: 4px 0; font-size: 14px; color: var(--fg); }
+
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 48px;
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+  </style>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "default",
+      fontFamily: '-apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif',
+      fontSize: 16,
+      flowchart: { useMaxWidth: true, htmlLabels: true, curve: "basis" },
+      timeline: { useMaxWidth: true },
+      mindmap: { useMaxWidth: true }
+    });
+    await mermaid.run();
+
+    const backdrop = document.getElementById("diagram-modal");
+    const modalBody = backdrop.querySelector(".modal-body");
+    const modalSlot = backdrop.querySelector(".modal-slot");
+    const closeBtn = backdrop.querySelector(".close-btn");
+
+    document.querySelectorAll(".expand-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const diagram = btn.closest(".diagram");
+        const svg = diagram.querySelector("svg");
+        if (!svg) return;
+        modalSlot.innerHTML = "";
+        modalSlot.appendChild(svg.cloneNode(true));
+        backdrop.classList.add("open");
+      });
+    });
+
+    const close = () => backdrop.classList.remove("open");
+    closeBtn.addEventListener("click", close);
+    backdrop.addEventListener("click", e => { if (e.target === backdrop) close(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>地政学ニュース図解レポート 2026-05-07 号</h1>
+    <div class="meta">生成日時: 2026-05-07 07:49 / 記事数: 5</div>
+  </header>
+
+
+  <section class="today-summary">
+    <h2>📌 本日の要点</h2>
+    <ul>
+      <li><strong>ロシアのウクライナ侵攻 5月6日の動き</strong> — ロシアによるウクライナへの軍事侵攻が継続している。</li>
+    </ul>
+  </section>
+
+
+  <nav class="region-nav">
+    <strong>地域別ジャンプ:</strong>
+    <a href="#region-europe">europe (3)</a>
+    <a href="#region-global">global (4)</a>
+    <a href="#region-middle_east">middle_east (2)</a>
+    <a href="#region-americas">americas (1)</a>
+    <a href="#region-defense_export">defense_export (1)</a>
+  </nav>
+
+  <article class="importance-high" id="region-europe">
+    <h2>
+      ロシアのウクライナ侵攻 5月6日の動き
+      <span class="importance-badge importance-high">重要度: 高</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">europe</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260506/k10015101791000.html" target="_blank" rel="noopener">原文</a>) / 2026-05-06 22:40    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>ロシアによるウクライナへの軍事侵攻が継続している。ウクライナ各地でロシア軍とウクライナ軍の戦闘が続き、大勢の市民が国外への避難を余儀なくされている。NHKは5月6日（日本時間）の戦闘状況や関係各国の外交動向を随時更新で伝えている。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>2022年2月に始まったロシアによるウクライナ侵攻は長期化し、欧米諸国による対ロ制裁とウクライナへの軍事支援が続いている。停戦の見通しは依然として立たず、戦況と外交の両面で動きが続いている。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>ロシアによるウクライナ侵攻は依然として継続している</li><li>ウクライナ各地で戦闘が続き、多数の市民が国外避難を強いられている</li><li>関係各国の外交動向にも注視が必要</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title ロシアのウクライナ侵攻 5月6日の動き — 経緯
+  2022-02-24 : ロシアがウクライナへの軍事侵攻を開始
+  2026-05-06 : ウクライナ各地で戦闘継続、関係国の外交が動く</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["ロシアのウクライナ侵攻 5月6日の動き"]
+  A0["ロシア\n(国家)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["ウクライナ\n(国家)"]
+  A1 -- 被害 --> T
+  style A1 fill:#ef6c00,color:#fff,stroke:#333
+  A2["ウクライナ市民\n(非国家主体)"]
+  A2 -- 被害 --> T
+  style A2 fill:#ef6c00,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["安全保障"]
+  I0["欧州の安全保障環境が引き続き不安定な状況にある。\n(重大度: 高)"]
+  R --> D0 --> I0
+  style I0 fill:#c62828,color:#fff,stroke:#333
+  D1["外交"]
+  I1["関係各国による外交努力が続けられている。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["経済"]
+  I2["戦争長期化により国際経済・エネルギー市場への影響が継続。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["ロシア"]
+  N1["ウクライナ"]
+  N2["ウクライナ市民"]
+  N0 -->|対立| N1
+  linkStyle 0 stroke:#c62828,stroke-width:3px;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((ロシアのウクライナ侵攻 5月6日の動き))
+    ロシアによるウクライナ侵攻は依然として継続している
+    ウクライナ各地で戦闘が続き、多数の市民が国外避難を強いられている
+    関係各国の外交動向にも注視が必要</pre>
+    </div>
+
+
+  </article>
+  <article class="importance-mid" id="region-middle_east">
+    <h2>
+      米ガソリン価格、1ガロン4.5ドル超に高騰
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">middle_east</span><span class="region-tag">americas</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260507/k10015115641000.html" target="_blank" rel="noopener">原文</a>) / 2026-05-07 06:57    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>アメリカのレギュラーガソリン平均販売価格が1ガロン当たり4ドル50セントを超えました。イラン情勢の緊迫化を背景に原油価格が高止まりしていることが主因です。これはロシアによるウクライナ侵攻直後の2022年7月以来の高値水準となります。燃料費上昇による個人消費への悪影響が懸念されています。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>中東ではイラン核問題やイスラエルとの軍事的緊張が継続しており、ホルムズ海峡や紅海の航行安全への懸念から原油市場が不安定化しています。米国はトランプ第2次政権下で対イラン「最大限の圧力」路線を再開しており、地政学リスクが原油先物価格を押し上げています。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>米ガソリン平均価格が1ガロン4.5ドルを突破、2022年7月以来の高水準</li><li>イラン情勢に伴う原油価格の高止まりが主因</li><li>燃料費上昇による米個人消費への悪影響が懸念され、世界経済への波及リスクもある</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title 米ガソリン価格、1ガロン4.5ドル超に高騰 — 経緯
+  2022-07 : ウクライナ侵攻後の原油高で米ガソリン価格が高値圏に
+  2024-2025 : 中東情勢緊迫化、イラン核問題と紅海情勢で原油市場が不安定化
+  2026-05-07 : 米レギュラーガソリン平均価格が1ガロン4.5ドル超に到達</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["米ガソリン価格、1ガロン4.5ドル超に高騰"]
+  A0["アメリカ\n(国家)"]
+  A0 -- 被害 --> T
+  style A0 fill:#ef6c00,color:#fff,stroke:#333
+  A1["イラン\n(国家)"]
+  A1 -- その他 --> T
+  style A1 fill:#1565c0,color:#fff,stroke:#333
+  A2["米国の消費者\n(非国家主体)"]
+  A2 -- 被害 --> T
+  style A2 fill:#ef6c00,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["経済"]
+  I0["燃料費上昇により家計負担が増し、米国の個人消費が減速する可能性。\n(重大度: 中)"]
+  R --> D0 --> I0
+  style I0 fill:#ef6c00,color:#fff,stroke:#333
+  D1["エネルギー"]
+  I1["中東情勢に連動した原油高は、日本を含む輸入国全体のエネルギーコストを押し上げる。\n(重大度: 高)"]
+  R --> D1 --> I1
+  style I1 fill:#c62828,color:#fff,stroke:#333
+  D2["外交"]
+  I2["高インフレ再燃が政権の対イラン政策の柔軟性を制約する可能性。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["アメリカ"]
+  N1["イラン"]
+  N2["米国の消費者"]
+  N0 -->|対立| N1
+  linkStyle 0 stroke:#c62828,stroke-width:3px;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((米ガソリン価格、1ガロン4.5ドル超に高騰))
+    米ガソリン平均価格が1ガロン4.5ドルを突破、2022年7月以来の高水準
+    イラン情勢に伴う原油価格の高止まりが主因
+    燃料費上昇による米個人消費への悪影響が懸念され、世界経済への波及リスクもある</pre>
+    </div>
+
+
+  </article>
+  <article class="importance-mid" id="region-europe">
+    <h2>
+      ゼレンスキー氏、ロシアの停戦違反を非難
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">europe</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260507/k10015115521000.html" target="_blank" rel="noopener">原文</a>) / 2026-05-07 06:21    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>ウクライナのゼレンスキー大統領は、6日から呼びかけた停戦後もロシア軍が攻撃を続けたとして停戦違反だと非難した。ロシア側は別途8日からの一時的停戦を発表しているが、すでに散発的な戦闘が継続している。ゼレンスキー氏は今後の対応を決定するとしており、戦闘停止の実現は不透明な情勢となっている。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>ロシアによるウクライナ侵攻は長期化しており、双方が独自の停戦案や一時停戦を提案する局面が続いている。今回もウクライナ側とロシア側で停戦の枠組みや時期が一致せず、信頼醸成が進まない状況にある。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>ウクライナが呼びかけた6日からの停戦中にロシア軍の攻撃があったとゼレンスキー氏が非難</li><li>ロシア側は8日からの一時的停戦を別途発表しており、停戦枠組みが一致していない</li><li>戦闘の停止が実現するかは依然として不透明で、和平プロセスは難航</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title ゼレンスキー氏、ロシアの停戦違反を非難 — 経緯
+  2026-05-06 : ウクライナ側が呼びかけた停戦が開始
+  2026-05-06 : ゼレンスキー氏、ロシア軍による停戦違反の攻撃を非難
+  2026-05-08 : ロシア側が発表した一時的停戦の開始予定日</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["ゼレンスキー氏、ロシアの停戦違反を非難"]
+  A0["ウクライナ\n(国家)"]
+  A0 -- 被害 --> T
+  style A0 fill:#ef6c00,color:#fff,stroke:#333
+  A1["ゼレンスキー大統領\n(国家指導者)"]
+  A1 -- 反対 --> T
+  style A1 fill:#c62828,color:#fff,stroke:#333
+  A2["ロシア\n(国家)"]
+  A2 -- その他 --> T
+  style A2 fill:#1565c0,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["安全保障"]
+  I0["停戦が機能しないことでウクライナ東部などでの戦闘継続が懸念される。\n(重大度: 高)"]
+  R --> D0 --> I0
+  style I0 fill:#c62828,color:#fff,stroke:#333
+  D1["外交"]
+  I1["国際社会による仲介や和平プロセスへの信頼が低下する可能性。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["経済"]
+  I2["戦闘長期化はエネルギー・穀物市場への不確実性を高める。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["ウクライナ"]
+  N1["ゼレンスキー大統領"]
+  N2["ロシア"]
+  N0 -->|対立| N2
+  N1 -->|対立| N2
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#c62828,stroke-width:3px;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((ゼレンスキー氏、ロシアの停戦違反を非難))
+    ウクライナが呼びかけた6日からの停戦中にロシア軍の攻撃があったとゼレンスキー氏が非難
+    ロシア側は8日からの一時的停戦を別途発表しており、停戦枠組みが一致していない
+    戦闘の停止が実現するかは依然として不透明で、和平プロセスは難航</pre>
+    </div>
+
+
+  </article>
+  <article class="importance-mid" id="region-middle_east">
+    <h2>
+      トルコで防衛装備品展示会、日トルコが協力確認
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">middle_east</span><span class="region-tag">defense_export</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260507/k10015115501000.html" target="_blank" rel="noopener">原文</a>) / 2026-05-07 05:00    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>トルコで日本を含む各国の企業が参加する大規模な防衛装備品展示会が開催された。最新鋭の無人機などの先端技術が紹介されている。会場では日本とトルコの間で防衛協力を深めていくことを確認する文書も取り交わされた。トルコは無人機輸出大国として存在感を高めており、日本との協力強化は装備移転の新たな展開を示す動きとして注目される。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>日本は2014年に防衛装備移転三原則を策定し、2023年以降は運用指針改定で輸出範囲を拡大している。トルコはバイラクタルなど無人機で世界市場に進出し、防衛産業の主要国の一つとなっている。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>トルコの大規模防衛装備展示会に日本企業も参加し、無人機など最新技術が紹介された</li><li>日本とトルコが防衛協力深化を確認する文書を取り交わし、両国関係の新段階を示した</li><li>防衛装備移転三原則の運用拡大を背景に、日本の防衛装備分野での国際連携が広がっている</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title トルコで防衛装備品展示会、日トルコが協力確認 — 経緯
+  2014-04-01 : 日本が防衛装備移転三原則を閣議決定
+  2023-12 : ライセンス国への完成品輸出を容認する運用指針改定
+  2024-03 : GCAP次期戦闘機の第三国輸出を容認
+  2026-05-07 : トルコでの防衛装備品展示会で日トルコが協力確認文書を交換</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["トルコで防衛装備品展示会、日トルコが協力確認"]
+  A0["日本\n(国家)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["トルコ\n(国家)"]
+  A1 -- 推進 --> T
+  style A1 fill:#2e7d32,color:#fff,stroke:#333
+  A2["日本の防衛関連企業\n(企業)"]
+  A2 -- 推進 --> T
+  style A2 fill:#2e7d32,color:#fff,stroke:#333
+  A3["トルコ防衛産業\n(企業)"]
+  A3 -- 推進 --> T
+  style A3 fill:#2e7d32,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["安全保障"]
+  I0["NATO加盟国であり中東・黒海地域の要衝に位置するトルコとの防衛協力は、日本の安全保障ネットワーク拡大につながる。\n(重大度: 中)"]
+  R --> D0 --> I0
+  style I0 fill:#ef6c00,color:#fff,stroke:#333
+  D1["技術"]
+  I1["無人機分野で先行するトルコとの協力は、日本の防衛技術基盤強化に寄与する可能性がある。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["経済"]
+  I2["日本の防衛企業にとって新たな市場開拓の機会となる。\n(重大度: 低)"]
+  R --> D2 --> I2
+  style I2 fill:#2e7d32,color:#fff,stroke:#333
+  D3["外交"]
+  I3["中東・地中海地域における日本の外交的プレゼンス強化につながる。\n(重大度: 中)"]
+  R --> D3 --> I3
+  style I3 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["日本"]
+  N1["トルコ"]
+  N2["日本の防衛関連企業"]
+  N3["トルコ防衛産業"]
+  N0 -->|交渉| N1
+  N2 -->|交渉| N3
+  linkStyle 0 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 1 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((トルコで防衛装備品展示会、日トルコが協力確認))
+    トルコの大規模防衛装備展示会に日本企業も参加し、無人機など最新技術が紹介された
+    日本とトルコが防衛協力深化を確認する文書を取り交わし、両国関係の新段階を示した
+    防衛装備移転三原則の運用拡大を背景に、日本の防衛装備分野での国際連携が広がっている</pre>
+    </div>
+
+
+  </article>
+  <article class="importance-mid" id="region-europe">
+    <h2>
+      ウクライナ、ロシアが停戦破ったと非難
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">europe</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260506/k10015115571000.html" target="_blank" rel="noopener">原文</a>) / 2026-05-06 22:22    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>ウクライナのシビハ外相は、6日から発効するとウクライナ側が主張していた停戦をロシアが破ったと非難した。ロシアは100機以上の無人機などで攻撃を実施したとされる。シビハ外相は各国に対し、ロシアへの制裁など圧力を強化するよう訴えた。停戦の枠組みをめぐる両国の認識の隔たりが改めて露呈した形となっている。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>ロシアによるウクライナ侵攻は長期化しており、和平交渉や停戦の試みが断続的に行われてきた。今回ウクライナ側が一方的に主張する停戦の発効と、ロシア側の認識・対応の食い違いが衝突を招いた。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>ウクライナが主張した停戦初日にロシアが大規模な無人機攻撃を実施したとされる</li><li>シビハ外相は国際社会にロシアへの制裁強化を訴えた</li><li>停戦の枠組みをめぐり両国の認識が大きく食い違い、和平の道筋は依然不透明</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title ウクライナ、ロシアが停戦破ったと非難 — 経緯
+  2022-02-24 : ロシアがウクライナへの全面侵攻を開始
+  2026-05-06以前 : ウクライナが6日からの停戦入りを主張
+  2026-05-06 : ロシアが100機以上の無人機などで攻撃したとウクライナが非難
+  2026-05-06 : シビハ外相が各国に対ロ制裁強化を要請</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["ウクライナ、ロシアが停戦破ったと非難"]
+  A0["ウクライナ\n(国家)"]
+  A0 -- 被害 --> T
+  style A0 fill:#ef6c00,color:#fff,stroke:#333
+  A1["シビハ外相\n(国家)"]
+  A1 -- 推進 --> T
+  style A1 fill:#2e7d32,color:#fff,stroke:#333
+  A2["ロシア\n(国家)"]
+  A2 -- その他 --> T
+  style A2 fill:#1565c0,color:#fff,stroke:#333
+  A3["国際社会\n(国家・国際機関)"]
+  A3 -- 中立 --> T
+  style A3 fill:#616161,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["安全保障"]
+  I0["停戦合意の不在が長期化し、欧州の安全保障環境が一層不安定化する。\n(重大度: 高)"]
+  R --> D0 --> I0
+  style I0 fill:#c62828,color:#fff,stroke:#333
+  D1["外交"]
+  I1["和平交渉の信頼性が損なわれ、各国の対ロ外交スタンスが問われる。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["経済"]
+  I2["追加制裁が実施されれば、エネルギー・貿易市場への影響が再燃する可能性。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["ウクライナ"]
+  N1["シビハ外相"]
+  N2["ロシア"]
+  N3["国際社会"]
+  N0 -->|対立| N2
+  N1 -->|交渉| N3
+  N3 -->|緊張| N2
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 2 stroke:#ef6c00,stroke-width:2px,stroke-dasharray:4 2;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((ウクライナ、ロシアが停戦破ったと非難))
+    ウクライナが主張した停戦初日にロシアが大規模な無人機攻撃を実施したとされる
+    シビハ外相は国際社会にロシアへの制裁強化を訴えた
+    停戦の枠組みをめぐり両国の認識が大きく食い違い、和平の道筋は依然不透明</pre>
+    </div>
+
+
+  </article>
+
+
+  <footer>地政学ニュース図解ジェネレータ &mdash; Powered by Claude</footer>
+
+  <div class="modal-backdrop" id="diagram-modal" role="dialog" aria-modal="true">
+    <div class="modal-body">
+      <button type="button" class="close-btn" aria-label="閉じる">×</button>
+      <div class="modal-slot"></div>
+    </div>
+  </div>
+</body>
+</html>
