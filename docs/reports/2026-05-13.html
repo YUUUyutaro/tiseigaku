@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>地政学ニュース図解レポート 2026-05-13 号</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root {
+      --fg: #111;
+      --muted: #666;
+      --line: #e5e5e5;
+      --accent: #1e3a8a;
+      --bg-subtle: #fafafa;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+      color: var(--fg);
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+    header {
+      border-bottom: 3px solid var(--accent);
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.4;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    article {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      margin: 40px 0;
+      background: #fff;
+    }
+    article h2 {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: 24px;
+      line-height: 1.4;
+    }
+    article h3 {
+      font-size: 18px;
+      margin: 32px 0 12px;
+      border-left: 4px solid var(--accent);
+      padding-left: 12px;
+      line-height: 1.5;
+    }
+    article p {
+      margin: 12px 0;
+      font-size: 16px;
+    }
+    .src {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .src a { color: var(--muted); }
+    .section { margin: 32px 0; }
+    ul.key {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+    ul.key li {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+    ul.refs {
+      padding-left: 24px;
+      font-size: 15px;
+      margin: 12px 0;
+    }
+    ul.refs li { margin: 8px 0; }
+    ul.refs .note { color: var(--muted); }
+
+    .diagram {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      background: var(--bg-subtle);
+      margin: 32px 0;
+    }
+    .diagram .head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 0 16px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+    .diagram h4 {
+      margin: 0;
+      font-size: 15px;
+      color: var(--accent);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .diagram .expand-btn {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: var(--accent);
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .diagram .expand-btn:hover { background: var(--accent); color: #fff; }
+    .diagram .mermaid {
+      min-height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .diagram .mermaid svg {
+      max-width: 100%;
+      height: auto !important;
+    }
+
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      padding: 20px;
+      overflow: auto;
+    }
+    .modal-backdrop.open { display: flex; align-items: center; justify-content: center; }
+    .modal-body {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 24px;
+      max-width: 95vw;
+      max-height: 95vh;
+      overflow: auto;
+      position: relative;
+    }
+    .modal-body .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      border: none;
+      background: transparent;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    .modal-body svg {
+      width: 100%;
+      height: auto;
+      min-width: 800px;
+      min-height: 400px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 32px 0;
+    }
+    .grid .diagram { margin: 0; }
+    @media (max-width: 820px) {
+      body { padding: 20px 16px 48px; font-size: 15px; }
+      h1 { font-size: 24px; }
+      article { padding: 20px 16px; margin: 28px 0; }
+      article h2 { font-size: 20px; }
+      article h3 { font-size: 16px; }
+      .grid { grid-template-columns: 1fr; gap: 20px; }
+      .diagram { padding: 16px 12px; margin: 24px 0; }
+      .diagram .mermaid { min-height: 300px; }
+      .modal-body svg { min-width: 0; }
+    }
+    .importance-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    .importance-high { background: #c62828; color: #fff; }
+    .importance-mid  { background: #f9a825; color: #fff; }
+    .importance-low  { background: #9e9e9e; color: #fff; }
+
+    article.importance-high { border-left: 6px solid #c62828; background: #fff9f9; }
+    article.importance-mid  { border-left: 6px solid #f9a825; }
+    article.importance-low  { border-left: 6px solid #bdbdbd; }
+
+    .today-summary {
+      background: #fff9e6;
+      border: 2px solid #f9a825;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .today-summary h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #b7791f;
+    }
+    .today-summary ul { margin: 0; padding-left: 20px; }
+    .today-summary li { margin: 6px 0; font-size: 16px; }
+
+    .region-tag {
+      display: inline-block;
+      font-size: 12px;
+      background: #e3f2fd;
+      color: #1565c0;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-right: 4px;
+    }
+
+    .weekly-context {
+      background: #f0f7ff;
+      border: 2px solid #1565c0;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+    .weekly-context h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #1565c0;
+    }
+    .weekly-context ul { margin: 0; padding-left: 20px; }
+    .weekly-context li { margin: 4px 0; font-size: 15px; color: var(--fg); }
+
+    .region-nav {
+      background: #fafafa;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+    .region-nav strong { color: var(--accent); }
+    .region-nav a {
+      display: inline-block;
+      margin-right: 8px;
+      font-size: 14px;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      padding: 2px 10px;
+      border-radius: 12px;
+      background: #fff;
+    }
+    .region-nav a:hover { background: var(--accent); color: #fff; }
+
+    .related-past {
+      background: #fafafa;
+      border-left: 3px solid var(--muted);
+      padding: 12px 16px;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+    .related-past h4 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .related-past ul { margin: 0; padding-left: 20px; }
+    .related-past li { margin: 4px 0; }
+
+    details.low-importance-group {
+      margin: 40px 0;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: #fafafa;
+    }
+    details.low-importance-group summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    details.low-importance-group ul { margin: 12px 0 0; padding-left: 20px; }
+    details.low-importance-group li { margin: 4px 0; font-size: 14px; color: var(--fg); }
+
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 48px;
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+  </style>
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "default",
+      fontFamily: '-apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif',
+      fontSize: 16,
+      flowchart: { useMaxWidth: true, htmlLabels: true, curve: "basis" },
+      timeline: { useMaxWidth: true },
+      mindmap: { useMaxWidth: true }
+    });
+    await mermaid.run();
+
+    const backdrop = document.getElementById("diagram-modal");
+    const modalBody = backdrop.querySelector(".modal-body");
+    const modalSlot = backdrop.querySelector(".modal-slot");
+    const closeBtn = backdrop.querySelector(".close-btn");
+
+    document.querySelectorAll(".expand-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const diagram = btn.closest(".diagram");
+        const svg = diagram.querySelector("svg");
+        if (!svg) return;
+        modalSlot.innerHTML = "";
+        modalSlot.appendChild(svg.cloneNode(true));
+        backdrop.classList.add("open");
+      });
+    });
+
+    const close = () => backdrop.classList.remove("open");
+    closeBtn.addEventListener("click", close);
+    backdrop.addEventListener("click", e => { if (e.target === backdrop) close(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>地政学ニュース図解レポート 2026-05-13 号</h1>
+    <div class="meta">生成日時: 2026-05-13 07:58 / 記事数: 5</div>
+  </header>
+
+
+  <section class="today-summary">
+    <h2>📌 本日の要点</h2>
+    <ul>
+      <li><strong>トランプ氏訪中へ 米中首脳会談</strong> — アメリカのトランプ大統領は日本時間5月13日朝、中国に向けて出発した。</li>
+      <li><strong>ホルムズ海峡安全確保へ40カ国会合、英が駆逐艦派遣</strong> — ホルムズ海峡の航行安全確保を議題に、40か国以上が参加する国防相会合が開催された。</li>
+    </ul>
+  </section>
+
+
+  <nav class="region-nav">
+    <strong>地域別ジャンプ:</strong>
+    <a href="#region-east_asia">east_asia (2)</a>
+    <a href="#region-middle_east">middle_east (2)</a>
+    <a href="#region-global">global (5)</a>
+    <a href="#region-europe">europe (3)</a>
+  </nav>
+
+  <article class="importance-high" id="region-east_asia">
+    <h2>
+      トランプ氏訪中へ 米中首脳会談
+      <span class="importance-badge importance-high">重要度: 高</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">east_asia</span><span class="region-tag">middle_east</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260513/k10015119961000.html" target="_blank" rel="noopener">原文</a>) / 2026-05-13 07:42    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>アメリカのトランプ大統領は日本時間5月13日朝、中国に向けて出発した。14日に習近平国家主席との首脳会談に臨む予定で、米中間の経済・貿易問題、台湾をめぐる問題、イラン情勢など幅広い課題について協議する見通し。第2次トランプ政権下での米中首脳の直接対話として、両国関係の方向性を左右する重要な会談となる。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>第2次トランプ政権発足後、米中は関税問題で対立を深める一方、台湾海峡やイラン核問題など地政学的争点でも立場が交錯している。中国は対イラン関係でも影響力を持ち、米国にとって協議相手となっている。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>5月14日にトランプ・習近平による米中首脳会談が予定されている</li><li>経済・貿易、台湾、イランの3つが主要議題となる見通し</li><li>米中対立の方向性とともに、中東・東アジアの安定にも影響する重要会談</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title トランプ氏訪中へ 米中首脳会談 — 経緯
+  2018-05 : トランプ第1次政権、イラン核合意(JCPOA)から離脱
+  2025-01 : 第2次トランプ政権発足、対中関税路線を再強化
+  2026-05-13 : トランプ大統領が中国へ出発
+  2026-05-14 : 米中首脳会談(予定)</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["トランプ氏訪中へ 米中首脳会談"]
+  A0["アメリカ(トランプ大統領)\n(国家)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["中国(習近平国家主席)\n(国家)"]
+  A1 -- 推進 --> T
+  style A1 fill:#2e7d32,color:#fff,stroke:#333
+  A2["台湾\n(国家)"]
+  A2 -- 被害 --> T
+  style A2 fill:#ef6c00,color:#fff,stroke:#333
+  A3["イラン\n(国家)"]
+  A3 -- その他 --> T
+  style A3 fill:#1565c0,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["経済"]
+  I0["米中関税交渉の行方は世界貿易・サプライチェーンに波及する。\n(重大度: 高)"]
+  R --> D0 --> I0
+  style I0 fill:#c62828,color:#fff,stroke:#333
+  D1["安全保障"]
+  I1["台湾問題での米中の言及が東アジアの軍事的緊張を左右する。\n(重大度: 高)"]
+  R --> D1 --> I1
+  style I1 fill:#c62828,color:#fff,stroke:#333
+  D2["外交"]
+  I2["中国の対イラン仲介役としての立場が強化される可能性。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  D3["エネルギー"]
+  I3["イラン情勢の進展は中東産原油への依存度が高い日本にも影響。\n(重大度: 中)"]
+  R --> D3 --> I3
+  style I3 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["アメリカ(トランプ大統領)"]
+  N1["中国(習近平国家主席)"]
+  N2["台湾"]
+  N3["イラン"]
+  N0 -->|交渉| N1
+  N1 -->|対立| N2
+  N0 -->|対立| N3
+  N1 -->|支援| N3
+  linkStyle 0 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 1 stroke:#c62828,stroke-width:3px;
+  linkStyle 2 stroke:#c62828,stroke-width:3px;
+  linkStyle 3 stroke:#2e7d32,stroke-width:2px;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((トランプ氏訪中へ 米中首脳会談))
+    5月14日にトランプ・習近平による米中首脳会談が予定されている
+    経済・貿易、台湾、イランの3つが主要議題となる見通し
+    米中対立の方向性とともに、中東・東アジアの安定にも影響する重要会談</pre>
+    </div>
+
+
+  </article>
+  <article class="importance-high" id="region-middle_east">
+    <h2>
+      ホルムズ海峡安全確保へ40カ国会合、英が駆逐艦派遣
+      <span class="importance-badge importance-high">重要度: 高</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">middle_east</span><span class="region-tag">europe</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260513/k10015120071000.html" target="_blank" rel="noopener">原文</a>) / 2026-05-13 06:06    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>ホルムズ海峡の航行安全確保を議題に、40か国以上が参加する国防相会合が開催された。会合を主導した英国は、海峡周辺の安全確保のために駆逐艦を中東に派遣する方針を表明した。世界の石油輸送量の約2割が通過する戦略的要衝での緊張の高まりを受けた動きであり、英国は多国間枠組みの中で具体的な軍事的貢献を打ち出した形となる。日本にとっても原油輸入の大半が通過する海域だけに、関心が高い。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>ホルムズ海峡はペルシャ湾と外洋を結ぶ要衝で、世界の石油輸送の約2割が通過する。イランとの対立や紅海でのフーシ派による船舶攻撃で中東の航行安全への懸念が高まっており、米英主導の多国間有志連合や EU の作戦が並行展開してきた。今回の40か国規模の国防相会合はこうした流れを受けた多国間調整の場と位置付けられる。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>40か国以上が参加する国防相会合がホルムズ海峡の航行安全確保を協議</li><li>会合を主導した英国は中東への駆逐艦派遣方針を表明</li><li>ホルムズ海峡は世界の石油輸送量の約2割が通過、日本のエネルギー安全保障にも直結する戦略的要衝</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title ホルムズ海峡安全確保へ40カ国会合、英が駆逐艦派遣 — 経緯
+  2024年以降 : 紅海でフーシ派による商船攻撃が継続、中東航行安全への懸念高まる
+  2026-05-13 : 40か国以上が参加するホルムズ海峡国防相会合が開催
+  2026-05-13 : 英国が安全確保のため駆逐艦を中東に派遣する方針を表明</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["ホルムズ海峡安全確保へ40カ国会合、英が駆逐艦派遣"]
+  A0["イギリス\n(国家)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["国防相会合参加40か国\n(国家連合)"]
+  A1 -- 推進 --> T
+  style A1 fill:#2e7d32,color:#fff,stroke:#333
+  A2["イラン\n(国家)"]
+  A2 -- その他 --> T
+  style A2 fill:#1565c0,color:#fff,stroke:#333
+  A3["日本\n(国家)"]
+  A3 -- 中立 --> T
+  style A3 fill:#616161,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["エネルギー"]
+  I0["ホルムズ海峡の安定確保は世界の原油・LNG 供給に直結し、特に中東依存度の高い日本のエネルギー安全保障に影響。\n(重大度: 高)"]
+  R --> D0 --> I0
+  style I0 fill:#c62828,color:#fff,stroke:#333
+  D1["安全保障"]
+  I1["40か国規模の協調と英駆逐艦派遣により、中東海域での多国間軍事プレゼンスが強化される。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["外交"]
+  I2["英国が会合を主導することで、ブレグジット後の中東関与における存在感を高める。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["イギリス"]
+  N1["国防相会合参加40か国"]
+  N2["イラン"]
+  N3["日本"]
+  N0 -->|同盟| N1
+  N0 -->|緊張| N2
+  linkStyle 0 stroke:#1565c0,stroke-width:3px;
+  linkStyle 1 stroke:#ef6c00,stroke-width:2px,stroke-dasharray:4 2;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((ホルムズ海峡安全確保へ40カ国会合、英が駆逐艦派遣))
+    40か国以上が参加する国防相会合がホルムズ海峡の航行安全確保を協議
+    会合を主導した英国は中東への駆逐艦派遣方針を表明
+    ホルムズ海峡は世界の石油輸送量の約2割が通過、日本のエネルギー安全保障にも直結する戦略的要衝</pre>
+    </div>
+
+
+  </article>
+  <article class="importance-mid" id="region-europe">
+    <h2>
+      露ウ双方が停戦要求も折り合わず
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">europe</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260513/k10015119971000.html" target="_blank" rel="noopener">原文</a>) / 2026-05-13 05:22    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>ロシア大統領府の報道官がウクライナ側に停戦を迫る発言を行った一方、ウクライナのゼレンスキー大統領は「ロシアこそがこの戦争を終わらせなければならない」と強く非難した。双方が互いに停戦の責任を相手側に押しつける形となっており、交渉の糸口は見えていない。ウクライナ侵攻の長期化が改めて浮き彫りになっている。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>ロシアによるウクライナ侵攻は2022年2月の開始以来4年以上が経過し、停戦交渉の試みが繰り返されてきたが実質的な進展はない。双方とも国内向けに強硬姿勢を維持する必要があり、譲歩の余地が乏しい状況が続いている。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>ロシアとウクライナ双方が停戦の必要性に言及しつつ、責任を相手側に押しつけ合っている</li><li>ゼレンスキー大統領は『ロシアが戦争を終結させるべき』と強く反発</li><li>停戦交渉の具体的な進展は見られず、戦闘の長期化が続く見通し</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title 露ウ双方が停戦要求も折り合わず — 経緯
+  2022-02-24 : ロシアがウクライナへの全面侵攻を開始
+  2026-05-13 : ロシア大統領府報道官がウクライナに停戦を要求
+  2026-05-13 : ゼレンスキー大統領がロシアに戦争終結を要求し非難</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["露ウ双方が停戦要求も折り合わず"]
+  A0["ロシア\n(国家)"]
+  A0 -- その他 --> T
+  style A0 fill:#1565c0,color:#fff,stroke:#333
+  A1["ウクライナ\n(国家)"]
+  A1 -- その他 --> T
+  style A1 fill:#1565c0,color:#fff,stroke:#333
+  A2["ゼレンスキー大統領\n(国家)"]
+  A2 -- 反対 --> T
+  style A2 fill:#c62828,color:#fff,stroke:#333
+  A3["ロシア大統領府報道官\n(国家)"]
+  A3 -- 推進 --> T
+  style A3 fill:#2e7d32,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["安全保障"]
+  I0["戦闘の長期化により欧州の安全保障環境の不安定化が継続する。\n(重大度: 高)"]
+  R --> D0 --> I0
+  style I0 fill:#c62828,color:#fff,stroke:#333
+  D1["外交"]
+  I1["国際的な仲介努力が停滞し、欧米諸国の対ウクライナ支援疲れが懸念される。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["経済"]
+  I2["戦争長期化によりエネルギー・穀物市場への圧力が継続する。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["ロシア"]
+  N1["ウクライナ"]
+  N2["ゼレンスキー大統領"]
+  N3["ロシア大統領府報道官"]
+  N0 -->|対立| N1
+  N2 -->|対立| N0
+  N3 -->|対立| N1
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#c62828,stroke-width:3px;
+  linkStyle 2 stroke:#c62828,stroke-width:3px;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((露ウ双方が停戦要求も折り合わず))
+    ロシアとウクライナ双方が停戦の必要性に言及しつつ、責任を相手側に押しつけ合っている
+    ゼレンスキー大統領は『ロシアが戦争を終結させるべき』と強く反発
+    停戦交渉の具体的な進展は見られず、戦闘の長期化が続く見通し</pre>
+    </div>
+
+
+  </article>
+  <article class="importance-mid" id="region-global">
+    <h2>
+      高市首相、OECDと経済安保連携確認
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">global</span><span class="region-tag">east_asia</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260512/k10015119811000.html" target="_blank" rel="noopener">原文</a>) / 2026-05-12 22:02    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>高市総理大臣はOECDのコーマン事務総長と会談し、経済安全保障分野における協力プランに基づいた緊密な連携を確認した。日本とOECDは経済安全保障の枠組み強化を進めており、今回の会談はその実行段階を示すものである。サプライチェーンや重要技術保護を含む幅広い課題で両者の協調が期待される。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>OECDは近年、経済安全保障を重要課題として位置づけ、加盟国との協力プランを策定してきた。日本はこれに積極的に関与し、国際ルール形成を主導する立場をとっている。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>高市首相とOECDコーマン事務総長が会談し、経済安全保障での連携を確認</li><li>既存の協力プランに基づく実行段階の協調を強調</li><li>日本は経済安全保障の国際ルール形成でOECDと協働姿勢を示す</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title 高市首相、OECDと経済安保連携確認 — 経緯
+  以前 : OECDと日本が経済安全保障協力プランを策定
+  2026-05-12 : 高市首相とコーマン事務総長が会談し、緊密な連携を確認</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["高市首相、OECDと経済安保連携確認"]
+  A0["高市首相\n(国家)"]
+  A0 -- 推進 --> T
+  style A0 fill:#2e7d32,color:#fff,stroke:#333
+  A1["日本政府\n(国家)"]
+  A1 -- 推進 --> T
+  style A1 fill:#2e7d32,color:#fff,stroke:#333
+  A2["OECD\n(国際機関)"]
+  A2 -- 推進 --> T
+  style A2 fill:#2e7d32,color:#fff,stroke:#333
+  A3["コーマン事務総長\n(国際機関)"]
+  A3 -- 推進 --> T
+  style A3 fill:#2e7d32,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["経済"]
+  I0["サプライチェーン再編や重要物資確保に関する国際協調が進展する可能性。\n(重大度: 中)"]
+  R --> D0 --> I0
+  style I0 fill:#ef6c00,color:#fff,stroke:#333
+  D1["外交"]
+  I1["日本がOECD加盟国との経済安全保障対話を主導する立場を強める。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["技術"]
+  I2["重要・新興技術の保護や標準化で国際協力が深化する可能性。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["高市首相"]
+  N1["日本政府"]
+  N2["OECD"]
+  N3["コーマン事務総長"]
+  N1 -->|支援| N2
+  N0 -->|交渉| N3
+  linkStyle 0 stroke:#2e7d32,stroke-width:2px;
+  linkStyle 1 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((高市首相、OECDと経済安保連携確認))
+    高市首相とOECDコーマン事務総長が会談し、経済安全保障での連携を確認
+    既存の協力プランに基づく実行段階の協調を強調
+    日本は経済安全保障の国際ルール形成でOECDと協働姿勢を示す</pre>
+    </div>
+
+
+  </article>
+  <article class="importance-mid" id="region-europe">
+    <h2>
+      露ウクライナ停戦違反で相互批判
+      <span class="importance-badge importance-mid">重要度: 中</span>
+    </h2>
+    <div style="margin: 4px 0 12px;">
+<span class="region-tag">europe</span><span class="region-tag">global</span>    </div>
+    <div class="src">
+      出典: NHK 国際
+(<a href="http://www3.nhk.or.jp/news/html/20260512/k10015119721000.html" target="_blank" rel="noopener">原文</a>) / 2026-05-12 20:41    </div>
+
+    <div class="section">
+      <h3>要約</h3>
+      <p>ウクライナのゼレンスキー大統領は5月11日、トランプ米大統領が仲介した3日間の停戦期間中もロシアとの戦闘が継続したと主張し、「ロシアに戦争を終結させる意思はない」と非難した。一方ロシア側も、ウクライナから攻撃を受けたとして停戦違反を主張している。米国による仲介努力にもかかわらず、両国は互いに責任を押し付け合っており、停戦合意の実効性に疑問が生じている。</p>
+    </div>
+
+    <div class="section">
+      <h3>背景</h3>
+      <p>トランプ政権発足後、米国はロシア・ウクライナ戦争の早期終結に向けて積極的に仲介に乗り出しており、今回の3日間の限定的停戦もその一環。しかし戦闘の継続を巡る相互非難は、本格的な和平合意への道のりが依然として険しいことを示している。</p>
+    </div>
+
+    <div class="section">
+      <h3>要点</h3>
+      <ul class="key">
+<li>トランプ氏仲介の3日間停戦中も戦闘が継続し、露ウクライナ双方が違反を主張</li><li>ゼレンスキー氏は「ロシアに戦争終結の意思なし」と強く非難</li><li>米国の仲介外交が成果を出せず、和平プロセスの実効性に疑問が生じている</li>      </ul>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図1: 経緯タイムライン</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">timeline
+  title 露ウクライナ停戦違反で相互批判 — 経緯
+  2026-05-08頃 : トランプ大統領仲介による3日間の停戦が開始
+  2026-05-08〜10 : 停戦期間中も双方で戦闘が継続したと相互に主張
+  2026-05-11 : ゼレンスキー大統領「ロシアは戦争を終わらせるつもりはない」と非難
+  2026-05-11 : ロシア側もウクライナから攻撃を受けたと反論</pre>
+    </div>
+
+    <div class="grid">
+      <div class="diagram">
+        <div class="head">
+          <h4>図2: 当事者マップ</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart LR
+  T["露ウクライナ停戦違反で相互批判"]
+  A0["ウクライナ\n(国家)"]
+  A0 -- 被害 --> T
+  style A0 fill:#ef6c00,color:#fff,stroke:#333
+  A1["ロシア\n(国家)"]
+  A1 -- その他 --> T
+  style A1 fill:#1565c0,color:#fff,stroke:#333
+  A2["アメリカ\n(国家)"]
+  A2 -- 中立 --> T
+  style A2 fill:#616161,color:#fff,stroke:#333
+  A3["ゼレンスキー大統領\n(国家)"]
+  A3 -- 反対 --> T
+  style A3 fill:#c62828,color:#fff,stroke:#333
+  A4["トランプ大統領\n(国家)"]
+  A4 -- 推進 --> T
+  style A4 fill:#2e7d32,color:#fff,stroke:#333
+  style T fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+      <div class="diagram">
+        <div class="head">
+          <h4>図3: 影響の広がり</h4>
+          <button type="button" class="expand-btn">🔍 拡大</button>
+        </div>
+        <pre class="mermaid">flowchart TB
+  R["影響の広がり"]
+  D0["安全保障"]
+  I0["停戦違反の応酬で和平プロセスが停滞し、戦闘長期化のリスクが高まる。\n(重大度: 高)"]
+  R --> D0 --> I0
+  style I0 fill:#c62828,color:#fff,stroke:#333
+  D1["外交"]
+  I1["トランプ政権の仲介外交の信頼性と成果に疑問符が付く。\n(重大度: 中)"]
+  R --> D1 --> I1
+  style I1 fill:#ef6c00,color:#fff,stroke:#333
+  D2["経済"]
+  I2["戦争長期化で欧州のエネルギー・穀物市場への不確実性が継続。\n(重大度: 中)"]
+  R --> D2 --> I2
+  style I2 fill:#ef6c00,color:#fff,stroke:#333
+  style R fill:#263238,color:#fff,stroke:#000</pre>
+      </div>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図4: 当事者の関係ネットワーク</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">graph LR
+  N0["ウクライナ"]
+  N1["ロシア"]
+  N2["アメリカ"]
+  N3["ゼレンスキー大統領"]
+  N4["トランプ大統領"]
+  N1 -->|対立| N0
+  N2 -->|交渉| N1
+  N2 -->|交渉| N0
+  N4 -->|交渉| N3
+  linkStyle 0 stroke:#c62828,stroke-width:3px;
+  linkStyle 1 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 2 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;
+  linkStyle 3 stroke:#6a1b9a,stroke-width:2px,stroke-dasharray:4 2;</pre>
+    </div>
+
+    <div class="diagram">
+      <div class="head">
+        <h4>図5: 押さえるべき論点</h4>
+        <button type="button" class="expand-btn">🔍 拡大</button>
+      </div>
+      <pre class="mermaid">mindmap
+  root((露ウクライナ停戦違反で相互批判))
+    トランプ氏仲介の3日間停戦中も戦闘が継続し、露ウクライナ双方が違反を主張
+    ゼレンスキー氏は「ロシアに戦争終結の意思なし」と強く非難
+    米国の仲介外交が成果を出せず、和平プロセスの実効性に疑問が生じている</pre>
+    </div>
+
+
+  </article>
+
+
+  <footer>地政学ニュース図解ジェネレータ &mdash; Powered by Claude</footer>
+
+  <div class="modal-backdrop" id="diagram-modal" role="dialog" aria-modal="true">
+    <div class="modal-body">
+      <button type="button" class="close-btn" aria-label="閉じる">×</button>
+      <div class="modal-slot"></div>
+    </div>
+  </div>
+</body>
+</html>
